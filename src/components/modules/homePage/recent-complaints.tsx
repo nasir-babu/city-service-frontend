@@ -9,6 +9,7 @@ import { IServiceRequestUI } from "@/types/services-request.type";
 import { error } from "console";
 import { da } from "zod/locales";
 import { CardSkeleton } from "@/components/ui/card-skeleton";
+import SectionHeader from "@/components/shared/section-header";
 
 export function RecentComplaints() {
   const router = useRouter();
@@ -21,33 +22,19 @@ export function RecentComplaints() {
 
   const complaints = data?.data || data?.result || [];
 
-
-
-  
-
   return (
     <section className="py-16 bg-slate-50/50 dark:bg-slate-950/50">
       <div className="container px-4 md:px-8 mx-auto space-y-8">
-        {/* Section Header */}
-        <div className="sm:flex-row sm:items-end ">
-          <div className="space-y-1 shadow-md shadow-blue-200 rounded-2xl p-3">
-            <div className="flex items-center gap-2 text-green-400 font-bold text-xs uppercase tracking-wider">
-              <FileText className="size-4" />
-              <span>Community Feed</span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold border-l-8 border-orange-400 pl-3 text-green-500 my-2">
-              Recent Public Complaints
-            </h2>
-            <p className="text-sm text-muted-foreground">
-              Check real-time updates on reported issues around the city.
-            </p>
-          </div>
+        <div className="p-6">
+          <SectionHeader
+            title="Recent Public Complains"
+            description="Monitor and track critical city issues in real-time."
+            badgeText="Comunity Feed"
+          />
         </div>
 
         {/* Complaints Grid */}
-        {isLoading && (
-         <CardSkeleton />
-        )}
+        {isLoading && <CardSkeleton />}
         {isError && (
           <div className="flex items-center justify-center h-32">
             <p className="font-bold text-2xl text-red-600 ">

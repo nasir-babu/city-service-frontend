@@ -17,7 +17,7 @@ export function HeroSection() {
     e.preventDefault();
     if (searchQuery.trim()) {
       router.push(
-        `/public-requests?search=${encodeURIComponent(searchQuery.trim())}`
+        `/public-requests?search=${encodeURIComponent(searchQuery.trim())}`,
       );
     }
   };
@@ -33,7 +33,7 @@ export function HeroSection() {
     }
     if (role === "STAFF") {
       toast.error(
-        "Staff members cannot submit requests. Please log in as a Citizen."
+        "Staff members cannot submit requests. Please log in as a Citizen.",
       );
       return;
     }
@@ -47,7 +47,7 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative overflow-hidden py-10 md:py-10 border-b bg-slate-950">
+    <section className="relative overflow-hidden pt-12 pb-32 md:pt-5 md:pb-40 bg-slate-950">
       {/* Background Image */}
       <Image
         src="/hero-section.jpg"
@@ -58,12 +58,12 @@ export function HeroSection() {
       />
 
       {/* Dark Overlay for better contrast */}
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-slate-950/40 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/50 pointer-events-none" />
 
       {/* Content Container */}
       <div className="container relative z-10 py-8 px-4 md:px-8 mx-auto flex flex-col items-center text-center space-y-6 max-w-4xl">
         {/* Title */}
-        <h1 className="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight text-white leading-tight">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white leading-tight">
           Report City Issues, <br className="hidden sm:inline" />
           <span className="text-emerald-400">Track Progress Together</span>
         </h1>
@@ -87,13 +87,13 @@ export function HeroSection() {
               placeholder="Search public complaints (e.g. Broken streetlight, Garbage)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-9 h-11 bg-white/95 text-slate-900 placeholder:text-slate-500 shadow-sm rounded-xl border-none"
+              className="pl-9 h-12 bg-white/95 text-slate-900 placeholder:text-slate-500 shadow-lg rounded-2xl border-none focus-visible:ring-2 focus-visible:ring-emerald-500"
             />
           </div>
           <Button
             type="submit"
             size="lg"
-            className="h-11 rounded-xl px-6 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold"
+            className="h-12 rounded-2xl px-6 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold shadow-md"
           >
             Search
           </Button>
@@ -104,21 +104,36 @@ export function HeroSection() {
           <Button
             size="lg"
             onClick={handleCreateRequest}
-            className="rounded-xl font-semibold gap-2 shadow-md bg-emerald-600 hover:bg-emerald-700 text-white"
+            className="rounded-2xl font-semibold gap-2 shadow-lg bg-emerald-600 hover:bg-emerald-700 text-white"
           >
             <AlertCircle className="size-4" />
             Submit Complaint / Request
           </Button>
-
+          0
           <Button
             size="lg"
             variant="outline"
             onClick={() => router.push("/public-requests")}
-            className="rounded-xl font-semibold bg-white/10 hover:bg-white/20 text-white border-white/20 backdrop-blur-sm"
+            className="rounded-2xl font-semibold bg-white/10 hover:bg-white/20 text-white border-white/20 backdrop-blur-md shadow-md"
           >
             View Public Requests
           </Button>
         </div>
+      </div>
+
+      {/* Modern Wave SVG at the Bottom (Dark/Light mode adaptive using CSS variable) */}
+      <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none pointer-events-none">
+        <svg
+          className="relative block w-full h-12 md:h-20"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 320"
+          preserveAspectRatio="none"
+        >
+          <path
+            fill="var(--background)"
+            d="M0,96L30,112C60,128,120,160,180,192C240,224,300,256,360,240C420,224,480,160,540,149.3C600,139,660,181,720,192C780,203,840,181,900,149.3C960,117,1020,75,1080,96C1140,117,1200,203,1260,202.7C1320,203,1380,117,1410,74.7L1440,32L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"
+          ></path>
+        </svg>
       </div>
     </section>
   );
