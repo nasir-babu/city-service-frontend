@@ -1,14 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import {
   MapPin,
   Calendar,
-  Clock,
-  CheckCircle2,
   AlertCircle,
-  Loader2,
   User,
   XCircle,
-  UserCheck,
   ImageIcon,
   Edit2,
   Trash2,
@@ -37,187 +35,189 @@ export function ComplaintCard({
   onDelete,
   isDeleting,
 }: ComplaintCardProps) {
-  const getStatusBadge = (status: RequestStatus) => {
-    switch (status) {
-      case "RESOLVED":
-      case "ACCEPTED":
-        return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-sm bg-blue-400 text-white font-bold text-xs ">
-            {status === "RESOLVED" ? "Resolved" : "Accepted"}
-          </span>
-        );
-      case "IN_PROGRESS":
-        return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-sm text-xs font-bold bg-blue-500/10 text-blue-700 border border-blue-500/20">
-            In Progress
-          </span>
-        );
-      case "ASSIGNED":
-        return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-sm text-xs bg-secondary">
-            <UserCheck className="size-3 text-purple-600" /> Assigned
-          </span>
-        );
-      case "PENDING":
-        return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-sm text-xs bg-primary">
-            <Clock className="size-3 text-amber-600" /> Pending
-          </span>
-        );
-      case "CANCELLED":
-      case "REJECTED":
-        return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-500/10 text-rose-700 border border-rose-500/20">
-            <XCircle className="size-3 text-rose-600" /> {status}
-          </span>
-        );
-      default:
-        return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-gray-500/10 text-gray-700 border border-gray-500/20">
-            <AlertCircle className="size-3" /> {status}
-          </span>
-        );
-    }
-  };
-
   const { data: userResponse } = useGetMe();
   const user = userResponse?.data;
 
   const hasImages = complaint.images && complaint.images.length > 0;
   const isEditable = complaint.status === "PENDING";
 
+  const getStatusBadge = (status: RequestStatus) => {
+    switch (status) {
+      case "RESOLVED":
+      case "ACCEPTED":
+        return (
+          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/90 text-white font-semibold text-xs shadow-md backdrop-blur-md">
+            <span className="size-2 rounded-full bg-white animate-pulse" />
+            {status === "RESOLVED" ? "Resolved" : "Accepted"}
+          </span>
+        );
+      case "IN_PROGRESS":
+        return (
+          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-600/90 text-white font-semibold text-xs shadow-md backdrop-blur-md">
+            <span className="size-2 rounded-full bg-white" />
+            In Progress
+          </span>
+        );
+      case "PENDING":
+        return (
+          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-500/90 text-white font-semibold text-xs shadow-md backdrop-blur-md">
+            <span className="size-2 rounded-full bg-white" />
+            Pending
+          </span>
+        );
+      case "CANCELLED":
+      case "REJECTED":
+        return (
+          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-rose-600/90 text-white font-semibold text-xs shadow-md backdrop-blur-md">
+            <XCircle className="size-3.5" />
+            {status}
+          </span>
+        );
+      default:
+        return (
+          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-700/90 text-white font-semibold text-xs shadow-md backdrop-blur-md">
+            <AlertCircle className="size-3.5" />
+            {status}
+          </span>
+        );
+    }
+  };
+
   return (
     <div
       onClick={onClick}
-      className="group relative flex flex-col justify-between rounded-2xl border border-border/70 bg-card p-5 shadow-sm transition-all duration-300 hover:shadow-xl hover:border-emerald-500/40 hover:-translate-y-1 cursor-pointer overflow-hidden backdrop-blur-sm"
+      className="group relative flex flex-col justify-between rounded-xl border border-slate-200/80 bg-white p-2.5  transition-all duration-300 hover:shadow-xl hover:shadow-slate-200/50 hover:-translate-y-1 cursor-pointer overflow-hidden dark:bg-card dark:border-border"
     >
-      <div className="space-y-4">
-        {/* Top Header: Category & Status */}
-        <div className="flex items-center justify-between gap-2 flex-wrap">
-          <div className="flex items-center gap-2 flex-wrap">
-            {complaint.category?.name && (
-              <span className="text-sm font-bold py-1">
-                {complaint.category.name}
-              </span>
-            )}
-          </div>
-          <div className="flex items-center justify-between gap-2 flex-wrap">
-            {complaint.priority && (
-              <span className=" text-xs font-bold text-black  px-2.5 py-1 bg-primary rounded-sm uppercase ">
-                {complaint.priority}
-              </span>
-            )}
-            {getStatusBadge(complaint.status)}
-          </div>
-        </div>
-
-        {/* Title & Description */}
-        <div className="space-y-1.5">
-          <h3 className="font-semibold text-base text-foreground line-clamp-1 group-hover:text-emerald-600 transition-colors tracking-tight">
-            {complaint.title}
-          </h3>
-          <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">
-            {complaint.description}
-          </p>
-        </div>
-
-        {/* Image Section with Premium Gradient Overlay */}
-        <div className="relative w-full h-40 rounded-xl overflow-hidden border border-border/60 bg-muted/30 shadow-inner">
+      <div>
+        {/* Image Container */}
+        <div className="relative w-full h-48 rounded-lg overflow-hidden bg-slate-100 dark:bg-muted">
           <Image
             src={hasImages ? complaint.images[0] : "/logo.jpg"}
             alt={complaint.title}
             fill
             className={
               hasImages
-                ? "object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                : "object-contain p-4 group-hover:scale-105 transition-transform duration-500 ease-out"
+                ? "object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                : "object-contain p-6 group-hover:scale-105 transition-transform duration-700 ease-out"
             }
           />
-          {hasImages && complaint.images.length > 1 && (
-            <div className="absolute bottom-2 right-2 bg-black/70 backdrop-blur-md text-white text-[10px] font-medium px-2.5 py-1 rounded-lg flex items-center gap-1.5 shadow-md border border-white/10">
-              <ImageIcon className="size-3 text-emerald-400" />
-              <span>+{complaint.images.length - 1} more</span>
-            </div>
-          )}
-        </div>
 
-        {/* Citizen & Payment Info */}
-        <div className="flex items-center justify-between text-xs pt-1 border-t border-border/40">
-          {complaint.citizen?.name && (
-            <div className="flex items-center gap-2">
-              <div className="size-6 rounded-full bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20">
-                <User className="size-3 text-emerald-600" />
-              </div>
-              {user?.name === complaint.citizen.name ? (
-                <span className="font-bold text-blue-700 bg-blue-500/10 px-2.5 py-0.5 rounded-full text-[11px] border border-blue-500/20">
-                  You
-                </span>
-              ) : (
-                <span className="font-medium text-foreground truncate max-w-[120px]">
-                  {complaint.citizen.name}
-                </span>
-              )}
-            </div>
-          )}
+          <div className="absolute top-3 left-3 z-10">
+            {getStatusBadge(complaint.status)}
+          </div>
 
-          {complaint.category?.type === "PAID" && (
-            <span
-              className={`text-[11px] font-semibold px-2.5 py-0.5 rounded-full border ${
-                complaint.isPaid
-                  ? "bg-emerald-500/10 text-emerald-700 border-emerald-500/20"
-                  : "bg-rose-500/10 text-rose-700 border-rose-500/20"
-              }`}
-            >
-              {complaint.isPaid ? "Paid" : "Unpaid"} (৳{complaint.totalAmount})
-            </span>
-          )}
-        </div>
-      </div>
-
-      {/* Footer Info: Address & Date */}
-      <div className="mt-4 pt-3 border-t border-border/60 flex flex-col gap-3">
-        <div className="flex items-center justify-between text-[11px] text-muted-foreground">
-          {complaint.address && (
-            <div className="flex items-center gap-1.5 truncate max-w-[170px]">
-              <MapPin className="size-3.5 text-rose-500 shrink-0" />
-              <span
-                className="truncate font-medium text-foreground/80"
-                title={complaint.address}
-              >
-                {complaint.address}
+          {/* Priority Tag */}
+          {complaint.priority && (
+            <div className="absolute top-3 right-3 z-10">
+              <span className="px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-white text-[11px] font-bold tracking-wider uppercase">
+                {complaint.priority}
               </span>
             </div>
           )}
 
-          <div className="flex items-center gap-1.5 shrink-0 ml-auto font-medium">
-            <Calendar className="size-3.5 text-emerald-600" />
-            <span>
-              {new Date(complaint.createdAt).toLocaleDateString("en-US", {
-                month: "short",
-                day: "numeric",
-                year: "numeric",
-              })}
-            </span>
-          </div>
+          {hasImages && complaint.images.length > 1 && (
+            <div className="absolute bottom-3 right-3 bg-black/70 backdrop-blur-md text-white text-[11px] font-semibold px-2.5 py-1 rounded-xl flex items-center gap-1.5 border border-white/20">
+              <ImageIcon className="size-3.5 text-emerald-400" />
+              <span>+{complaint.images.length - 1}</span>
+            </div>
+          )}
         </div>
+
+        {/* Content Section */}
+        <div className="pt-3 space-y-2">
+          <div className="flex items-center justify-between">
+            {complaint.category?.name && (
+              <span className="font-bold tracking-wider uppercase py-1 text-[11px] text-emerald-600">
+                {complaint.category.name}
+              </span>
+            )}
+
+            {complaint.category?.type === "PAID" && (
+              <span
+                className={`font-extrabold text-xs px-2.5 py-1 rounded-md ${
+                  complaint.isPaid
+                    ? "bg-emerald-100 text-emerald-800"
+                    : "bg-rose-100 text-rose-800"
+                }`}
+              >
+                ৳{complaint.totalAmount}
+              </span>
+            )}
+          </div>
+
+          <h3 className="font-semibold group-hover:text-emerald-600 transition-colors line-clamp-1">
+            {complaint.title}
+          </h3>
+        </div>
+      </div>
+
+      <div className="mt-3 pt-3 border-t border-slate-100 space-y-2.5 dark:border-border">
+        {/* Address */}
+        <div className="flex items-center justify-between text-xs">
+          {complaint.address ? (
+            <div
+              className="flex items-center gap-1.5 truncate max-w-[300px]"
+              title={complaint.address}
+            >
+              <MapPin className="size-4 text-rose-500 shrink-0" />
+              <span className="truncate text-slate-700 dark:text-slate-300">
+                {complaint.address}
+              </span>
+            </div>
+          ) : (
+            <div />
+          )}
+        </div>
+        <div className="flex items-center gap-1.5 shrink-0 font-semibold text-slate-500 dark:text-slate-400">
+          <Calendar className="size-4 text-slate-400" />
+          <span>
+            {new Date(complaint.createdAt).toLocaleDateString("en-US", {
+              month: "short",
+              day: "numeric",
+            })}
+          </span>
+        </div>
+
+        {/* Posted By Box - Made Pure White with Clean Border */}
+        {complaint.citizen?.name && (
+          <div className="flex items-center justify-between bg-white p-2 rounded-xl border border-slate-200 shadow-2xs dark:bg-card dark:border-border">
+            <span className="text-[11px] font-semibold text-slate-400 pl-1">
+              Posted by
+            </span>
+            <div className="flex items-center gap-1.5">
+              <div className="size-6 rounded-full bg-emerald-100 flex items-center justify-center">
+                <User className="size-3.5 text-emerald-700" />
+              </div>
+              {user?.name === complaint.citizen.name ? (
+                <span className="font-bold text-blue-600 text-xs pr-1">
+                  You
+                </span>
+              ) : (
+                <span className="font-bold text-slate-800 text-xs pr-1 truncate max-w-[120px] dark:text-slate-200">
+                  {complaint.citizen.name}
+                </span>
+              )}
+            </div>
+          </div>
+        )}
 
         {/* Action Buttons */}
         {showActions && (
-          <div className="flex items-center justify-end gap-2 pt-2 border-t border-border/40">
+          <div className="flex items-center justify-end gap-2 pt-2">
             {isEditable ? (
               <Button
                 variant="outline"
                 size="sm"
-                className="gap-1.5 h-7 text-xs rounded-lg border-border/80 hover:bg-emerald-50 hover:text-emerald-700 hover:border-emerald-300 transition-colors"
+                className="gap-1.5 h-8 text-xs rounded-xl border-slate-200 hover:bg-emerald-50 hover:text-emerald-700 hover:border-emerald-300"
                 onClick={(e) => {
                   e.stopPropagation();
                   onEdit?.(e, complaint.id);
                 }}
               >
-                <Edit2 className="size-3" /> Edit
+                <Edit2 className="size-3.5" /> Edit
               </Button>
             ) : (
-              <span className="text-[10px] text-muted-foreground italic mr-auto">
+              <span className="text-[10px] text-slate-400 italic mr-auto">
                 Read-only
               </span>
             )}
@@ -226,13 +226,13 @@ export function ComplaintCard({
               variant="destructive"
               size="sm"
               disabled={isDeleting || !isEditable}
-              className="gap-1.5 h-7 text-xs rounded-lg bg-rose-600/90 hover:bg-rose-700 shadow-sm"
+              className="gap-1.5 h-8 text-xs rounded-lg hover:bg-rose-700 shadow-sm"
               onClick={(e) => {
                 e.stopPropagation();
                 onDelete?.(e, complaint.id);
               }}
             >
-              <Trash2 className="size-3" /> Cancel
+              <Trash2 className="size-3.5" /> Cancel
             </Button>
           </div>
         )}

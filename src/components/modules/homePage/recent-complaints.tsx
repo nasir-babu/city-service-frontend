@@ -23,7 +23,7 @@ export function RecentComplaints() {
   const complaints = data?.data || data?.result || [];
 
   return (
-    <section className="py-16 bg-slate-50/50 dark:bg-slate-950/50">
+    <section className="py-16  dark:bg-slate-950/50">
       <div className="container px-4 md:px-8 mx-auto space-y-8">
         <div className="p-6">
           <SectionHeader
@@ -42,7 +42,7 @@ export function RecentComplaints() {
             </p>
           </div>
         )}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 bg-gray-100 rounded-md p-10 md:grid-cols-2 lg:grid-cols-3 gap-11">
           {complaints.map((item: IServiceRequestUI) => (
             <ComplaintCard
               key={item.id}

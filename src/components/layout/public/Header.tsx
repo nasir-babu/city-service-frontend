@@ -65,7 +65,7 @@ export function Header() {
             height={38}
             className="rounded-md object-cover shadow-xs"
           />
-          <span className="text-primary  font-extrabold hidden sm:inline-block tracking-tight">
+          <span className=" font-extrabold hidden sm:inline-block tracking-tight">
             City Service
           </span>
         </Link>
@@ -77,7 +77,7 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium hover:text-green-600 transition-colors"
+                className="text-[15px] font-semibold hover:text-green-600 transition-colors"
               >
                 {link.name}
               </Link>
@@ -114,15 +114,15 @@ export function Header() {
 
               {/* Glassy Dropdown Menu */}
               {isProfileOpen && (
-                <div className="absolute right-0 mt-2 w-56 rounded-2xl border border-white/20 bg-background/80 backdrop-blur-xl p-2 shadow-xl z-50 animate-in fade-in-50 zoom-in-95">
+                <div className="absolute right-0 mt-2 w-56 rounded-xl border font-bold border-white/20 bg-background/90 backdrop-blur-lg p-2 shadow-xl z-50 animate-in fade-in-50 zoom-in-95">
                   <div className="px-3 py-2 border-b border-border/50 mb-1">
-                    <div className="flex items-center gap-2 text-sm font-semibold text-green-600 pb-1">
-                      <User className="size-4" /> <span>{user.name}</span>
+                    <div className="flex items-center gap-2 text-sm font-semibold pb-1">
+                      <User className="size-4 " /> <span>{user.name}</span>
                     </div>
-                    <p className="text-xs text-muted-foreground truncate pb-1">
+                    <p className="text-xs truncate pb-1">
                       {user.email}
                     </p>
-                    <span className="inline-block px-2 py-0.5 text-[10px] font-bold text-orange-600 bg-orange-500/10 rounded-full uppercase">
+                    <span className="inline-block text-[14px] font-bold rounded-full uppercase">
                       {user.role}
                     </span>
                   </div>
