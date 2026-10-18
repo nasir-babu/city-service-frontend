@@ -17,8 +17,7 @@ export default function GlobalError({
   }, [error]);
 
   return (
-    <html>
-      <body>
+ 
         <div className="flex h-screen w-full flex-col items-center justify-center bg-slate-50 dark:bg-slate-950 px-4 text-center">
           <div className="max-w-md space-y-6 p-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-sm">
             {/* Icon */}
@@ -58,7 +57,6 @@ export default function GlobalError({
             </div>
           </div>
         </div>
-      </body>
-    </html>
+  
   );
 }

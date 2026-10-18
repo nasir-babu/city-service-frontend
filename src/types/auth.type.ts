@@ -21,3 +21,14 @@ export interface AuthResponseData {
 }
 
 export type Role =  "CITIZEN" | "STAFF" | "ADMIN" | "SUPER_ADMIN"
+
+
+export interface IForgotPasswordPayload {
+  email: string;
+}
+
+export interface IResetPasswordPayload {
+  email: string;
+  newPassword: string;
+  otp: string;
+}

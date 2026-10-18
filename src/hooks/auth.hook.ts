@@ -1,8 +1,10 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import {
+  forgotPasswordApi,
   getMe,
   googleOAuth,
   loginUser,
+  resetPasswordApi,
   userLogout,
   userRegistraition,
   verifyAccount,
@@ -45,3 +47,17 @@ export function useGetMe() {
     retry: false,
   });
 }
+
+
+
+export const useForgotPassword = () => {
+  return useMutation({
+    mutationFn: forgotPasswordApi,
+  });
+};
+
+export const useResetPassword = () => {
+  return useMutation({
+    mutationFn: resetPasswordApi,
+  });
+};

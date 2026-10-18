@@ -1,5 +1,7 @@
 import apiClient from "@/lib/apiClient";
 import {
+  IForgotPasswordPayload,
+  IResetPasswordPayload,
   LoginPayload,
   RegisterPayload,
   VerifyAccountPayload,
@@ -43,3 +45,16 @@ export const googleOAuth = async (payload: { idToken: string }) => {
   });
 };
 
+export const forgotPasswordApi = async (payload: IForgotPasswordPayload) => {
+  return await apiClient("/auth/forgot-password", {
+    method: "POST",
+    body: payload,
+  });
+};
+
+export const resetPasswordApi = async (payload: IResetPasswordPayload) => {
+  return await apiClient("/auth/reset-password", {
+    method: "POST",
+    body: payload,
+  });
+};
