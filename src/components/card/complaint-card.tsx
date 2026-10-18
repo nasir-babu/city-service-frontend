@@ -145,7 +145,7 @@ export function ComplaintCard({
             )}
           </div>
 
-          <h3 className="font-semibold group-hover:text-emerald-600 transition-colors line-clamp-1">
+          <h3 className="font-semibold group-hover:text-emerald-600 transition-colors line-clamp-1 max-w-[300px]">
             {complaint.title}
           </h3>
         </div>
@@ -181,11 +181,11 @@ export function ComplaintCard({
         {/* Posted By Box - Made Pure White with Clean Border */}
         {complaint.citizen?.name && (
           <div className="flex items-center justify-between bg-white p-2 rounded-xl border border-slate-200 shadow-2xs dark:bg-card dark:border-border">
-            <span className="text-[11px] font-semibold text-slate-400 pl-1">
+            <span className="text-[11px] font-semibold  pl-1">
               Posted by
             </span>
             <div className="flex items-center gap-1.5">
-              <div className="size-6 rounded-full bg-emerald-100 flex items-center justify-center">
+              <div className="size-6 rounded-full flex items-center justify-center">
                 <User className="size-3.5 text-emerald-700" />
               </div>
               {user?.name === complaint.citizen.name ? (
@@ -193,7 +193,7 @@ export function ComplaintCard({
                   You
                 </span>
               ) : (
-                <span className="font-bold text-slate-800 text-xs pr-1 truncate max-w-[120px] dark:text-slate-200">
+                <span className="font-bold text-xs pr-1 truncate max-w-[120px] dark:text-slate-200">
                   {complaint.citizen.name}
                 </span>
               )}

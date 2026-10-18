@@ -10,6 +10,7 @@ import { error } from "console";
 import { da } from "zod/locales";
 import { CardSkeleton } from "@/components/ui/card-skeleton";
 import SectionHeader from "@/components/shared/section-header";
+import { HomeSectionHeader } from "@/components/shared/home-section-header";
 
 export function RecentComplaints() {
   const router = useRouter();
@@ -25,13 +26,11 @@ export function RecentComplaints() {
   return (
     <section className="py-16  dark:bg-slate-950/50">
       <div className="container px-4 md:px-8 mx-auto space-y-8">
-        <div className="p-6">
-          <SectionHeader
-            title="Recent Public Complains"
-            description="Monitor and track critical city issues in real-time."
-            badgeText="Comunity Feed"
-          />
-        </div>
+        <HomeSectionHeader
+          title="Recent Public Complains"
+          badge="Comunity Feed"
+          subtitle="Monitor and track critical city issues in real-time."
+        />
 
         {/* Complaints Grid */}
         {isLoading && <CardSkeleton />}

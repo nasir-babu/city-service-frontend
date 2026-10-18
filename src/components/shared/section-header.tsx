@@ -10,7 +10,7 @@ export default function SectionHeader({
   icon: Icon = FileText,
 }) {
   return (
-    <div className="w-full">
+    <div className="w-full relative pb-4">
       <div className="relative overflow-hidden rounded-2xl bg-gray-100 px-5 py-5 sm:px-6 sm:py-4">
         <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-1/3 sm:w-2/5 overflow-hidden">
           <motion.div
@@ -72,17 +72,19 @@ export default function SectionHeader({
             </div>
           )}
 
-          <h2 className="text-[32px] tracking-tight   leading-[1.2] sm:text-[40px]">
+          <h2 className="text-[32px] tracking-tight  leading-[1.2] sm:text-[40px]">
             {title}
           </h2>
 
           {description && (
-            <p className="mt-3 max-w-xl  text-[15px] leading-7 text-secondary-foreground sm:text-base">
+            <p className="mt-3 max-w-xl text-[15px] leading-7 text-secondary-foreground sm:text-base">
               {description}
             </p>
           )}
         </div>
       </div>
+
+      <div className="absolute right-16 bottom-0 translate-y-full w-0 h-0 border-l-[16px] border-l-transparent border-r-[16px] border-r-transparent border-t-[24px] border-t-gray-500/40 z-20 pointer-events-none" />
     </div>
   );
 }

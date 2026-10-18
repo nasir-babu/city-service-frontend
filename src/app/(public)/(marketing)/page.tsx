@@ -1,13 +1,20 @@
 
-
 import { HeroSection } from "@/components/modules/homePage/hero-section";
+import { FeaturesSection } from "@/components/modules/homePage/features-section";
+import { CategoriesSection } from "@/components/modules/homePage/categories-section";
+import { HowItWorksSection } from "@/components/modules/homePage/how-it-works";
+import { StatsSection } from "@/components/modules/homePage/stats-section"; // নতুন ইমপোর্ট
 import { RecentComplaints } from "@/components/modules/homePage/recent-complaints";
 
 export default function HomePage() {
   return (
-    <div>
+    <main className="min-h-screen">
       <HeroSection />
-       <RecentComplaints/>
-    </div>
+      <FeaturesSection />
+      <CategoriesSection />
+      <HowItWorksSection />
+      <StatsSection /> 
+      <RecentComplaints />
+    </main>
   );
 }
