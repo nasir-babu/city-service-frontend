@@ -18,7 +18,7 @@ export default function SectionHeader({
 }: SectionHeaderProps) {
   return (
     <div className="w-full relative pb-4">
-      <div className="relative overflow-hidden rounded-2xl bg-gray-100 px-5 py-5 sm:px-6 sm:py-4">
+      <div className="relative overflow-hidden rounded-2xl bg-gray-200/75 px-5 py-5 sm:px-6 sm:py-4">
         <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-1/3 sm:w-2/5 overflow-hidden">
           <motion.div
             animate={{
