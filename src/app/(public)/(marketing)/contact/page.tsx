@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+import { toast } from "sonner";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -12,21 +16,94 @@ import {
   Sparkles,
   HelpCircle,
   HardHat,
+  CheckCircle2,
+  RotateCcw,
 } from "lucide-react";
+import { useCreateContact } from "@/hooks/contact.hook";
+
+import { Spinner } from "@/components/ui/spinner";
+import { contactSchema, IContactFormValues } from "@/validation/contact.validation";
 
 export default function ContactUsPage() {
+  const [formData, setFormData] = useState<IContactFormValues>({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const [submittedData, setSubmittedData] = useState<IContactFormValues | null>(null);
+
+  const { mutate: createContact, isPending } = useCreateContact();
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (errors[name]) {
+      setErrors((prev) => ({ ...prev, [name]: "" }));
+    }
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Zod Validation Check
+    const result = contactSchema.safeParse(formData);
+    if (!result.success) {
+      const fieldErrors: { [key: string]: string } = {};
+      result.error.issues.forEach((issue) => {
+        if (issue.path[0]) {
+          fieldErrors[issue.path[0] as string] = issue.message;
+        }
+      });
+      setErrors(fieldErrors);
+      return;
+    }
+
+    createContact(formData, {
+      onSuccess: (res: any) => {
+        if (!res?.success) {
+          toast.error("Submission Failed", {
+            description: res?.message || "Failed to send your message.",
+          });
+          return;
+        }
+
+        toast.success("Message Sent Successfully!", {
+          description: "We have received your message and will get back to you soon.",
+        });
+
+        // সাবমিট হওয়া ডেটা সেট করা
+        setSubmittedData(formData);
+        
+        // ফর্ম রিসেট
+        setFormData({ name: "", email: "", subject: "", message: "" });
+        setErrors({});
+      },
+      onError: (err: any) => {
+        toast.error("Error", {
+          description: err?.data?.message || err?.message || "Something went wrong.",
+        });
+      },
+    });
+  };
+
+  const handleResetForm = () => {
+    setSubmittedData(null);
+  };
+
   return (
     <div className="min-h-screen bg-slate-50/50 py-8 px-4 sm:px-6 lg:px-8 space-y-8">
-      {/* Under Construction Banner */}
-      <div className="max-w-5xl mx-auto bg-amber-200 border border-amber-200 rounded-xl p-4 flex items-center gap-3 text-amber-800 shadow-sm">
-        <div className="size-9 bg-amber-100 rounded-lg flex items-center justify-center flex-shrink-0 text-amber-700">
+      {/* Under Construction Banner (Updated to Live Notice) */}
+      <div className="max-w-5xl mx-auto bg-emerald-50 border border-emerald-200 rounded-xl p-4 flex items-center gap-3 text-emerald-800 shadow-sm">
+        <div className="size-9 bg-emerald-100 rounded-lg flex items-center justify-center flex-shrink-0 text-emerald-700">
           <HardHat className="size-5" />
         </div>
         <div className="text-xs sm:text-sm">
-          <p className="font-bold">Page Under Development. Coming Soon . . .</p>
-          <p className="text-amber-700/80">
-            This contact form is currently in demo mode. Messaging and backend
-            API integration are under active construction.
+          <p className="font-bold">Contact Module Live & Connected!</p>
+          <p className="text-emerald-700/80">
+            Messages submitted here are now securely stored in the backend database for admin review.
           </p>
         </div>
       </div>
@@ -117,72 +194,156 @@ export default function ContactUsPage() {
           </div>
         </div>
 
-        {/* Contact Form Column */}
-        <Card className="lg:col-span-2 border shadow-sm">
+        {/* Contact Form & Success Preview Column */}
+        <Card className="lg:col-span-2 border shadow-sm flex flex-col">
           <CardHeader className="border-b bg-slate-50/50">
             <CardTitle className="text-lg font-bold text-slate-800">
-              Send Us a Direct Message
+              {submittedData ? "Submission Confirmation" : "Send Us a Direct Message"}
             </CardTitle>
           </CardHeader>
-          <CardContent className="pt-6">
-            <form className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {/* Full Name */}
+
+          <CardContent className="pt-6 flex-1 flex flex-col justify-center">
+            {submittedData ? (
+              /* Success Summary Card UI */
+              <div className="p-6 bg-emerald-50/70 border border-emerald-200 rounded-2xl space-y-5 text-center">
+                <div className="size-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto shadow-inner">
+                  <CheckCircle2 className="size-8" />
+                </div>
+
+                <div className="space-y-1.5">
+                  <h3 className="font-bold text-slate-800 text-lg">
+                    Thank You, {submittedData.name}!
+                  </h3>
+                  <p className="text-xs text-slate-600 max-w-md mx-auto leading-relaxed">
+                    Your message has been delivered to our administrative support team.
+                    Here is a summary of the message you submitted:
+                  </p>
+                </div>
+
+                {/* Details Preview Box */}
+                <div className="bg-white p-4 rounded-xl border border-emerald-100 text-left space-y-2 text-xs text-slate-700 shadow-sm">
+                  <p>
+                    <span className="font-semibold text-slate-900">Email:</span>{" "}
+                    {submittedData.email}
+                  </p>
+                  {submittedData.subject && (
+                    <p>
+                      <span className="font-semibold text-slate-900">Subject:</span>{" "}
+                      {submittedData.subject}
+                    </p>
+                  )}
+                  <div className="pt-1 border-t border-slate-100">
+                    <span className="font-semibold text-slate-900 block mb-1">
+                      Message Content:
+                    </span>
+                    <p className="p-2.5 bg-slate-50 rounded-lg border border-slate-100 text-slate-600 italic leading-relaxed">
+                      "{submittedData.message}"
+                    </p>
+                  </div>
+                </div>
+
+                <Button
+                  onClick={handleResetForm}
+                  variant="outline"
+                  className="bg-white hover:bg-emerald-50 text-emerald-700 border-emerald-300 font-medium text-xs px-5 h-9 transition-colors"
+                >
+                  <RotateCcw className="size-3.5 mr-2" /> Send Another Message
+                </Button>
+              </div>
+            ) : (
+              /* Standard Input Form */
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {/* Full Name */}
+                  <div className="space-y-1.5">
+                    <Label className="text-xs font-semibold text-slate-700">
+                      Your Full Name
+                    </Label>
+                    <Input
+                      type="text"
+                      name="name"
+                      placeholder="John Doe"
+                      value={formData.name}
+                      onChange={handleChange}
+                      className="h-10 text-xs"
+                    />
+                    {errors.name && (
+                      <p className="text-[11px] text-rose-500">{errors.name}</p>
+                    )}
+                  </div>
+
+                  {/* Email Address */}
+                  <div className="space-y-1.5">
+                    <Label className="text-xs font-semibold text-slate-700">
+                      Your Email Address
+                    </Label>
+                    <Input
+                      type="email"
+                      name="email"
+                      placeholder="john@example.com"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="h-10 text-xs"
+                    />
+                    {errors.email && (
+                      <p className="text-[11px] text-rose-500">{errors.email}</p>
+                    )}
+                  </div>
+                </div>
+
+                {/* Subject */}
                 <div className="space-y-1.5">
                   <Label className="text-xs font-semibold text-slate-700">
-                    Your Full Name
+                    Subject
                   </Label>
                   <Input
                     type="text"
-                    placeholder="John Doe"
+                    name="subject"
+                    placeholder="e.g. Inquiry regarding Road Repair Request #102"
+                    value={formData.subject}
+                    onChange={handleChange}
                     className="h-10 text-xs"
                   />
+                  {errors.subject && (
+                    <p className="text-[11px] text-rose-500">{errors.subject}</p>
+                  )}
                 </div>
 
-                {/* Email Address */}
+                {/* Message */}
                 <div className="space-y-1.5">
                   <Label className="text-xs font-semibold text-slate-700">
-                    Your Email Address
+                    Your Message
                   </Label>
-                  <Input
-                    type="email"
-                    placeholder="john@example.com"
-                    className="h-10 text-xs"
+                  <Textarea
+                    name="message"
+                    placeholder="Write down your detailed query or message here..."
+                    rows={5}
+                    value={formData.message}
+                    onChange={handleChange}
+                    className="text-xs resize-none"
                   />
+                  {errors.message && (
+                    <p className="text-[11px] text-rose-500">{errors.message}</p>
+                  )}
                 </div>
-              </div>
 
-              {/* Subject */}
-              <div className="space-y-1.5">
-                <Label className="text-xs font-semibold text-slate-700">
-                  Subject
-                </Label>
-                <Input
-                  type="text"
-                  placeholder="e.g. Inquiry regarding Road Repair Request #102"
-                  className="h-10 text-xs"
-                />
-              </div>
-
-              {/* Message */}
-              <div className="space-y-1.5">
-                <Label className="text-xs font-semibold text-slate-700">
-                  Your Message
-                </Label>
-                <Textarea
-                  placeholder="Write down your detailed query or message here..."
-                  rows={5}
-                  className="text-xs resize-none"
-                />
-              </div>
-
-              <Button
-                type="submit"
-                className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-xs px-6 h-10"
-              >
-                <Send className="size-3.5 mr-2" /> Send Message
-              </Button>
-            </form>
+                <Button
+                  type="submit"
+                  className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-xs px-6 h-10"
+                  disabled={isPending}
+                >
+                  {isPending ? (
+                    <>
+                      <Spinner /> Sending Message...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="size-3.5 mr-2" /> Send Message
+                    </>
+                  )}
+                </Button>
+              </form>
+            )}
           </CardContent>
         </Card>
       </div>
