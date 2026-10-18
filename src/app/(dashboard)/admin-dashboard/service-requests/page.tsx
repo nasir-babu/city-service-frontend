@@ -32,12 +32,13 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Eye, Lock, ChevronLeft, ChevronRight } from "lucide-react";
+import { Eye, Lock, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import AuthLoading from "@/components/auth/auth-loading";
 import { toast } from "sonner";
 import { useGetAvailableStaffs, useAssignStaff } from "@/hooks/staff.hook";
 import { RequestStatus } from "@/types/services-request.type";
 import { TableSkeleton } from "@/components/ui/table-skeleton";
+import SectionHeader from "@/components/shared/section-header";
 
 // Status Badge Color Helper
 const getStatusBadge = (status: string) => {
@@ -179,7 +180,7 @@ export default function AdminServiceRequestsPage() {
         onError: (err: any) => {
           toast.error(err?.message || "Failed to assign staff.");
         },
-      }
+      },
     );
   };
 
@@ -196,52 +197,50 @@ export default function AdminServiceRequestsPage() {
         onError: (err: any) => {
           toast.error(err?.message || "Failed to update status.");
         },
-      }
+      },
     );
   };
 
   return (
     <div className="space-y-6">
       {/* Header & Filter */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight text-slate-800">
-            Service Requests Management
-          </h1>
-          <p className="text-sm text-slate-500">
-            Monitor, assign staff, and update request statuses.
-          </p>
-        </div>
+      <SectionHeader
+        title={
+          <>
+            Service Requests <span className="text-blue-400">Management</span>
+          </>
+        }
+        description=" Monitor, assign staff, and update request statuses."
+        
+      />
 
-        {/* Filter Dropdown */}
-        <div className="flex items-center gap-2">
-          <span className="text-sm text-slate-600 font-medium">
-            Filter Status:
-          </span>
-          <Select
-            value={selectedStatusFilter}
-            onValueChange={(val) => {
-              setSelectedStatusFilter(val as RequestStatus | "ALL");
-              setPage(1); 
-            }}
-          >
-            <SelectTrigger className="w-[160px]">
-              <SelectValue placeholder="All Status" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="ALL">All Requests</SelectItem>
-              <SelectItem value="PENDING">Pending</SelectItem>
-              <SelectItem value="ASSIGNED">Assigned</SelectItem>
-              <SelectItem value="ACCEPTED">Accepted</SelectItem>
-              <SelectItem value="IN_PROGRESS">In Progress</SelectItem>
-              <SelectItem value="RESOLVED">Resolved</SelectItem>
-              <SelectItem value="REJECTED">Rejected</SelectItem>
-              <SelectItem value="CANCELLED">Cancelled</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
+      {/* Filter Dropdown */}
+      <div className="flex items-center gap-2">
+        <span className="text-sm text-slate-600 font-medium">
+          Filter Status:
+        </span>
+        <Select
+          value={selectedStatusFilter}
+          onValueChange={(val) => {
+            setSelectedStatusFilter(val as RequestStatus | "ALL");
+            setPage(1);
+          }}
+        >
+          <SelectTrigger className="w-[160px]">
+            <SelectValue placeholder="All Status" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="ALL">All Requests</SelectItem>
+            <SelectItem value="PENDING">Pending</SelectItem>
+            <SelectItem value="ASSIGNED">Assigned</SelectItem>
+            <SelectItem value="ACCEPTED">Accepted</SelectItem>
+            <SelectItem value="IN_PROGRESS">In Progress</SelectItem>
+            <SelectItem value="RESOLVED">Resolved</SelectItem>
+            <SelectItem value="REJECTED">Rejected</SelectItem>
+            <SelectItem value="CANCELLED">Cancelled</SelectItem>
+          </SelectContent>
+        </Select>
       </div>
-
       {/* Main Data Table */}
       <Card>
         <CardContent className="p-0">
@@ -284,10 +283,10 @@ export default function AdminServiceRequestsPage() {
                     <TableRow key={req.id}>
                       {/* Title & Category Column (Clickable) */}
                       <TableCell
-                        className="cursor-pointer hover:bg-slate-100/80 transition-colors group"
+                        className="cursor-pointer max-w-2xs hover:bg-slate-100/80 transition-colors group"
                         onClick={() => router.push(`/requests?id=${req.id}`)}
                       >
-                        <div className="font-semibold text-slate-800 group-hover:text-indigo-600 transition-colors">
+                        <div className="font-semibold truncate text-slate-800 group-hover:text-indigo-600 transition-colors">
                           {req.title}
                         </div>
                         <div className="text-xs text-slate-500">
@@ -379,7 +378,7 @@ export default function AdminServiceRequestsPage() {
                                         </SelectItem>
                                       ))}
                                     </SelectGroup>
-                                  )
+                                  ),
                                 )
                               )}
                             </SelectContent>
@@ -466,7 +465,6 @@ export default function AdminServiceRequestsPage() {
           )}
         </CardContent>
       </Card>
-
       {/* Detailed Modal / Dialog */}
       <Dialog open={isDetailOpen} onOpenChange={setIsDetailOpen}>
         {selectedRequest &&
@@ -510,9 +508,7 @@ export default function AdminServiceRequestsPage() {
                         <>
                           <span>
                             Total Amount:{" "}
-                            <strong>
-                              ৳{selectedRequest.totalAmount || 0}
-                            </strong>
+                            <strong>৳{selectedRequest.totalAmount || 0}</strong>
                           </span>
                           <span>
                             Payment Status:{" "}

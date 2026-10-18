@@ -25,12 +25,13 @@ import {
   Legend,
 } from "recharts";
 import { OverviewSkeleton } from "@/components/dashboard/overview-skeleton";
+import SectionHeader from "@/components/shared/section-header";
 
 export default function AdminOverviewPage() {
   const { data, isLoading, isError } = useGetAdminDashboardStats();
 
   if (isLoading) {
-    return  <OverviewSkeleton />;;
+    return <OverviewSkeleton />;
   }
 
   if (isError || !data?.data) {
@@ -44,13 +45,32 @@ export default function AdminOverviewPage() {
   const stats = data.data;
 
   const requestStatusChartData = [
-    { name: "Pending", value: stats.serviceRequests.pendingRequests, color: "#f59e0b" },
-    { name: "In Progress", value: stats.serviceRequests.inProgressRequests, color: "#3b82f6" },
-    { name: "Resolved", value: stats.serviceRequests.resolvedRequests, color: "#10b981" },
-    { name: "Cancelled", value: stats.serviceRequests.cancelledRequests, color: "#6b7280" },
-    { name: "Rejected", value: stats.serviceRequests.rejectedRequests, color: "#ef4444" },
-  ].filter((item) => item.value > 0); 
-
+    {
+      name: "Pending",
+      value: stats.serviceRequests.pendingRequests,
+      color: "#f59e0b",
+    },
+    {
+      name: "In Progress",
+      value: stats.serviceRequests.inProgressRequests,
+      color: "#3b82f6",
+    },
+    {
+      name: "Resolved",
+      value: stats.serviceRequests.resolvedRequests,
+      color: "#10b981",
+    },
+    {
+      name: "Cancelled",
+      value: stats.serviceRequests.cancelledRequests,
+      color: "#6b7280",
+    },
+    {
+      name: "Rejected",
+      value: stats.serviceRequests.rejectedRequests,
+      color: "#ef4444",
+    },
+  ].filter((item) => item.value > 0);
 
   const userRolesChartData = [
     { role: "Citizens", count: stats.users.totalCitizens },
@@ -61,17 +81,17 @@ export default function AdminOverviewPage() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-slate-800">
-          Admin Dashboard Overview
-        </h1>
-        <p className="text-sm text-slate-500">
-          System summary and real-time statistics.
-        </p>
-      </div>
+      <SectionHeader
+        title={
+          <>
+            Admin Dashboard <span className="text-blue-400">Overview</span>
+          </>
+        }
+        description="System summary and real-time statistics."
+      />
 
       {/* Summary Cards Grid */}
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mt-12">
         {/* Total Requests */}
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
@@ -192,10 +212,25 @@ export default function AdminOverviewPage() {
             <div className="h-[260px] w-full">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={userRolesChartData}>
-                  <XAxis dataKey="role" stroke="#64748b" fontSize={12} tickLine={false} />
-                  <YAxis stroke="#64748b" fontSize={12} tickLine={false} allowDecimals={false} />
+                  <XAxis
+                    dataKey="role"
+                    stroke="#64748b"
+                    fontSize={12}
+                    tickLine={false}
+                  />
+                  <YAxis
+                    stroke="#64748b"
+                    fontSize={12}
+                    tickLine={false}
+                    allowDecimals={false}
+                  />
                   <Tooltip />
-                  <Bar dataKey="count" name="Users" fill="#6366f1" radius={[6, 6, 0, 0]} />
+                  <Bar
+                    dataKey="count"
+                    name="Users"
+                    fill="#6366f1"
+                    radius={[6, 6, 0, 0]}
+                  />
                 </BarChart>
               </ResponsiveContainer>
             </div>

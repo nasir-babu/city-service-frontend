@@ -29,6 +29,8 @@ export function Header() {
         queryClient.clear();
         queryClient.invalidateQueries({ queryKey: ["service-requests"] });
         queryClient.removeQueries({ queryKey: ["user"] });
+        window.location.reload();
+        
       },
       onError: function (error: any) {
         toast.error(error?.message || "Failed to log out");

@@ -3,11 +3,12 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { Search, AlertCircle } from "lucide-react";
+import { Search, AlertCircle, LogIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useGetMe } from "@/hooks/auth.hook";
 import { toast } from "sonner";
+import { CreateServiceRequestForm } from "@/components/form/create-service-request-form";
 
 export function HeroSection() {
   const router = useRouter();
@@ -17,7 +18,7 @@ export function HeroSection() {
     e.preventDefault();
     if (searchQuery.trim()) {
       router.push(
-        `/public-requests?search=${encodeURIComponent(searchQuery.trim())}`,
+        `/public-complaint?search=${encodeURIComponent(searchQuery.trim())}`,
       );
     }
   };
@@ -101,22 +102,33 @@ export function HeroSection() {
 
         {/* Call to Actions */}
         <div className="flex flex-wrap items-center justify-center gap-3 pt-4">
-          <Button
-            size="lg"
-            onClick={handleCreateRequest}
-            className="rounded-2xl font-semibold gap-2 shadow-lg bg-emerald-600 hover:bg-emerald-700 text-white"
-          >
-            <AlertCircle className="size-4" />
-            Submit Complaint / Request
-          </Button>
-          0
+          {role ? (
+            <Button
+              size="lg"
+              onClick={handleCreateRequest}
+              className="rounded-2xl font-semibold gap-2 shadow-lg bg-emerald-600 hover:bg-emerald-700 text-white"
+            >
+              <AlertCircle className="size-4" />
+              Submit Complaint / Request
+            </Button>
+          ) : (
+            <Button
+              size="lg"
+              onClick={handleCreateRequest}
+              className="rounded-2xl font-semibold gap-2 shadow-lg bg-red-400 hover:bg-emerald-700 text-white"
+            >
+              <LogIn className="size-4" />
+              Please Login To Submit Complaint
+            </Button>
+          )}
+
           <Button
             size="lg"
             variant="outline"
-            onClick={() => router.push("/public-requests")}
+            onClick={() => router.push("/public-complaint")}
             className="rounded-2xl font-semibold bg-white/10 hover:bg-white/20 text-white border-white/20 backdrop-blur-md shadow-md"
           >
-            View Public Requests
+            View Public Complaints
           </Button>
         </div>
       </div>

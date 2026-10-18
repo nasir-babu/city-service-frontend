@@ -17,6 +17,9 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   title: "City Service Portal",
   description: "City Service Management System",
+  icons: {
+    icon: "/logo.jpg", 
+  },
 };
 
 export default function RootLayout({
