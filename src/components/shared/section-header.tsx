@@ -1,14 +1,21 @@
 "use client";
 import React from "react";
-import { FileText } from "lucide-react";
+import { FileText, LucideIcon } from "lucide-react";
 import { motion } from "framer-motion";
 
+interface SectionHeaderProps {
+  title?: React.ReactNode;
+  description?: string;
+  badgeText?: string;
+  icon?: LucideIcon;
+}
+
 export default function SectionHeader({
-  title = "Recent Public Complaints",
-  description = "Check real-time updates on reported issues around the city.",
-  badgeText = "Community Feed",
+  title = "",
+  description = "",
+  badgeText = "",
   icon: Icon = FileText,
-}) {
+}: SectionHeaderProps) {
   return (
     <div className="w-full relative pb-4">
       <div className="relative overflow-hidden rounded-2xl bg-gray-100 px-5 py-5 sm:px-6 sm:py-4">

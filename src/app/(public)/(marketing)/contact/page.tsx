@@ -22,7 +22,11 @@ import {
 import { useCreateContact } from "@/hooks/contact.hook";
 
 import { Spinner } from "@/components/ui/spinner";
-import { contactSchema, IContactFormValues } from "@/validation/contact.validation";
+import {
+  contactSchema,
+  IContactFormValues,
+} from "@/validation/contact.validation";
+import SectionHeader from "@/components/shared/section-header";
 
 export default function ContactUsPage() {
   const [formData, setFormData] = useState<IContactFormValues>({
@@ -33,11 +37,15 @@ export default function ContactUsPage() {
   });
 
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
-  const [submittedData, setSubmittedData] = useState<IContactFormValues | null>(null);
+  const [submittedData, setSubmittedData] = useState<IContactFormValues | null>(
+    null,
+  );
 
   const { mutate: createContact, isPending } = useCreateContact();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
     if (errors[name]) {
@@ -71,19 +79,21 @@ export default function ContactUsPage() {
         }
 
         toast.success("Message Sent Successfully!", {
-          description: "We have received your message and will get back to you soon.",
+          description:
+            "We have received your message and will get back to you soon.",
         });
 
         // সাবমিট হওয়া ডেটা সেট করা
         setSubmittedData(formData);
-        
+
         // ফর্ম রিসেট
         setFormData({ name: "", email: "", subject: "", message: "" });
         setErrors({});
       },
       onError: (err: any) => {
         toast.error("Error", {
-          description: err?.data?.message || err?.message || "Something went wrong.",
+          description:
+            err?.data?.message || err?.message || "Something went wrong.",
         });
       },
     });
@@ -95,34 +105,18 @@ export default function ContactUsPage() {
 
   return (
     <div className="min-h-screen bg-slate-50/50 py-8 px-4 sm:px-6 lg:px-8 space-y-8">
-      {/* Under Construction Banner (Updated to Live Notice) */}
-      <div className="max-w-5xl mx-auto bg-emerald-50 border border-emerald-200 rounded-xl p-4 flex items-center gap-3 text-emerald-800 shadow-sm">
-        <div className="size-9 bg-emerald-100 rounded-lg flex items-center justify-center flex-shrink-0 text-emerald-700">
-          <HardHat className="size-5" />
-        </div>
-        <div className="text-xs sm:text-sm">
-          <p className="font-bold">Contact Module Live & Connected!</p>
-          <p className="text-emerald-700/80">
-            Messages submitted here are now securely stored in the backend database for admin review.
-          </p>
-        </div>
-      </div>
-
       {/* Header Section */}
-      <div className="max-w-3xl mx-auto text-center space-y-3">
-        <Badge
-          variant="outline"
-          className="bg-indigo-50 text-indigo-700 border-indigo-200 px-3 py-1 rounded-full text-xs font-semibold"
-        >
-          <Sparkles className="size-3.5 mr-1.5 inline" /> Get In Touch
-        </Badge>
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-          How Can <span className="text-violet-500">We Help You </span> Today?
-        </h1>
-        <p className="text-sm sm:text-base text-slate-600 max-w-xl mx-auto">
-          Have questions regarding civic services, service tracking, or online
-          payments? Send us a message and our team will assist you.
-        </p>
+      <div className="max-w-5xl mx-auto">
+        <SectionHeader
+          title={
+            <>
+              How Can We <span className="text-blue-400">Help You</span> Today?
+            </>
+          }
+          description="Send us a message and our team will assist you."
+          badgeText="Get In Touch"
+          icon={Sparkles}
+        />
       </div>
 
       <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -198,7 +192,9 @@ export default function ContactUsPage() {
         <Card className="lg:col-span-2 border shadow-sm flex flex-col">
           <CardHeader className="border-b bg-slate-50/50">
             <CardTitle className="text-lg font-bold text-slate-800">
-              {submittedData ? "Submission Confirmation" : "Send Us a Direct Message"}
+              {submittedData
+                ? "Submission Confirmation"
+                : "Send Us a Direct Message"}
             </CardTitle>
           </CardHeader>
 
@@ -215,8 +211,9 @@ export default function ContactUsPage() {
                     Thank You, {submittedData.name}!
                   </h3>
                   <p className="text-xs text-slate-600 max-w-md mx-auto leading-relaxed">
-                    Your message has been delivered to our administrative support team.
-                    Here is a summary of the message you submitted:
+                    Your message has been delivered to our administrative
+                    support team. Here is a summary of the message you
+                    submitted:
                   </p>
                 </div>
 
@@ -228,7 +225,9 @@ export default function ContactUsPage() {
                   </p>
                   {submittedData.subject && (
                     <p>
-                      <span className="font-semibold text-slate-900">Subject:</span>{" "}
+                      <span className="font-semibold text-slate-900">
+                        Subject:
+                      </span>{" "}
                       {submittedData.subject}
                     </p>
                   )}
@@ -286,7 +285,9 @@ export default function ContactUsPage() {
                       className="h-10 text-xs"
                     />
                     {errors.email && (
-                      <p className="text-[11px] text-rose-500">{errors.email}</p>
+                      <p className="text-[11px] text-rose-500">
+                        {errors.email}
+                      </p>
                     )}
                   </div>
                 </div>
@@ -305,7 +306,9 @@ export default function ContactUsPage() {
                     className="h-10 text-xs"
                   />
                   {errors.subject && (
-                    <p className="text-[11px] text-rose-500">{errors.subject}</p>
+                    <p className="text-[11px] text-rose-500">
+                      {errors.subject}
+                    </p>
                   )}
                 </div>
 
@@ -323,7 +326,9 @@ export default function ContactUsPage() {
                     className="text-xs resize-none"
                   />
                   {errors.message && (
-                    <p className="text-[11px] text-rose-500">{errors.message}</p>
+                    <p className="text-[11px] text-rose-500">
+                      {errors.message}
+                    </p>
                   )}
                 </div>
 

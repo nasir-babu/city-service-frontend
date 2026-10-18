@@ -8,11 +8,7 @@ import {
   ArrowUpRight,
   Globe,
 } from "lucide-react";
-import {
-  FaFacebookF,
-  FaLinkedinIn,
-  FaGithub,
-} from "react-icons/fa6";
+import { FaFacebookF, FaLinkedinIn, FaGithub } from "react-icons/fa6";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -34,7 +30,7 @@ export function Footer() {
   ];
 
   return (
-    <footer className="border-t border-slate-200/80 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-slate-600 dark:text-slate-400 font-sans transition-colors duration-300">
+    <footer className="border-t border-slate-200/80 dark:border-slate-800 bg-slate-200/70 dark:bg-slate-950 text-slate-600 dark:text-slate-400 font-sans transition-colors duration-300">
       {/* Main Footer Content */}
       <div className="max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-12 gap-8 lg:gap-12">
         {/* Col 1: Brand Info & Status */}
