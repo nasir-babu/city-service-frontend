@@ -15,6 +15,9 @@ import {
   X,
   Calculator,
   Compass,
+  Sparkles,
+  ChevronDown,
+  ChevronUp,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -41,6 +44,7 @@ import { useCreateServiceRequest } from "@/hooks/service-request.hook";
 import { Category, CreateServiceRequestFormProps } from "@/types/category.type";
 import { useGetCategories } from "@/hooks/category.hook";
 import { useGetMe } from "@/hooks/auth.hook";
+import { AiIssueCategorizer } from "../shared/AiIssueCategorizer";
 
 export function CreateServiceRequestForm({
   isLoadingCategories = false,
@@ -51,6 +55,9 @@ export function CreateServiceRequestForm({
   const searchParams = useSearchParams();
   const categoryIdParam =
     searchParams.get("categoryId") || initialData?.categoryId || "";
+
+  // State to toggle AI Assistant visibility
+  const [showAiAssistant, setShowAiAssistant] = useState(false);
 
   // 1. Fetch categories
   const { data: categoriesResponse } = useGetCategories();
@@ -189,8 +196,88 @@ export function CreateServiceRequestForm({
     },
   });
 
+  // Handler for AI Auto-Fill Suggestions
+  const handleApplyAiSuggestions = (suggestions: {
+    category?: string;
+    priority?: string;
+    summary?: string;
+  }) => {
+    // 1. Match suggested category name with categoryList IDs
+    if (suggestions.category && categoryList.length > 0) {
+      const matchedCategory = categoryList.find(
+        (cat: any) =>
+          cat.name.toLowerCase().includes(suggestions.category!.toLowerCase()) ||
+          suggestions.category!.toLowerCase().includes(cat.name.toLowerCase())
+      );
+
+      if (matchedCategory) {
+        form.setFieldValue("categoryId", matchedCategory.id);
+      }
+    }
+
+    // 2. Set Priority Level
+    if (suggestions.priority) {
+      const upperPriority = suggestions.priority.toUpperCase();
+      if (["LOW", "MEDIUM", "HIGH", "URGENT"].includes(upperPriority)) {
+        form.setFieldValue("priority", upperPriority as any);
+      }
+    }
+
+    // 3. Optional: Set Description if empty
+    if (suggestions.summary && !form.getFieldValue("description")) {
+      form.setFieldValue("description", suggestions.summary);
+    }
+
+    toast.success("AI Suggestions Applied!", {
+      description: "Category, Priority, and Details updated automatically.",
+    });
+  };
+
   return (
-    <div className="w-full max-w-5xl mx-auto p-4 sm:p-6 bg-card rounded-xl border border-border shadow-sm">
+    <div className="w-full max-w-5xl mx-auto p-4 sm:p-6 bg-card rounded-xl border border-border shadow-sm space-y-6">
+      
+      {/* AI ASSISTANT TOGGLE HEADER */}
+      <div className="rounded-xl border border-emerald-500/30 bg-emerald-50/50 dark:bg-emerald-950/20 p-4 transition-all">
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2.5">
+            <div className="flex size-9 items-center justify-center rounded-lg bg-emerald-600 text-white shadow-sm">
+              <Sparkles className="size-5" />
+            </div>
+            <div>
+              <h3 className="text-sm font-semibold text-foreground">
+                Need Help Categorizing Your Issue?
+              </h3>
+              <p className="text-xs text-muted-foreground">
+                Use AI Assistant to automatically suggest Category & Priority
+              </p>
+            </div>
+          </div>
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            onClick={() => setShowAiAssistant((prev) => !prev)}
+            className="gap-1.5 border-emerald-600/30 text-emerald-700 hover:bg-emerald-100 dark:text-emerald-300 dark:hover:bg-emerald-900/50"
+          >
+            <Sparkles className="size-3.5" />
+            {showAiAssistant ? "Hide AI Helper" : "Use AI Assistant"}
+            {showAiAssistant ? (
+              <ChevronUp className="size-4 ml-1" />
+            ) : (
+              <ChevronDown className="size-4 ml-1" />
+            )}
+          </Button>
+        </div>
+
+        {/* COLLAPSIBLE AI CATEGORIZER BOX */}
+        {showAiAssistant && (
+          <div className="mt-4 pt-4 border-t border-emerald-500/20 animate-in fade-in slide-in-from-top-2 duration-200">
+            <AiIssueCategorizer onApply={handleApplyAiSuggestions} />
+          </div>
+        )}
+      </div>
+
+      {/* FORM SECTION */}
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -501,53 +588,6 @@ export function CreateServiceRequestForm({
                   );
                 }}
               </form.Field>
-
-
-              {/* Latitude */}
-              {/* <form.Field name="latitude">
-                {(field) => (
-                  <Field>
-                    <FieldLabel className="flex items-center gap-1 text-muted-foreground font-normal">
-                      <Compass className="size-3.5" /> Latitude (Optional)
-                    </FieldLabel>
-                    <Input
-                      type="number"
-                      step="any"
-                      placeholder="e.g. 23.8103"
-                      value={field.state.value ?? ""}
-                      onChange={(e) =>
-                        field.handleChange(
-                          e.target.value ? Number(e.target.value) : null,
-                        )
-                      }
-                      className="h-10 text-sm rounded-lg"
-                    />
-                  </Field>
-                )}
-              </form.Field> */}
-
-              {/* Longitude */}
-              {/* <form.Field name="longitude">
-                {(field) => (
-                  <Field>
-                    <FieldLabel className="flex items-center gap-1 text-muted-foreground font-normal">
-                      <Compass className="size-3.5" /> Longitude (Optional)
-                    </FieldLabel>
-                    <Input
-                      type="number"
-                      step="any"
-                      placeholder="e.g. 90.4125"
-                      value={field.state.value ?? ""}
-                      onChange={(e) =>
-                        field.handleChange(
-                          e.target.value ? Number(e.target.value) : null,
-                        )
-                      }
-                      className="h-10 text-sm rounded-lg"
-                    />
-                  </Field>
-                )}
-              </form.Field> */}
 
               {/* DYNAMIC: Preferred Dates (Only for PAID Category) */}
               <form.Subscribe selector={(state) => [state.values.categoryId]}>
