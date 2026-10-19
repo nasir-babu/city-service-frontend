@@ -30,6 +30,7 @@ import { Button } from "@/components/ui/button";
 import { Search, Trash2, ChevronLeft, ChevronRight } from "lucide-react";
 import { toast } from "sonner";
 import { TableSkeleton } from "@/components/ui/table-skeleton";
+import SectionHeader from "@/components/shared/section-header";
 
 // Role Badge Color Helper
 const getRoleBadge = (role: UserRole) => {
@@ -114,13 +115,14 @@ export default function AdminUsersPage() {
   }
 
   const users = usersResponse?.data || [];
-  
+
   // Safely extract meta and compute totalPages if missing from backend meta
   const rawMeta = usersResponse?.meta;
   const total = rawMeta?.total || 0;
   const currentLimit = rawMeta?.limit || limit;
   const currentPage = rawMeta?.page || page;
-  const totalPages = (rawMeta as any)?.totalPages || Math.ceil(total / currentLimit) || 1;
+  const totalPages =
+    (rawMeta as any)?.totalPages || Math.ceil(total / currentLimit) || 1;
 
   // Change Role Handler
   const handleRoleChange = (userId: string, newRole: UserRole) => {
@@ -169,18 +171,17 @@ export default function AdminUsersPage() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-slate-800">
-          User Management
-        </h1>
-        <p className="text-sm text-slate-500">
-          View registered users, search, assign roles, and toggle active/blocked
-          account statuses.
-        </p>
-      </div>
+      <SectionHeader
+        title={
+          <>
+            User<span className="text-blue-400"> Management</span>
+          </>
+        }
+        description=" View registered users, assign roles, and toggle account statuses."
+      />
 
       {/* Filters: Search, Role & Status Filter */}
-      <div className="flex flex-col md:flex-row gap-4 justify-between items-center">
+      <div className="flex flex-col md:flex-row gap-4 justify-between items-center mt-10">
         {/* Search Input */}
         <div className="relative w-full md:w-80">
           <Search className="absolute left-3 top-2.5 size-4 text-slate-400" />
@@ -385,8 +386,7 @@ export default function AdminUsersPage() {
                 </Select>
                 <span className="ml-2 font-medium">
                   Showing {(currentPage - 1) * currentLimit + 1} to{" "}
-                  {Math.min(currentPage * currentLimit, total)} of {total}{" "}
-                  users
+                  {Math.min(currentPage * currentLimit, total)} of {total} users
                 </span>
               </div>
 

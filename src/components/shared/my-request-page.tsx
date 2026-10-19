@@ -24,6 +24,7 @@ import { CreateServiceRequestForm } from "@/components/form/create-service-reque
 import { IServiceRequestUI } from "@/types/services-request.type";
 import { useGetMe } from "@/hooks/auth.hook";
 import { CardSkeleton } from "../ui/card-skeleton";
+import SectionHeader from "./section-header";
 
 export default function MyRequestsPage() {
   const router = useRouter();
@@ -86,23 +87,21 @@ export default function MyRequestsPage() {
   return (
     <div className="container mx-auto px-4 py-6 md:px-8 md:py-8 max-w-7xl space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 space-y-1 shadow-md shadow-blue-200 rounded-2xl p-3">
-        <div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold border-l-8 border-orange-400 pl-3 text-green-500 my-2">
-            My Service Requests
-          </h2>
-          <p className="text-sm text-muted-foreground">
-            Manage and track the status of all your submitted service requests.
-          </p>
-        </div>
+      <SectionHeader
+        title={
+          <>
+            My Service <span className="text-blue-400">Requests</span>
+          </>
+        }
+        description="Manage and track the status of all your submitted service requests. "
+      />
 
-        <Button
-          onClick={() => router.push(`/${prefix}/create-request`)}
-          className="gap-2 self-start sm:self-auto"
-        >
-          <Plus className="size-4" /> New Request
-        </Button>
-      </div>
+      <Button
+        onClick={() => router.push(`/${prefix}/create-request`)}
+        className=" sm:self-auto"
+      >
+        <Plus className="size-4" /> New Request
+      </Button>
 
       {/* Content Area */}
       {isLoading ? (

@@ -44,11 +44,10 @@ export function LoginForm() {
     },
     onSubmit: async ({ value }) => {
       login(value, {
-        onSuccess: (res) => {
+        onSuccess: (res: any) => {
           if (!res?.success) {
             toast.error("Login Failed", {
-              description:
-                res?.message || "Invalid credentials. Please try again.",
+              description: res?.message || "Invalid credentials. Please try again.",
             });
             return;
           }
@@ -57,12 +56,12 @@ export function LoginForm() {
             description: "Login completed successfully.",
           });
 
+          // সরাসরি মেইন পেজে রিডাইরেক্ট
           router.push("/");
         },
         onError: (err: any) => {
           toast.error("Authorization Failure", {
-            description:
-              err?.data?.message || "Something went wrong. Please try again.",
+            description: err?.data?.message || err?.message || "Something went wrong. Please try again.",
           });
         },
       });
@@ -75,16 +74,19 @@ export function LoginForm() {
       CITIZEN: { email: "nasir21b@gmail.com", password: "Ab@12345" },
       STAFF: { email: "nasir201b+staff2@gmail.com", password: "Ab@12345" },
       ADMIN: { email: "testeradmin@gmail.com", password: "tester@Admin12345" },
-      SUPER_ADMIN: { email: "superadmin1@gmail.com", password: "super@Admin12345" },
+      SUPER_ADMIN: {
+        email: "superadmin1@gmail.com",
+        password: "super@Admin12345",
+      },
     };
 
     const credentials = demoCredentials[role];
-    
+
     form.setFieldValue("email", credentials.email);
     form.setFieldValue("password", credentials.password);
 
     login(credentials, {
-      onSuccess: (res) => {
+      onSuccess: (res: any) => {
         if (!res?.success) {
           toast.error("Demo Login Failed", {
             description: res?.message || "Could not log in with demo account.",
@@ -100,7 +102,7 @@ export function LoginForm() {
       },
       onError: (err: any) => {
         toast.error("Demo Authorization Failure", {
-          description: err?.data?.message || "Something went wrong.",
+          description: err?.data?.message || err?.message || "Something went wrong.",
         });
       },
     });

@@ -1,15 +1,20 @@
-
-
+// src/validation/admin.validation.ts
 import { z } from "zod";
 
-// Zod schema for updating user role/status
-export const updateUserSchema = z.object({
-  role: z.enum(["CITIZEN", "STAFF", "ADMIN", "SUPER_ADMIN"], {
-    error: "Role is required",
-  }).optional(),
-  status: z.enum(["ACTIVE", "BLOCKED"], {
-    error: "Status is required",
-  }).optional(),
+export const createStaffSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Invalid email address"),
+  phoneNumber: z
+    .string()
+    .regex(
+      /^01[3-9]\d{8}$/,
+      "Please enter a valid 11-digit Bangladeshi phone number",
+    )
+    .optional()
+    .or(z.literal("")),
+  department: z.string().min(1, "Department is required"),
+  designation: z.string().optional(),
+  qualification: z.string().optional(),
 });
 
-export type IUpdateUserPayload = z.infer<typeof updateUserSchema>;
+export type ICreateStaffFormValues = z.infer<typeof createStaffSchema>;
