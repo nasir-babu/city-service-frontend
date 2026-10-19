@@ -8,6 +8,7 @@ interface SectionHeaderProps {
   description?: string;
   badgeText?: string;
   icon?: LucideIcon;
+  align?: "left" | "center"; // Alignment option যোগ করা হয়েছে
 }
 
 export default function SectionHeader({
@@ -15,10 +16,14 @@ export default function SectionHeader({
   description = "",
   badgeText = "",
   icon: Icon = FileText,
+  align = "left", // Default alignment left
 }: SectionHeaderProps) {
+  const isCenter = align === "center";
+
   return (
     <div className="w-full relative pb-4">
-      <div className="relative overflow-hidden rounded-2xl bg-gray-200/75 px-5 py-5 sm:px-6 sm:py-4">
+      <div className="relative overflow-hidden rounded-2xl bg-gray-200/75 dark:bg-black dark:border-2 px-5 py-5 sm:px-6 sm:py-6">
+        {/* Background Animation Shapes */}
         <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-1/3 sm:w-2/5 overflow-hidden">
           <motion.div
             animate={{
@@ -67,30 +72,40 @@ export default function SectionHeader({
           <div className="absolute -right-10 top-1/2 -translate-y-1/2 h-40 w-40 rounded-full bg-gradient-to-br from-amber-400/30 via-emerald-400/30 to-rose-400/30 blur-2xl" />
         </div>
 
-        <div className="relative z-10 max-w-2xl">
+        {/* Content Container */}
+        <div
+          className={`relative z-10 flex flex-col ${
+            isCenter ? "items-center text-center mx-auto max-w-3xl" : "items-start text-left max-w-2xl"
+          }`}
+        >
           {badgeText && (
-            <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-2.5 py-1 border border-emerald-500/20">
+            <div className="mb-3 inline-flex items-center gap-2 rounded-full dark:text-black bg-emerald-500/10 px-3 py-1 border border-emerald-500/20">
               {Icon && (
-                <Icon className="size-4 text-emerald-600" strokeWidth={1.7} />
+                <Icon className="size-4 text-emerald-600 shrink-0" strokeWidth={1.7} />
               )}
-              <span className="text-xs tracking-wide uppercase">
+              <span className="text-xs tracking-wide uppercase font-medium dark:text-white ">
                 {badgeText}
               </span>
             </div>
           )}
 
-          <h2 className="text-[32px] tracking-tight  leading-[1.2] sm:text-[40px]">
+          <h2 className="text-[32px] font-bold text-slate-900 dark:text-white/90 tracking-tight leading-[1.2] sm:text-[40px]">
             {title}
           </h2>
 
           {description && (
-            <p className="mt-3 max-w-xl text-[15px] leading-7 text-secondary-foreground sm:text-base">
+            <p
+              className={`mt-3 text-[15px] leading-7 text-amber-700/90 dark:text-slate-300 sm:text-base ${
+                isCenter ? "max-w-2xl mx-auto" : "max-w-xl"
+              }`}
+            >
               {description}
             </p>
           )}
         </div>
       </div>
 
+      {/* Triangle Arrow at bottom right */}
       <div className="absolute right-16 bottom-0 translate-y-full w-0 h-0 border-l-[16px] border-l-transparent border-r-[16px] border-r-transparent border-t-[24px] border-t-gray-500/40 z-20 pointer-events-none" />
     </div>
   );

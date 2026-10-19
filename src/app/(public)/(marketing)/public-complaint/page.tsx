@@ -8,7 +8,12 @@ export default function PublicComplaintPage() {
     <main className="container min-h-screen px-4 md:px-8 mx-auto py-8 space-y-8">
       {/* Header & Hero Info Section */}
       <SectionHeader
-        title="Public Complaints"
+        title={
+          <>
+            Public
+            <span className="text-blue-400"> Complaints </span>
+          </>
+        }
         description=" Explore, filter, and track all community-reported city issues in real time."
         badgeText="Comunity Feed"
       />

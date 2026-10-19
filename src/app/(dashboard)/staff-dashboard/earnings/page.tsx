@@ -63,15 +63,15 @@ export default function StaffEarningsPage() {
         {/* Total Earnings Card */}
         <Card className="border-slate-200/80 shadow-sm">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-slate-600">
+            <CardTitle className="text-sm font-medium text-slate-600 font-primaty dark:text-white/80">
               Total Earnings
             </CardTitle>
-            <div className="p-2 bg-emerald-50 text-emerald-600 rounded-xl">
+            <div className="p-2 bg-emerald-50 text-emerald-600 rounded-xl ">
               <DollarSign className="size-5" />
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-slate-900">
+            <div className="text-3xl font-bold text-slate-900 font-primaty dark:text-white/80">
               ৳{totalEarnings.toLocaleString()}
             </div>
             <p className="text-xs text-slate-500 mt-1 flex items-center gap-1">
@@ -92,7 +92,7 @@ export default function StaffEarningsPage() {
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-slate-900">
+            <div className="text-3xl font-bold text-slate-900 font-primaty dark:text-white/80">
               {totalCompletedTasks}
             </div>
             <p className="text-xs text-slate-500 mt-1">
@@ -112,7 +112,7 @@ export default function StaffEarningsPage() {
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-slate-900">
+            <div className="text-3xl font-bold text-slate-900 font-primaty dark:text-white/80">
               {requests.length}
             </div>
             <p className="text-xs text-slate-500 mt-1">
@@ -124,8 +124,8 @@ export default function StaffEarningsPage() {
 
       {/* Earnings Breakdown Table */}
       <Card className="border-slate-200/80 shadow-sm">
-        <CardHeader className="border-b bg-slate-50/50 pb-4">
-          <CardTitle className="text-lg font-semibold text-slate-800">
+        <CardHeader className="border-b bg-slate-50/50 pb-4 dark:bg-gray-800">
+          <CardTitle className="text-lg font-primary font-semibold text-slate-800 dark:text-white pt-2">
             Paid Service History
           </CardTitle>
         </CardHeader>
@@ -145,7 +145,7 @@ export default function StaffEarningsPage() {
                 <TableRow>
                   <TableCell
                     colSpan={5}
-                    className="text-center py-12 text-slate-500"
+                    className="text-center py-12 text-slate-500 "
                   >
                     No paid earnings history found yet.
                   </TableCell>
@@ -154,7 +154,7 @@ export default function StaffEarningsPage() {
                 paidTasks.map((task: any) => (
                   <TableRow key={task.id}>
                     {/* Title */}
-                    <TableCell className="font-semibold text-slate-800">
+                    <TableCell className="font-semibold text-slate-800 dark:text-white/50">
                       {task.title}
                     </TableCell>
 

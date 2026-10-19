@@ -47,7 +47,7 @@ const getStatusBadge = (status: string) => {
       return (
         <Badge
           variant="outline"
-          className="bg-amber-50 text-amber-600 border-amber-200"
+          className="bg-amber-50 text-amber-600 dark:text-black border-amber-200"
         >
           Pending
         </Badge>
@@ -56,7 +56,7 @@ const getStatusBadge = (status: string) => {
       return (
         <Badge
           variant="outline"
-          className="bg-blue-50 text-blue-600 border-blue-200"
+          className="bg-blue-50 text-blue-600 dark:text-black border-blue-200"
         >
           Assigned
         </Badge>
@@ -83,7 +83,7 @@ const getStatusBadge = (status: string) => {
       return (
         <Badge
           variant="outline"
-          className="bg-emerald-50 text-emerald-600 border-emerald-200"
+          className="bg-emerald-50 text-emerald-600 dark:text-black border-emerald-200"
         >
           Resolved
         </Badge>
@@ -92,7 +92,7 @@ const getStatusBadge = (status: string) => {
       return (
         <Badge
           variant="outline"
-          className="bg-slate-100 text-slate-600 border-slate-200"
+          className="bg-slate-100 text-slate-600 dark:text-black border-slate-200"
         >
           Cancelled
         </Badge>
@@ -285,7 +285,7 @@ export default function AdminServiceRequestsPage() {
                         className="cursor-pointer max-w-2xs hover:bg-slate-100/80 transition-colors group"
                         onClick={() => router.push(`/requests?id=${req.id}`)}
                       >
-                        <div className="font-semibold truncate text-slate-800 group-hover:text-indigo-600 transition-colors">
+                        <div className="font-semibold truncate text-slate-800 dark:text-white/50  group-hover:text-indigo-600 transition-colors">
                           {req.title}
                         </div>
                         <div className="text-xs text-slate-500">
@@ -318,13 +318,13 @@ export default function AdminServiceRequestsPage() {
                       <TableCell>
                         {isCategoryPaid ? (
                           req.isPaid ? (
-                            <Badge className="bg-emerald-100 text-emerald-700 hover:bg-emerald-100 border-emerald-200">
+                            <Badge className="bg-emerald-100 text-emerald-700 dark:text-black hover:bg-emerald-100 border-emerald-200">
                               Paid
                             </Badge>
                           ) : (
                             <Badge
                               variant="outline"
-                              className="bg-amber-50 text-amber-600 border-amber-200"
+                              className="bg-amber-50 text-amber-600 dark:text-black border-amber-200"
                             >
                               Unpaid
                             </Badge>
@@ -408,8 +408,8 @@ export default function AdminServiceRequestsPage() {
 
           {/* Pagination Controls */}
           {meta.total > 0 && (
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 border-t bg-slate-50/50">
-              <div className="flex items-center gap-2 text-xs text-slate-600">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 border-t dark:bg-black bg-slate-50/50">
+              <div className="flex items-center gap-2 text-xs text-slate-600 dark:text-white">
                 <span>Rows per page:</span>
                 <Select
                   value={limit.toString()}

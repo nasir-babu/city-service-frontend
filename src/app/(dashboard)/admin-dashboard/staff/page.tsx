@@ -119,8 +119,8 @@ export default function CreateStaffPage() {
 
       {/* Main Content */}
       <Card className="shadow-sm border mt-12">
-        <CardHeader className="bg-slate-50/50 border-b">
-          <CardTitle className="text-base font-bold text-slate-800">
+        <CardHeader className="border-b">
+          <CardTitle className="text-base font-bold font-primary text-slate-800 dark:text-white">
             {createdStaff ? "Staff Registration Summary" : "Staff Details Form"}
           </CardTitle>
           <CardDescription className="text-xs">

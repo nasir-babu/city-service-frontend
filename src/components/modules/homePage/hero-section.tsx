@@ -82,13 +82,13 @@ export function HeroSection() {
           className="w-full max-w-xl flex items-center gap-2 pt-2"
         >
           <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-slate-400" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-slate-700 dark:text-slate-300" />
             <Input
               type="text"
               placeholder="Search public complaints (e.g. Broken streetlight, Garbage)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-9 h-12 bg-white/95 text-slate-900 placeholder:text-slate-500 shadow-lg rounded-2xl border-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+              className="pl-9 h-12 bg-white/95 dark:bg-gray-900 border border-transparent dark:border-slate-800 dark:text-white text-slate-900 placeholder:text-slate-700 dark:placeholder:text-slate-400 shadow-lg rounded-2xl focus-visible:ring-2 focus-visible:ring-emerald-500"
             />
           </div>
           <Button

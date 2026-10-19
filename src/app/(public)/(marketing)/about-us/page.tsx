@@ -1,5 +1,3 @@
-
-
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -15,28 +13,27 @@ import {
   ArrowRight,
   Sparkles,
 } from "lucide-react";
+import SectionHeader from "@/components/shared/section-header";
 
 export default function AboutUsPage() {
   return (
     <div className="min-h-screen bg-slate-50/50 py-12 px-4 sm:px-6 lg:px-8 space-y-16">
       {/* 1. Hero Section */}
-      <div className="max-w-4xl mx-auto text-center space-y-4">
-        <Badge
-          variant="outline"
-          className="bg-indigo-50 text-indigo-700 border-indigo-200 px-3 py-1 rounded-full text-xs font-semibold"
-        >
-          <Sparkles className="size-3.5 mr-1.5 inline" /> Modern Smart Civic
-          Governance
-        </Badge>
-        <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
-          Transforming Municipal Services Through{" "}
-          <span className="text-indigo-600">Digital Innovation</span>
-        </h1>
-        <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-          Our automated Service Management System bridges the gap between
+      <div className="max-w-5xl mx-auto">
+        <SectionHeader
+          title={
+            <>
+              Transforming Municipal Services Through{" "}
+              <span className="text-blue-400">Digital Innovation</span>
+            </>
+          }
+          description="  Our automated Service Management System bridges the gap between
           citizens, city staff, and administrators—delivering fast, transparent,
-          and hassle-free public services.
-        </p>
+          and hassle-free public services."
+          badgeText="Modern Smart Civic
+          Governance"
+          align="center"
+        />
       </div>
 
       {/* 2. Platform Overview & Mission */}

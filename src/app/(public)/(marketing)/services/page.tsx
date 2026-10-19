@@ -3,12 +3,12 @@
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Search, AlertCircle, Layers } from "lucide-react";
+import { Search, AlertCircle, Layers, Sparkles } from "lucide-react";
 import { useGetCategories } from "@/hooks/category.hook";
 import { CardSkeleton } from "@/components/ui/card-skeleton";
 import { CategoryCard } from "@/components/card/category-card";
 import { HomeSectionHeader } from "@/components/shared/home-section-header";
-
+import SectionHeader from "@/components/shared/section-header";
 
 export default function ServicesPage() {
   const { data: categoriesResponse, isLoading, error } = useGetCategories();
@@ -32,14 +32,19 @@ export default function ServicesPage() {
 
   return (
     <div className="min-h-screen bg-slate-50/50 dark:bg-slate-950 py-12 px-4 sm:px-6 lg:px-8 space-y-10 transition-colors duration-300">
-      
       {/* 1. Header Section */}
-      <HomeSectionHeader
-        badge="Municipal Citizen Services"
-        title="Explore All Civic Services"
-        subtitle="Select a service category below to request immediate assistance, municipal maintenance, or city infrastructure support."
-        align="center"
-      />
+      <div className="max-w-5xl mx-auto">
+        <SectionHeader
+          title={
+            <>
+              Explore All Civic <span className="text-blue-400">Services</span>
+            </>
+          }
+          description="Select a service category below to request immediate assistance, municipal maintenance, or city infrastructure support."
+          badgeText="Municipal Citizen Services"
+          icon={Sparkles}
+        />
+      </div>
 
       {/* 2. Search & Filter Controls */}
       <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm">
@@ -115,7 +120,6 @@ export default function ServicesPage() {
           </div>
         )}
       </div>
-
     </div>
   );
 }

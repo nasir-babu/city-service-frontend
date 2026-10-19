@@ -8,6 +8,7 @@ import { toast } from "sonner";
 import { LayoutDashboard, LogOut, Menu, User, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/shared/ThemeToggle";
 import { useGetMe, useLogoutUser } from "@/hooks/auth.hook";
 
 export function Header() {
@@ -56,7 +57,7 @@ export function Header() {
   }
 
   return (
-    <header className="sticky  top-0 z-50 w-full border-b border-white/20 bg-background/40 backdrop-blur-md backdrop-saturate-200 shadow-sm transition-all">
+    <header className="sticky top-0 z-50 w-full border-b border-border/70 bg-background/90 dark:bg-gray-900/50 backdrop-blur-md backdrop-saturate-200 shadow-sm transition-all">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-8">
         {/* Brand Logo */}
         <Link href="/" className="flex items-center gap-2 font-bold text-lg">
@@ -89,6 +90,7 @@ export function Header() {
 
         {/* Desktop User Profile / Auth Actions */}
         <div className="hidden md:flex items-center gap-3">
+          <ThemeToggle />
           {isLoading ? (
             <div className="w-9 h-9 rounded-full bg-muted/60 animate-pulse" />
           ) : user ? (
@@ -167,15 +169,23 @@ export function Header() {
         </div>
 
         {/* Mobile Hamburger Button */}
-        <button
-          className="md:hidden p-2 text-foreground focus:outline-none"
-          onClick={function () {
-            setIsMenuOpen(!isMenuOpen);
-          }}
-          aria-label="Toggle Menu"
-        >
-          {isMenuOpen ? <X className="size-6" /> : <Menu className="size-6" />}
-        </button>
+        <div className="md:hidden flex items-center gap-1">
+          <ThemeToggle />
+          <button
+            className="p-2 text-foreground focus:outline-none"
+            onClick={function () {
+              setIsMenuOpen(!isMenuOpen);
+            }}
+            aria-label="Toggle Menu"
+            aria-expanded={isMenuOpen}
+          >
+            {isMenuOpen ? (
+              <X className="size-6" />
+            ) : (
+              <Menu className="size-6" />
+            )}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Drawer Menu with Glass Effect */}

@@ -275,7 +275,7 @@ export default function AdminUsersPage() {
                   <TableRow key={user.id}>
                     {/* User Info */}
                     <TableCell>
-                      <div className="font-semibold text-slate-800">
+                      <div className="font-semibold text-slate-800 dark:text-white/50">
                         {user.name}
                       </div>
                       <div className="text-xs text-slate-500">{user.email}</div>

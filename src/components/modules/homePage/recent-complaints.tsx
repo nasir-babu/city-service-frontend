@@ -41,7 +41,7 @@ export function RecentComplaints() {
             </p>
           </div>
         )}
-        <div className="grid grid-cols-1 bg-gray-100 rounded-md p-10 md:grid-cols-2 lg:grid-cols-3 gap-11">
+        <div className="grid grid-cols-1 bg-gray-100  dark:bg-gray-900 rounded-md p-10 md:grid-cols-2 lg:grid-cols-3 gap-11">
           {complaints.map((item: IServiceRequestUI) => (
             <ComplaintCard
               key={item.id}

@@ -85,8 +85,8 @@ export default function ProfileUpdateForm({
       <SectionHeader title={title} description={subtitle} />
 
       <Card className="border-slate-200/80 shadow-sm mt-12">
-        <CardHeader className="border-b bg-slate-50/50 pb-4">
-          <CardTitle className="text-lg font-semibold text-slate-800">
+        <CardHeader className="border-b  pb-4">
+          <CardTitle className="text-lg font-semibold font-primary text-slate-800 dark:text-white">
             Profile Information
           </CardTitle>
         </CardHeader>

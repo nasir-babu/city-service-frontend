@@ -4,6 +4,7 @@ import "./globals.css";
 import { Playfair_Display, DM_Sans } from "next/font/google"; // ১. গুগল ফন্ট থেকে Playfair Display ও DM Sans ইম্পোর্ট করা হলো
 import { cn } from "@/lib/utils";
 import { Toaster } from "sonner";
+import { ThemeProvider } from "@/providers/theme-provider";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -31,17 +32,20 @@ export default function RootLayout({
     <html
       lang="en"
       className={cn("font-sans", playfair.variable, dmSans.variable)}
+      suppressHydrationWarning
     >
       <body>
-        <Providers>{children}</Providers>
-        <Toaster
-          position="top-right"
-          richColors
-          style={{
-            top: "65px",
-            right: "20px",
-          }}
-        />
+        <ThemeProvider>
+          <Providers>{children}</Providers>
+          <Toaster
+            position="top-right"
+            richColors
+            style={{
+              top: "65px",
+              right: "20px",
+            }}
+          />
+        </ThemeProvider>
       </body>
     </html>
   );

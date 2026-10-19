@@ -91,7 +91,7 @@ export default function CitizenRequestsTable({ requests }: CitizenRequestsTableP
                   <TableRow key={item.id}>
                     <TableCell
                       onClick={() => router.push(`/requests?id=${item.id}`)}
-                      className="font-semibold text-slate-800 hover:text-blue-500 cursor-pointer"
+                      className="font-semibold text-slate-800 dark:text-white/50 hover:text-blue-500 cursor-pointer"
                     >
                       {item.title}
                     </TableCell>

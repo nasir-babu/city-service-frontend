@@ -102,11 +102,11 @@ export default function AdminPaymentsPage() {
       />
 
       {/* Main Table Card */}
-      <Card className="shadow-sm border mt-12">
-        <CardHeader className="bg-slate-50/50 border-b pb-4">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <Card className="shadow-sm border mt-12 ">
+        <CardHeader className="border-b pb-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 ">
             <div>
-              <CardTitle className="text-base font-bold text-slate-800">
+              <CardTitle className="text-base font-primary font-bold text-slate-800  dark:text-white">
                 Payment Logs ({filteredPayments.length})
               </CardTitle>
               <CardDescription className="text-xs">
@@ -153,24 +153,24 @@ export default function AdminPaymentsPage() {
             </div>
           ) : (
             <Table>
-              <TableHeader className="bg-slate-50/80">
+              <TableHeader className="bg-slate-50/80 dark:bg-gray-800">
                 <TableRow>
-                  <TableHead className="text-[11px] font-bold text-slate-600">
+                  <TableHead className="text-[11px] font-bold text-slate-600 dark:text-white">
                     TRANSACTION ID
                   </TableHead>
-                  <TableHead className="text-[11px] font-bold text-slate-600">
+                  <TableHead className="text-[11px] font-bold text-slate-600 dark:text-white">
                     CITIZEN
                   </TableHead>
-                  <TableHead className="text-[11px] font-bold text-slate-600">
+                  <TableHead className="text-[11px] font-bold text-slate-600 dark:text-white">
                     SERVICE REQUEST
                   </TableHead>
-                  <TableHead className="text-[11px] font-bold text-slate-600">
+                  <TableHead className="text-[11px] font-bold text-slate-600 dark:text-white">
                     AMOUNT
                   </TableHead>
-                  <TableHead className="text-[11px] font-bold text-slate-600">
+                  <TableHead className="text-[11px] font-bold text-slate-600 dark:text-white">
                     STATUS
                   </TableHead>
-                  <TableHead className="text-[11px] font-bold text-slate-600">
+                  <TableHead className="text-[11px] font-bold text-slate-600 dark:text-white">
                     DATE
                   </TableHead>
                 </TableRow>
@@ -183,7 +183,7 @@ export default function AdminPaymentsPage() {
                     </TableCell>
                     <TableCell>
                       <div className="flex flex-col">
-                        <span className="text-xs font-medium text-slate-800">
+                        <span className="text-xs font-medium text-slate-800 dark:text-white">
                           {payment.user?.name || "N/A"}
                         </span>
                         <span className="text-[11px] text-slate-400">
@@ -191,7 +191,7 @@ export default function AdminPaymentsPage() {
                         </span>
                       </div>
                     </TableCell>
-                    <TableCell className="max-w-[200px] truncate text-xs text-slate-700">
+                    <TableCell className="max-w-[200px] truncate text-xs dark:text-slate-500 text-slate-700">
                       {payment.serviceRequest?.title || "N/A"}
                     </TableCell>
                     <TableCell className="font-semibold text-xs text-slate-900">

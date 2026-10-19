@@ -64,7 +64,7 @@ export default function StaffAssignedRequestsTable({
               <TableRow>
                 <TableCell
                   colSpan={6}
-                  className="text-center py-8 text-slate-500"
+                  className="text-center py-8 text-slate-500 dark:text-slate-200"
                 >
                   No service requests assigned to you yet.
                 </TableCell>
@@ -80,9 +80,9 @@ export default function StaffAssignedRequestsTable({
 
                 return (
                   <TableRow key={item.id}>
-                    <TableCell className="font-semibold text-slate-800 hover:text-blue-500 cursor-pointer">
+                    <TableCell className="font-semibold text-slate-800 hover:text-blue-500 dark:text-white/50 cursor-pointer">
                       <div
-                        className="max-w-[250px] truncate"
+                        className="max-w-[250px] truncate "
                         title={item.title}
                       >
                         {item.title}

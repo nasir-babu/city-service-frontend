@@ -102,7 +102,7 @@ export default function PaymentHistoryPage() {
                 payments.map((payment) => (
                   <TableRow key={payment.id}>
                     {/* Transaction ID */}
-                    <TableCell className="font-mono text-xs font-semibold text-slate-700">
+                    <TableCell className="font-mono text-xs font-semibold text-slate-700 dark:text-white/50">
                       {payment.transactionId}
                     </TableCell>
 
