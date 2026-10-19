@@ -27,3 +27,12 @@ export interface ICreateStaffResponse {
   message: string;
   data: IStaffData;
 }
+
+export interface ICreateStaffPayload {
+  name: string;
+  email: string;
+  phoneNumber: string;
+  department: string;
+  designation: string;
+  qualification: string;
+}

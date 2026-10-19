@@ -35,7 +35,6 @@ import {
 import { Spinner } from "@/components/ui/spinner";
 
 import { useCreateStaff } from "@/hooks/admin.hook";
-
 import { ICreateStaffResponse } from "@/types/admin.type";
 import { createStaffSchema } from "@/validation/admin-validation";
 import SectionHeader from "@/components/shared/section-header";
@@ -115,7 +114,7 @@ export default function CreateStaffPage() {
             Create Staff <span className="text-blue-400">Account</span>
           </>
         }
-        description=" Register new departmental staff members to handle citizen service requests."
+        description="Register new departmental staff members to handle citizen service requests."
       />
 
       {/* Main Content */}
@@ -245,7 +244,7 @@ export default function CreateStaffPage() {
                           value={field.state.value}
                           onBlur={field.handleBlur}
                           onChange={(e) => field.handleChange(e.target.value)}
-                          placeholder="e.g. Nasir"
+                          placeholder="e.g. Nasirullah Babu"
                           className="h-10 text-xs pl-9"
                         />
                         <ShieldCheck className="size-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
@@ -284,7 +283,7 @@ export default function CreateStaffPage() {
                           value={field.state.value}
                           onBlur={field.handleBlur}
                           onChange={(e) => field.handleChange(e.target.value)}
-                          placeholder="nasir2001b+staff2@gmail.com"
+                          placeholder="staff@cityservices.com"
                           className="h-10 text-xs pl-9"
                         />
                         <Mail className="size-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
@@ -323,7 +322,7 @@ export default function CreateStaffPage() {
                           value={field.state.value}
                           onBlur={field.handleBlur}
                           onChange={(e) => field.handleChange(e.target.value)}
-                          placeholder="0132151520"
+                          placeholder="01711000000"
                           className="h-10 text-xs pl-9"
                         />
                         <Phone className="size-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
@@ -357,7 +356,7 @@ export default function CreateStaffPage() {
                       </Label>
                       <Select
                         value={field.state.value}
-                        onValueChange={(val) => field.handleChange(val)}
+                        onValueChange={(val) => field.handleChange(val ?? "")}
                       >
                         <SelectTrigger className="h-10 text-xs">
                           <div className="flex items-center gap-2">
@@ -399,7 +398,7 @@ export default function CreateStaffPage() {
                           value={field.state.value}
                           onBlur={field.handleBlur}
                           onChange={(e) => field.handleChange(e.target.value)}
-                          placeholder="e.g. ST ROAD_REPAIR"
+                          placeholder="e.g. Senior Inspector"
                           className="h-10 text-xs pl-9"
                         />
                         <Briefcase className="size-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
@@ -421,7 +420,7 @@ export default function CreateStaffPage() {
                           value={field.state.value}
                           onBlur={field.handleBlur}
                           onChange={(e) => field.handleChange(e.target.value)}
-                          placeholder="e.g. BBS"
+                          placeholder="e.g. B.Sc in Civil Engineering"
                           className="h-10 text-xs pl-9"
                         />
                         <GraduationCap className="size-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
