@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import StaffAssignedRequestsTable from "@/components/modules/staff/staff-assigned-requests-table";
 import { OverviewSkeleton } from "@/components/dashboard/overview-skeleton";
+import SectionHeader from "@/components/shared/section-header";
 
 export default function StaffOverviewPage() {
   const { data: statsResponse, isLoading: isStatsLoading } =
@@ -41,18 +42,18 @@ export default function StaffOverviewPage() {
   return (
     <div className="space-y-6">
       {/* Page Header */}
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-slate-800">
-          Staff Dashboard Overview
-        </h1>
-        <p className="text-sm text-slate-500">
-          Welcome back! Here is a summary of your assigned service requests and
-          progress.
-        </p>
-      </div>
+      <SectionHeader
+        title={
+          <>
+            Staff Dashboard <span className="text-blue-400">Overview</span>
+          </>
+        }
+        description=" Welcome back! Here is a summary of your assigned service requests and
+          progress."
+      />
 
       {/* Stats Summary Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-12 ">
         {/* Total Assigned */}
         <Card className="border-indigo-100 shadow-sm">
           <CardContent className="p-5 flex items-center justify-between">

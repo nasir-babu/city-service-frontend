@@ -13,6 +13,7 @@ import { Badge } from "@/components/ui/badge";
 import { TableSkeleton } from "@/components/ui/table-skeleton";
 import { DollarSign, CheckCircle2, Briefcase, TrendingUp } from "lucide-react";
 import { useGetStaffAssignedRequests } from "@/hooks/service-request.hook";
+import SectionHeader from "@/components/shared/section-header";
 
 export default function StaffEarningsPage() {
   const { data: response, isLoading } = useGetStaffAssignedRequests();
@@ -22,22 +23,23 @@ export default function StaffEarningsPage() {
   }
 
   const requests = response?.data || [];
-  console.log(requests)
+  console.log(requests);
 
   const paidTasks = requests.filter(
     (req: any) =>
-      req.paymentStatus === "PAID" ||
-      req.status === "RESOLVED" ||
-      req.status === "COMPLETED"
+      req.isPaid === true &&
+      (req.status === "RESOLVED" || req.status === "COMPLETED"),
   );
 
   const totalEarnings = paidTasks.reduce((acc: number, curr: any) => {
     const amount =
-      typeof curr.amount === "number"
-        ? curr.amount
-        : typeof curr.service?.price === "number"
-        ? curr.service.price
-        : 0;
+      typeof curr.totalAmount === "number"
+        ? curr.totalAmount
+        : typeof curr.amount === "number"
+          ? curr.amount
+          : typeof curr.service?.price === "number"
+            ? curr.service.price
+            : 0;
     return acc + amount;
   }, 0);
 
@@ -46,17 +48,18 @@ export default function StaffEarningsPage() {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-slate-800">
-          Earnings & Analytics
-        </h1>
-        <p className="text-sm text-slate-500">
-          Track your total service earnings, completed paid tasks, and financial history.
-        </p>
-      </div>
+      <SectionHeader
+        title={
+          <>
+            Earnings & <span className="text-blue-400">Analytics</span>
+          </>
+        }
+        description="Track your total service earnings, completed paid tasks, and financial
+          history."
+      />
 
       {/* Stat Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
         {/* Total Earnings Card */}
         <Card className="border-slate-200/80 shadow-sm">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
@@ -72,12 +75,13 @@ export default function StaffEarningsPage() {
               ৳{totalEarnings.toLocaleString()}
             </div>
             <p className="text-xs text-slate-500 mt-1 flex items-center gap-1">
-              <TrendingUp className="size-3 text-emerald-500" /> From completed paid services
+              <TrendingUp className="size-3 text-emerald-500" /> From completed
+              paid services
             </p>
           </CardContent>
         </Card>
 
-        {/* Completed Paid Tasks Card */}
+        {/* Paid Tasks Completed Card */}
         <Card className="border-slate-200/80 shadow-sm">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-slate-600">
@@ -157,14 +161,22 @@ export default function StaffEarningsPage() {
                     {/* Safe Category Extraction */}
                     <TableCell className="text-xs text-slate-600">
                       {typeof task.category === "object"
-                        ? task.category?.name || task.category?.title || "General Service"
+                        ? task.category?.name ||
+                          task.category?.title ||
+                          "General Service"
                         : task.category || "General Service"}
                     </TableCell>
 
                     {/* Payment Status */}
                     <TableCell>
-                      <Badge className="bg-emerald-100 text-emerald-700 border-emerald-200">
-                        Paid
+                      <Badge
+                        className={
+                          task.isPaid
+                            ? "bg-emerald-100 text-emerald-700 border-emerald-200"
+                            : "bg-amber-100 text-amber-700 border-amber-200"
+                        }
+                      >
+                        {task.isPaid ? "Paid" : "Unpaid"}
                       </Badge>
                     </TableCell>
 
@@ -175,14 +187,16 @@ export default function StaffEarningsPage() {
                       </Badge>
                     </TableCell>
 
-                    {/* Amount */}
+                    {/* Amount - ৩. এখানে totalAmount চেক করা হলো */}
                     <TableCell className="text-right font-semibold text-emerald-600">
                       ৳
-                      {typeof task.amount === "number"
-                        ? task.amount
-                        : typeof task.service?.price === "number"
-                        ? task.service.price
-                        : 500}
+                      {typeof task.totalAmount === "number"
+                        ? task.totalAmount
+                        : typeof task.amount === "number"
+                          ? task.amount
+                          : typeof task.service?.price === "number"
+                            ? task.service.price
+                            : 0}
                     </TableCell>
                   </TableRow>
                 ))

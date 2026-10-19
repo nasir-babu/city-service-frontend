@@ -80,11 +80,13 @@ export default function StaffAssignedRequestsTable({
 
                 return (
                   <TableRow key={item.id}>
-                    <TableCell
-                      onClick={() => router.push(`/requests?id=${item.id}`)}
-                      className="hover:text-blue-500 cursor-pointer font-semibold text-slate-800"
-                    >
-                      {item.title}
+                    <TableCell className="font-semibold text-slate-800 hover:text-blue-500 cursor-pointer">
+                      <div
+                        className="max-w-[250px] truncate"
+                        title={item.title}
+                      >
+                        {item.title}
+                      </div>
                     </TableCell>
 
                     <TableCell className="text-xs text-slate-600">

@@ -3,9 +3,14 @@
 import { useGetStaffAssignedRequests } from "@/hooks/service-request.hook";
 import StaffAssignedRequestsTable from "@/components/modules/staff/staff-assigned-requests-table";
 import { TableSkeleton } from "@/components/ui/table-skeleton";
+import SectionHeader from "@/components/shared/section-header";
 
 export default function StaffAssignedRequestsPage() {
-  const { data: requestsData, isLoading, refetch } = useGetStaffAssignedRequests();
+  const {
+    data: requestsData,
+    isLoading,
+    refetch,
+  } = useGetStaffAssignedRequests();
 
   if (isLoading) {
     return <TableSkeleton />;
@@ -14,15 +19,15 @@ export default function StaffAssignedRequestsPage() {
   const requests = requestsData?.data || [];
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-slate-800">
-          Assigned Requests
-        </h1>
-        <p className="text-sm text-slate-500">
-          Manage and update the progress of service requests assigned to you.
-        </p>
-      </div>
+    <div className="space-y-12">
+      <SectionHeader
+        title={
+          <>
+            Assigned <span className="text-blue-400">Requests</span>
+          </>
+        }
+        description="  Manage and update the progress of service requests assigned to you."
+      />
 
       <StaffAssignedRequestsTable
         requests={requests}
