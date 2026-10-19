@@ -38,6 +38,7 @@ import { useCreateStaff } from "@/hooks/admin.hook";
 
 import { ICreateStaffResponse } from "@/types/admin.type";
 import { createStaffSchema } from "@/validation/admin-validation";
+import SectionHeader from "@/components/shared/section-header";
 
 export const DEPARTMENTS = [
   { value: "ROAD_REPAIR", label: "Road Repair" },
@@ -48,7 +49,9 @@ export const DEPARTMENTS = [
 ];
 
 export default function CreateStaffPage() {
-  const [createdStaff, setCreatedStaff] = useState<ICreateStaffResponse["data"] | null>(null);
+  const [createdStaff, setCreatedStaff] = useState<
+    ICreateStaffResponse["data"] | null
+  >(null);
 
   const { mutate: createStaff, isPending } = useCreateStaff();
 
@@ -67,7 +70,8 @@ export default function CreateStaffPage() {
       const result = createStaffSchema.safeParse(value);
       if (!result.success) {
         toast.error("Validation Error", {
-          description: result.error.issues[0]?.message || "Please check your inputs.",
+          description:
+            result.error.issues[0]?.message || "Please check your inputs.",
         });
         return;
       }
@@ -82,7 +86,8 @@ export default function CreateStaffPage() {
           }
 
           toast.success("Staff Account Created!", {
-            description: res?.message || `${value.name} has been added as official staff.`,
+            description:
+              res?.message || `${value.name} has been added as official staff.`,
           });
 
           if (res?.data) {
@@ -93,7 +98,8 @@ export default function CreateStaffPage() {
         },
         onError: (err: any) => {
           toast.error("Creation Error", {
-            description: err?.data?.message || err?.message || "Something went wrong.",
+            description:
+              err?.data?.message || err?.message || "Something went wrong.",
           });
         },
       });
@@ -103,22 +109,17 @@ export default function CreateStaffPage() {
   return (
     <div className="p-6 max-w-4xl mx-auto space-y-6">
       {/* Header Section */}
-      <div className="flex items-center gap-3 border-b pb-4">
-        <div className="size-11 bg-amber-100 text-amber-700 rounded-2xl flex items-center justify-center shrink-0">
-          <UserPlus className="size-6" />
-        </div>
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
-            Create Staff Account
-          </h1>
-          <p className="text-xs text-slate-500 dark:text-slate-400">
-            Register new departmental staff members to handle citizen service requests.
-          </p>
-        </div>
-      </div>
+      <SectionHeader
+        title={
+          <>
+            Create Staff <span className="text-blue-400">Account</span>
+          </>
+        }
+        description=" Register new departmental staff members to handle citizen service requests."
+      />
 
       {/* Main Content */}
-      <Card className="shadow-sm border">
+      <Card className="shadow-sm border mt-12">
         <CardHeader className="bg-slate-50/50 border-b">
           <CardTitle className="text-base font-bold text-slate-800">
             {createdStaff ? "Staff Registration Summary" : "Staff Details Form"}
@@ -152,31 +153,49 @@ export default function CreateStaffPage() {
               <div className="bg-white p-5 rounded-xl border border-emerald-100 text-left space-y-3 text-xs text-slate-700 shadow-sm">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <span className="text-slate-400 block text-[11px]">Full Name</span>
-                    <span className="font-semibold text-slate-900">{createdStaff.name}</span>
+                    <span className="text-slate-400 block text-[11px]">
+                      Full Name
+                    </span>
+                    <span className="font-semibold text-slate-900">
+                      {createdStaff.name}
+                    </span>
                   </div>
                   <div>
-                    <span className="text-slate-400 block text-[11px]">Email Address</span>
-                    <span className="font-semibold text-slate-900">{createdStaff.email}</span>
+                    <span className="text-slate-400 block text-[11px]">
+                      Email Address
+                    </span>
+                    <span className="font-semibold text-slate-900">
+                      {createdStaff.email}
+                    </span>
                   </div>
                   <div>
-                    <span className="text-slate-400 block text-[11px]">Role</span>
-                    <span className="font-semibold text-indigo-600">{createdStaff.role}</span>
+                    <span className="text-slate-400 block text-[11px]">
+                      Role
+                    </span>
+                    <span className="font-semibold text-indigo-600">
+                      {createdStaff.role}
+                    </span>
                   </div>
                   <div>
-                    <span className="text-slate-400 block text-[11px]">Department</span>
+                    <span className="text-slate-400 block text-[11px]">
+                      Department
+                    </span>
                     <span className="font-semibold text-amber-700">
                       {createdStaff.staffProfile?.department}
                     </span>
                   </div>
                   <div>
-                    <span className="text-slate-400 block text-[11px]">Designation</span>
+                    <span className="text-slate-400 block text-[11px]">
+                      Designation
+                    </span>
                     <span className="font-semibold text-slate-900">
                       {createdStaff.staffProfile?.designation || "N/A"}
                     </span>
                   </div>
                   <div>
-                    <span className="text-slate-400 block text-[11px]">Qualification</span>
+                    <span className="text-slate-400 block text-[11px]">
+                      Qualification
+                    </span>
                     <span className="font-semibold text-slate-900">
                       {createdStaff.staffProfile?.qualification || "N/A"}
                     </span>
@@ -209,7 +228,9 @@ export default function CreateStaffPage() {
                   validators={{
                     onChange: ({ value }) => {
                       const res = createStaffSchema.shape.name.safeParse(value);
-                      return !res.success ? res.error.issues[0]?.message : undefined;
+                      return !res.success
+                        ? res.error.issues[0]?.message
+                        : undefined;
                     },
                   }}
                 >
@@ -243,8 +264,11 @@ export default function CreateStaffPage() {
                   name="email"
                   validators={{
                     onChange: ({ value }) => {
-                      const res = createStaffSchema.shape.email.safeParse(value);
-                      return !res.success ? res.error.issues[0]?.message : undefined;
+                      const res =
+                        createStaffSchema.shape.email.safeParse(value);
+                      return !res.success
+                        ? res.error.issues[0]?.message
+                        : undefined;
                     },
                   }}
                 >
@@ -280,8 +304,11 @@ export default function CreateStaffPage() {
                   validators={{
                     onChange: ({ value }) => {
                       if (!value) return undefined;
-                      const res = createStaffSchema.shape.phoneNumber.safeParse(value);
-                      return !res.success ? res.error.issues[0]?.message : undefined;
+                      const res =
+                        createStaffSchema.shape.phoneNumber.safeParse(value);
+                      return !res.success
+                        ? res.error.issues[0]?.message
+                        : undefined;
                     },
                   }}
                 >
@@ -315,8 +342,11 @@ export default function CreateStaffPage() {
                   name="department"
                   validators={{
                     onChange: ({ value }) => {
-                      const res = createStaffSchema.shape.department.safeParse(value);
-                      return !res.success ? res.error.issues[0]?.message : undefined;
+                      const res =
+                        createStaffSchema.shape.department.safeParse(value);
+                      return !res.success
+                        ? res.error.issues[0]?.message
+                        : undefined;
                     },
                   }}
                 >
@@ -337,7 +367,11 @@ export default function CreateStaffPage() {
                         </SelectTrigger>
                         <SelectContent>
                           {DEPARTMENTS.map((dept) => (
-                            <SelectItem key={dept.value} value={dept.value} className="text-xs">
+                            <SelectItem
+                              key={dept.value}
+                              value={dept.value}
+                              className="text-xs"
+                            >
                               {dept.label}
                             </SelectItem>
                           ))}

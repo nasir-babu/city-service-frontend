@@ -28,3 +28,9 @@ export const getMyPayments = async () => {
     },
   );
 };
+
+export const getAllPaymentsApi = async () => {
+  return await apiClient<{ success: boolean; data: any[] }>(`/payments`, {
+    method: "GET",
+  });
+};

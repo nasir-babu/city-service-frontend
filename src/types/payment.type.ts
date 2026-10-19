@@ -1,5 +1,10 @@
-
 export type PaymentStatus = "PENDING" | "PAID" | "FAILED" | "CANCELLED";
+
+export interface IPaymentUser {
+  id: string;
+  name: string;
+  email: string;
+}
 
 export interface IPayment {
   id: string;
@@ -11,7 +16,9 @@ export interface IPayment {
   userId: string;
   createdAt: string;
   updatedAt: string;
+  user?: IPaymentUser;
   serviceRequest?: {
+    id?: string;
     title: string;
     category?: string;
   };
@@ -19,5 +26,7 @@ export interface IPayment {
 
 export interface PaymentResponse {
   success: boolean;
+  statusCode?: number;
+  message?: string;
   data: IPayment[];
 }

@@ -21,7 +21,7 @@ export const adminRoutes = [
     title: "Finance & Logs",
     items: [
       { title: "Payments", url: `${prefix}/payments` },
-      { title: "Audit Logs", url: `${prefix}/audit-logs` },
+      //{ title: "Audit Logs", url: `${prefix}/audit-logs` },
     ],
   },
 ];

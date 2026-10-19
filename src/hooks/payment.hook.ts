@@ -2,6 +2,7 @@ import {
   createCheckoutSession,
   getPaymentById,
   getMyPayments,
+  getAllPaymentsApi,
 } from "@/api/payment.api";
 import { useMutation, useQuery } from "@tanstack/react-query";
 
@@ -22,12 +23,21 @@ export const useGetPaymentById = (paymentId: string) => {
   });
 };
 
-
 export const useGetMyPayments = () => {
   return useQuery({
     queryKey: ["MY_PAYMENTS"],
     queryFn: async () => {
       const res = await getMyPayments();
+      return res;
+    },
+  });
+};
+
+export const useGetAllPayments = () => {
+  return useQuery({
+    queryKey: ["ALL_PAYMENTS"],
+    queryFn: async () => {
+      const res = await getAllPaymentsApi();
       return res;
     },
   });
