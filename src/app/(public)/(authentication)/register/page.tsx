@@ -14,7 +14,7 @@ export default function RegisterPage() {
             height={50}
             className="object-contain"
           />
-          <span className="text-2xl text-green-600">City Service Portal</span>
+          <span className="text-2xl text-green-600">City Service</span>
         </Link>
       </div>
       <div className="w-full max-w-[410px] space-y-6 border-2 p-4 rounded-2xl shadow-2xl">

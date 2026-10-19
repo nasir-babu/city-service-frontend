@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Plus, FolderOpen, AlertCircle } from "lucide-react";
+import { Plus, FolderOpen, AlertCircle, PlusCircle } from "lucide-react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
@@ -98,9 +98,9 @@ export default function MyRequestsPage() {
 
       <Button
         onClick={() => router.push(`/${prefix}/create-request`)}
-        className=" sm:self-auto"
+        className=" sm:self-auto bg-gray-100 text-indigo-900 font-semibold"
       >
-        <Plus className="size-4" /> New Request
+       <PlusCircle className="size-4 mr-2" /> Create New Request
       </Button>
 
       {/* Content Area */}

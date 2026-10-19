@@ -49,7 +49,8 @@ export function CreateServiceRequestForm({
 }: CreateServiceRequestFormProps & { initialData?: any }) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const categoryIdParam = searchParams.get("categoryId") || initialData?.categoryId || "";
+  const categoryIdParam =
+    searchParams.get("categoryId") || initialData?.categoryId || "";
 
   // 1. Fetch categories
   const { data: categoriesResponse } = useGetCategories();
@@ -189,7 +190,7 @@ export function CreateServiceRequestForm({
   });
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-4 sm:p-6 bg-card rounded-xl border border-border shadow-sm">
+    <div className="w-full max-w-5xl mx-auto p-4 sm:p-6 bg-card rounded-xl border border-border shadow-sm">
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -226,8 +227,8 @@ export function CreateServiceRequestForm({
                   {type === "ALL"
                     ? "All Categories"
                     : type === "FREE"
-                    ? "Free Services"
-                    : "Paid Services"}
+                      ? "Free Services"
+                      : "Paid Services"}
                 </label>
               ))}
             </div>
@@ -501,8 +502,9 @@ export function CreateServiceRequestForm({
                 }}
               </form.Field>
 
+
               {/* Latitude */}
-              <form.Field name="latitude">
+              {/* <form.Field name="latitude">
                 {(field) => (
                   <Field>
                     <FieldLabel className="flex items-center gap-1 text-muted-foreground font-normal">
@@ -522,10 +524,10 @@ export function CreateServiceRequestForm({
                     />
                   </Field>
                 )}
-              </form.Field>
+              </form.Field> */}
 
               {/* Longitude */}
-              <form.Field name="longitude">
+              {/* <form.Field name="longitude">
                 {(field) => (
                   <Field>
                     <FieldLabel className="flex items-center gap-1 text-muted-foreground font-normal">
@@ -545,7 +547,7 @@ export function CreateServiceRequestForm({
                     />
                   </Field>
                 )}
-              </form.Field>
+              </form.Field> */}
 
               {/* DYNAMIC: Preferred Dates (Only for PAID Category) */}
               <form.Subscribe selector={(state) => [state.values.categoryId]}>

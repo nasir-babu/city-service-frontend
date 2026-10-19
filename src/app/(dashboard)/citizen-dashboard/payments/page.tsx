@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useGetMyPayments } from "@/hooks/payment.hook";
@@ -14,6 +13,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { TableSkeleton } from "@/components/ui/table-skeleton";
 import { CreditCard, CheckCircle2, Clock, XCircle } from "lucide-react";
+import SectionHeader from "@/components/shared/section-header";
 
 // Payment Status Badge Helper
 const getPaymentStatusBadge = (status: string) => {
@@ -54,17 +54,25 @@ export default function PaymentHistoryPage() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div>
+      {/* <div>
         <h1 className="text-2xl font-bold tracking-tight text-slate-800">
-          Payment History
+          
         </h1>
         <p className="text-sm text-slate-500">
-          View all your transaction records, payment statuses, and history in real-time.
+          
         </p>
-      </div>
+      </div> */}
+      <SectionHeader
+        title={
+          <>
+            Payment <span className="text-blue-400">History</span>
+          </>
+        }
+        description=" View all your transaction records, payment statuses, and history in real-time."
+      />
 
       {/* Payment Data Table Card */}
-      <Card>
+      <Card className="mt-12">
         <CardContent className="p-0">
           <Table>
             <TableHeader>
@@ -114,7 +122,9 @@ export default function PaymentHistoryPage() {
                     </TableCell>
 
                     {/* Status Badge */}
-                    <TableCell>{getPaymentStatusBadge(payment.status)}</TableCell>
+                    <TableCell>
+                      {getPaymentStatusBadge(payment.status)}
+                    </TableCell>
 
                     {/* Date */}
                     <TableCell className="text-right text-xs text-slate-500">

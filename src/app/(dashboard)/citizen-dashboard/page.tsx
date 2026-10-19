@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import CitizenRequestsTable from "@/components/modules/citizen/citizen-requests-table";
 import { OverviewSkeleton } from "@/components/dashboard/overview-skeleton";
+import SectionHeader from "@/components/shared/section-header";
 
 export default function CitizenOverviewPage() {
   const { data: requestsData, isLoading } = useGetMyRequests();
@@ -27,36 +28,34 @@ export default function CitizenOverviewPage() {
   // Client-side Stats Calculation
   const totalRequests = requests.length;
   const pendingRequests = requests.filter((r: any) =>
-    ["PENDING", "ACCEPTED", "ASSIGNED"].includes(r.status)
+    ["PENDING", "ACCEPTED", "ASSIGNED"].includes(r.status),
   ).length;
   const inProgressRequests = requests.filter(
-    (r: any) => r.status === "IN_PROGRESS"
+    (r: any) => r.status === "IN_PROGRESS",
   ).length;
   const resolvedRequests = requests.filter(
-    (r: any) => r.status === "RESOLVED"
+    (r: any) => r.status === "RESOLVED",
   ).length;
 
-  const recentRequests = requests.slice(0, 5); 
+  const recentRequests = requests.slice(0, 5);
 
   return (
     <div className="space-y-6">
       {/* Top Banner & Quick Action */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-gradient-to-r from-indigo-900 to-indigo-700 text-white p-6 rounded-2xl shadow-md">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight">
-            Welcome to Citizen Portal
-          </h1>
-          <p className="text-sm text-indigo-100 mt-1">
-            Track your submitted requests, complete payments, or report new civic issues.
-          </p>
-        </div>
-        <Link href="/citizen-dashboard/create-request">
-          <Button className="bg-white text-indigo-900 hover:bg-indigo-50 font-semibold shadow-sm">
-            <PlusCircle className="size-4 mr-2" />
-            New Service Request
-          </Button>
-        </Link>
-      </div>
+      <SectionHeader
+        title={
+          <>
+            Welcome to Citizen <span className="text-blue-400">Portal</span>
+          </>
+        }
+        description="Track your submitted requests, payments, or report new civic issues."
+      />
+      <Link href="/citizen-dashboard/create-request">
+        <Button className="bg-gray-100 text-indigo-900 hover:bg-indigo-50 font-semibold shadow-sm mb-5 -mt-5 ">
+          <PlusCircle className="size-4 mr-2" />
+          New Service Request
+        </Button>
+      </Link>
 
       {/* Stats Summary Cards Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">

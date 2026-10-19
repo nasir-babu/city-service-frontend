@@ -16,7 +16,7 @@ export default function VerifyAccountPage() {
               height={50}
               className="object-contain"
             />
-            <span className="text-2xl text-green-600">City Service Portal</span>
+            <span className="text-2xl  text-green-600">City Service</span>
           </Link>
         </div>
         <div className="flex flex-1 items-center justify-center">

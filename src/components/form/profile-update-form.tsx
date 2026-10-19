@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -11,6 +10,7 @@ import { User, Phone, Camera, Loader2 } from "lucide-react";
 import Image from "next/image";
 import { updateProfileSchema } from "@/validation/user.validation";
 import { toast } from "sonner";
+import SectionHeader from "../shared/section-header";
 
 interface ProfileUpdateFormProps {
   title?: string;
@@ -82,14 +82,9 @@ export default function ProfileUpdateForm({
 
   return (
     <div className="max-w-2xl mx-auto space-y-6 py-6">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-slate-800">
-          {title}
-        </h1>
-        <p className="text-sm text-slate-500">{subtitle}</p>
-      </div>
+      <SectionHeader title={title} description={subtitle} />
 
-      <Card className="border-slate-200/80 shadow-sm">
+      <Card className="border-slate-200/80 shadow-sm mt-12">
         <CardHeader className="border-b bg-slate-50/50 pb-4">
           <CardTitle className="text-lg font-semibold text-slate-800">
             Profile Information
