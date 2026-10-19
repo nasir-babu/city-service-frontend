@@ -5,6 +5,7 @@ import { Playfair_Display, DM_Sans } from "next/font/google"; // ১. গুগ�
 import { cn } from "@/lib/utils";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "@/providers/theme-provider";
+import { AiChatbot } from "@/components/shared/AiChatbot";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -37,6 +38,7 @@ export default function RootLayout({
       <body>
         <ThemeProvider>
           <Providers>{children}</Providers>
+          <AiChatbot />
           <Toaster
             position="top-right"
             richColors
