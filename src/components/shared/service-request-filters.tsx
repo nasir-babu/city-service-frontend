@@ -33,8 +33,8 @@ export function ServiceRequestFilters() {
     setSearchValue(searchParams.get("search") || "");
   }, [searchParams]);
 
-  // Helper to update query params
-  const handleFilterChange = (key: string, value: string) => {
+  // Helper to update query params (string | null টাইপ সাপোর্ট যোগ করা হয়েছে)
+  const handleFilterChange = (key: string, value: string | null) => {
     const params = new URLSearchParams(searchParams.toString());
 
     if (value && value !== "ALL") {
