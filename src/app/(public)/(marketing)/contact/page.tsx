@@ -104,7 +104,7 @@ export default function ContactUsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50/50 py-8 px-4 sm:px-6 lg:px-8 space-y-8">
+    <div className="min-h-screen bg-slate-50/10 py-8 px-4 sm:px-6 lg:px-8 space-y-8">
       {/* Header Section */}
       <div className="max-w-5xl mx-auto">
         <SectionHeader
@@ -128,7 +128,7 @@ export default function ContactUsPage() {
                 <Clock className="size-5" />
               </div>
               <div className="space-y-1">
-                <h3 className="font-bold text-slate-800 text-sm">
+                <h3 className="font-bold text-slate-800 text-sm dark:text-white/80">
                   Working Hours
                 </h3>
                 <p className="text-xs text-slate-500 leading-relaxed">
@@ -146,7 +146,7 @@ export default function ContactUsPage() {
                 <Mail className="size-5" />
               </div>
               <div className="space-y-1">
-                <h3 className="font-bold text-slate-800 text-sm">
+                <h3 className="font-bold text-slate-800 text-sm dark:text-white/80">
                   Email Support
                 </h3>
                 <p className="text-xs text-slate-500">
@@ -164,7 +164,7 @@ export default function ContactUsPage() {
                 <Phone className="size-5" />
               </div>
               <div className="space-y-1">
-                <h3 className="font-bold text-slate-800 text-sm">
+                <h3 className="font-bold text-slate-800 text-sm dark:text-white/80">
                   Helpline Center
                 </h3>
                 <p className="text-xs text-slate-500">
@@ -190,8 +190,8 @@ export default function ContactUsPage() {
 
         {/* Contact Form & Success Preview Column */}
         <Card className="lg:col-span-2 border shadow-sm flex flex-col">
-          <CardHeader className="border-b bg-slate-50/50">
-            <CardTitle className="text-lg font-bold text-slate-800">
+          <CardHeader className="border-b bg-slate-50/50 dark:bg-transparent">
+            <CardTitle className="text-lg font-bold text-slate-800 dark:text-white/80">
               {submittedData
                 ? "Submission Confirmation"
                 : "Send Us a Direct Message"}
@@ -207,10 +207,10 @@ export default function ContactUsPage() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <h3 className="font-bold text-slate-800 text-lg">
+                  <h3 className="font-bold text-slate-800 text-lg dark:text-white/80">
                     Thank You, {submittedData.name}!
                   </h3>
-                  <p className="text-xs text-slate-600 max-w-md mx-auto leading-relaxed">
+                  <p className="text-xs text-slate-600 max-w-md mx-auto leading-relaxed ">
                     Your message has been delivered to our administrative
                     support team. Here is a summary of the message you
                     submitted:
@@ -218,7 +218,7 @@ export default function ContactUsPage() {
                 </div>
 
                 {/* Details Preview Box */}
-                <div className="bg-white p-4 rounded-xl border border-emerald-100 text-left space-y-2 text-xs text-slate-700 shadow-sm">
+                <div className="bg-white p-4 rounded-xl border border-emerald-100 text-left space-y-2 text-xs text-slate-700  shadow-sm">
                   <p>
                     <span className="font-semibold text-slate-900">Email:</span>{" "}
                     {submittedData.email}
@@ -255,7 +255,7 @@ export default function ContactUsPage() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {/* Full Name */}
                   <div className="space-y-1.5">
-                    <Label className="text-xs font-semibold text-slate-700">
+                    <Label className="text-xs font-semibold text-slate-700  dark:text-white/80">
                       Your Full Name
                     </Label>
                     <Input
@@ -273,7 +273,7 @@ export default function ContactUsPage() {
 
                   {/* Email Address */}
                   <div className="space-y-1.5">
-                    <Label className="text-xs font-semibold text-slate-700">
+                    <Label className="text-xs font-semibold text-slate-700 dark:text-white/80">
                       Your Email Address
                     </Label>
                     <Input
@@ -294,7 +294,7 @@ export default function ContactUsPage() {
 
                 {/* Subject */}
                 <div className="space-y-1.5">
-                  <Label className="text-xs font-semibold text-slate-700">
+                  <Label className="text-xs font-semibold text-slate-700 dark:text-white/80">
                     Subject
                   </Label>
                   <Input
@@ -314,7 +314,7 @@ export default function ContactUsPage() {
 
                 {/* Message */}
                 <div className="space-y-1.5">
-                  <Label className="text-xs font-semibold text-slate-700">
+                  <Label className="text-xs font-semibold text-slate-700 dark:text-white/80">
                     Your Message
                   </Label>
                   <Textarea

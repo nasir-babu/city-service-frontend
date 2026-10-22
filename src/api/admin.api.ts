@@ -14,3 +14,4 @@ export const createStaffApi = async (payload: ICreateStaffPayload) => {
     body: payload,
   });
 };
+

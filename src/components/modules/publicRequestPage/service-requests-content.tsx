@@ -57,7 +57,7 @@ export function ServiceRequestsContent() {
   return (
     <div className="space-y-6 pt-3">
       {/* Mobile Filter Toggle Button */}
-      <div className="flex lg:hidden justify-between items-center bg-card p-4 rounded-xl border">
+      <div className="flex lg:hidden justify-between items-center bg-card  p-4 rounded-xl border">
         <p className="text-sm font-medium text-muted-foreground">
           Showing {requests.length} results
         </p>
@@ -108,7 +108,7 @@ export function ServiceRequestsContent() {
           {!isLoading && !isError && (
             <>
               {requests.length > 0 ? (
-                <div className="grid bg-gray-100 rounded-md p-4 grid-cols-1  md:grid-cols-2 xl:grid-cols-3 gap-6">
+                <div className="grid bg-gray-100 dark:bg-gray-900 rounded-md p-4 grid-cols-1  md:grid-cols-2 xl:grid-cols-3 gap-6">
                   {requests.map((item: IServiceRequestUI) => (
                     <ComplaintCard
                       key={item.id}
