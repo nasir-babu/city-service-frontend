@@ -83,10 +83,10 @@ export default function ContactUsPage() {
             "We have received your message and will get back to you soon.",
         });
 
-        // সাবমিট হওয়া ডেটা সেট করা
+        //
         setSubmittedData(formData);
 
-        // ফর্ম রিসেট
+        //
         setFormData({ name: "", email: "", subject: "", message: "" });
         setErrors({});
       },
@@ -198,7 +198,7 @@ export default function ContactUsPage() {
             </CardTitle>
           </CardHeader>
 
-          <CardContent className="pt-6 flex-1 flex flex-col justify-center">
+          <CardContent className="pt-2 flex-1 flex flex-col justify-center">
             {submittedData ? (
               /* Success Summary Card UI */
               <div className="p-6 bg-emerald-50/70 border border-emerald-200 rounded-2xl space-y-5 text-center">

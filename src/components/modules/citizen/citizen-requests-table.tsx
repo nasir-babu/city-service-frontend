@@ -20,7 +20,9 @@ interface CitizenRequestsTableProps {
   requests: any[];
 }
 
-export default function CitizenRequestsTable({ requests }: CitizenRequestsTableProps) {
+export default function CitizenRequestsTable({
+  requests,
+}: CitizenRequestsTableProps) {
   const router = useRouter();
   const { mutate: initiateStripePayment, isPending: isPaying } =
     useCreateCheckoutSession();
@@ -78,9 +80,7 @@ export default function CitizenRequestsTable({ requests }: CitizenRequestsTableP
                     (item.totalAmount && item.totalAmount > 0));
 
                 const canPayWithStripe =
-                  isCategoryPaid &&
-                  !item.isPaid &&
-                  item.status === "ACCEPTED";
+                  isCategoryPaid && !item.isPaid && item.status === "ACCEPTED";
 
                 const isAwaitingStaffWork =
                   item.isPaid &&
@@ -104,7 +104,7 @@ export default function CitizenRequestsTable({ requests }: CitizenRequestsTableP
                     <TableCell>
                       <Badge variant={isCategoryPaid ? "default" : "secondary"}>
                         {isCategoryPaid
-                          ? `Paid (৳${item.totalAmount || item.amount || 0})`
+                          ? `Paid (${item.totalAmount || item.amount || 0})`
                           : "Free Service"}
                       </Badge>
                     </TableCell>
@@ -126,7 +126,8 @@ export default function CitizenRequestsTable({ requests }: CitizenRequestsTableP
                             </Badge>
                             {isAwaitingStaffWork && (
                               <span className="text-[11px] text-amber-600 flex items-center gap-1 font-medium">
-                                <Clock className="size-3" /> Waiting for staff to start work
+                                <Clock className="size-3" /> Waiting for staff
+                                to start work
                               </span>
                             )}
                           </div>
@@ -142,7 +143,8 @@ export default function CitizenRequestsTable({ requests }: CitizenRequestsTableP
                           </Button>
                         ) : item.status === "ASSIGNED" ? (
                           <span className="text-xs text-amber-600 flex items-center justify-end gap-1 font-medium">
-                            <Clock className="size-3" /> Waiting for Staff Acceptance
+                            <Clock className="size-3" /> Waiting for Staff
+                            Acceptance
                           </span>
                         ) : (
                           <span className="text-xs text-slate-400">N/A</span>

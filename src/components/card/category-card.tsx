@@ -2,14 +2,14 @@
 
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { 
-  Tag, 
-  ShieldCheck, 
-  CreditCard, 
-  ArrowUpRight, 
-  Layers, 
+import {
+  Tag,
+  ShieldCheck,
+  CreditCard,
+  ArrowUpRight,
+  Layers,
   Sparkles,
-  CheckCircle2
+  CheckCircle2,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useGetMe } from "@/hooks/auth.hook";
@@ -41,7 +41,9 @@ export function CategoryCard({ category }: { category: CategoryProps }) {
         description: "Please login as a citizen to create a service request.",
       });
     } else if (role === "CITIZEN") {
-      router.push(`/citizen-dashboard/create-request?categoryId=${category.id}`);
+      router.push(
+        `/citizen-dashboard/create-request?categoryId=${category.id}`,
+      );
     } else if (role === "ADMIN") {
       router.push(`/admin-dashboard/create-request?categoryId=${category.id}`);
     } else if (role === "STAFF") {
@@ -102,7 +104,7 @@ export function CategoryCard({ category }: { category: CategoryProps }) {
             {/* Price Badge if applicable */}
             {isPaid && category.price !== undefined && (
               <span className="text-xs font-bold text-amber-600 dark:text-amber-400 bg-amber-100/50 dark:bg-amber-950/40 px-2 py-0.5 rounded-md">
-                ৳{category.price}
+                {category.price}
               </span>
             )}
           </div>

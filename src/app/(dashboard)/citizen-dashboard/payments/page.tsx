@@ -113,7 +113,7 @@ export default function PaymentHistoryPage() {
 
                     {/* Amount */}
                     <TableCell className="font-semibold text-emerald-600">
-                      ৳{payment.amount}
+                      {payment.amount}
                     </TableCell>
 
                     {/* Payment Method */}

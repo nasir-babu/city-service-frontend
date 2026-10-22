@@ -97,7 +97,7 @@ export default function StaffAssignedRequestsTable({
                     <TableCell>
                       <Badge variant={isCategoryPaid ? "default" : "secondary"}>
                         {isCategoryPaid
-                          ? `Paid (৳${item.totalAmount || item.amount || 0})`
+                          ? `Paid (${item.totalAmount || item.amount || 0})`
                           : "Free Service"}
                       </Badge>
                     </TableCell>
@@ -107,7 +107,7 @@ export default function StaffAssignedRequestsTable({
                       {isCategoryPaid ? (
                         isPaymentDone ? (
                           <Badge className="bg-emerald-100 text-emerald-700 hover:bg-emerald-100 border-emerald-200">
-                            Paid (৳{item.totalAmount || item.amount || 0})
+                            Paid ({item.totalAmount || item.amount || 0})
                           </Badge>
                         ) : (
                           <Badge

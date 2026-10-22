@@ -124,10 +124,11 @@
   }
   body {
     @apply bg-background text-foreground;
-    -webkit-font-smoothing: antialiased; /* লেখাগুলোকে ফ্রেস ও শার্প করবে */
+    -webkit-font-smoothing: antialiased; /*      */
     -moz-osx-font-smoothing: grayscale;
   }
   html {
     @apply font-sans;
+    scroll-behavior: smooth;
   }
 }

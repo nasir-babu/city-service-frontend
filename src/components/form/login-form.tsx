@@ -47,7 +47,8 @@ export function LoginForm() {
         onSuccess: (res: any) => {
           if (!res?.success) {
             toast.error("Login Failed", {
-              description: res?.message || "Invalid credentials. Please try again.",
+              description:
+                res?.message || "Invalid credentials. Please try again.",
             });
             return;
           }
@@ -56,12 +57,15 @@ export function LoginForm() {
             description: "Login completed successfully.",
           });
 
-          // সরাসরি মেইন পেজে রিডাইরেক্ট
+          //
           router.push("/");
         },
         onError: (err: any) => {
           toast.error("Authorization Failure", {
-            description: err?.data?.message || err?.message || "Something went wrong. Please try again.",
+            description:
+              err?.data?.message ||
+              err?.message ||
+              "Something went wrong. Please try again.",
           });
         },
       });
@@ -102,7 +106,8 @@ export function LoginForm() {
       },
       onError: (err: any) => {
         toast.error("Demo Authorization Failure", {
-          description: err?.data?.message || err?.message || "Something went wrong.",
+          description:
+            err?.data?.message || err?.message || "Something went wrong.",
         });
       },
     });
@@ -222,16 +227,16 @@ export function LoginForm() {
         <p className="text-xs text-center font-medium text-muted-foreground">
           Quick Demo Login (Evaluator Access)
         </p>
-        <div className="grid grid-cols-3 gap-2">
+        <div className="grid grid-cols-3 gap-2 ">
           <Button
             type="button"
             variant="outline"
             size="sm"
             disabled={loginPending}
             onClick={() => handleDemoLogin("CITIZEN")}
-            className="flex flex-col items-center gap-1 py-3 h-auto"
+            className="flex flex-col items-center gap-1 py-3 h-auto bg-orange-300  text-white"
           >
-            <User className="size-4 text-blue-500" />
+            <User className="size-4" />
             <span className="text-[11px]">Citizen</span>
           </Button>
 
@@ -241,10 +246,10 @@ export function LoginForm() {
             size="sm"
             disabled={loginPending}
             onClick={() => handleDemoLogin("STAFF")}
-            className="flex flex-col items-center gap-1 py-3 h-auto"
+            className="flex flex-col items-center gap-1 py-3 h-auto bg-gray-400 text-white"
           >
-            <Wrench className="size-4 text-amber-500" />
-            <span className="text-[11px]">Staff</span>
+            <Wrench className="size-4 " />
+            <span className="text-[11px] ">Staff</span>
           </Button>
 
           <Button
@@ -253,9 +258,9 @@ export function LoginForm() {
             size="sm"
             disabled={loginPending}
             onClick={() => handleDemoLogin("ADMIN")}
-            className="flex flex-col items-center gap-1 py-3 h-auto"
+            className="flex flex-col items-center gap-1 py-3 h-auto bg-orange-400/80 text-white"
           >
-            <ShieldCheck className="size-4 text-emerald-500" />
+            <ShieldCheck className="size-4 " />
             <span className="text-[11px]">Admin</span>
           </Button>
         </div>

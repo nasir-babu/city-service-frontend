@@ -206,8 +206,10 @@ export function CreateServiceRequestForm({
     if (suggestions.category && categoryList.length > 0) {
       const matchedCategory = categoryList.find(
         (cat: any) =>
-          cat.name.toLowerCase().includes(suggestions.category!.toLowerCase()) ||
-          suggestions.category!.toLowerCase().includes(cat.name.toLowerCase())
+          cat.name
+            .toLowerCase()
+            .includes(suggestions.category!.toLowerCase()) ||
+          suggestions.category!.toLowerCase().includes(cat.name.toLowerCase()),
       );
 
       if (matchedCategory) {
@@ -235,7 +237,6 @@ export function CreateServiceRequestForm({
 
   return (
     <div className="w-full max-w-5xl mx-auto p-4 sm:p-6 bg-card rounded-xl border border-border shadow-sm space-y-6">
-      
       {/* AI ASSISTANT TOGGLE HEADER */}
       <div className="rounded-xl border border-emerald-500/30 bg-emerald-50/50 dark:bg-emerald-950/20 p-4 transition-all">
         <div className="flex items-center justify-between gap-3">
@@ -364,7 +365,7 @@ export function CreateServiceRequestForm({
                             <SelectItem key={cat.id} value={cat.id}>
                               {cat.name} ({cat.type}
                               {cat.type === "PAID" && cat.unitPrice
-                                ? ` - ৳${cat.unitPrice}/unit`
+                                ? ` - ${cat.unitPrice}/unit`
                                 : ""}
                               )
                             </SelectItem>
@@ -506,7 +507,7 @@ export function CreateServiceRequestForm({
                           Amount
                         </span>
                         <span className="text-lg font-bold text-primary">
-                          ৳ {totalAmount.toLocaleString()} BDT
+                          {totalAmount.toLocaleString()} BDT
                         </span>
                         <span className="text-[11px] text-muted-foreground">
                           ({unitPrice} BDT / unit × {quantity || 1})

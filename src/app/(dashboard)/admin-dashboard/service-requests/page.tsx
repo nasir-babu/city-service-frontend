@@ -309,7 +309,7 @@ export default function AdminServiceRequestsPage() {
                           variant={isCategoryPaid ? "default" : "secondary"}
                         >
                           {isCategoryPaid
-                            ? `Paid (৳${req.totalAmount || req.amount || 0})`
+                            ? `Paid (${req.totalAmount || req.amount || 0})`
                             : "Free Service"}
                         </Badge>
                       </TableCell>
@@ -507,7 +507,7 @@ export default function AdminServiceRequestsPage() {
                         <>
                           <span>
                             Total Amount:{" "}
-                            <strong>৳{selectedRequest.totalAmount || 0}</strong>
+                            <strong>{selectedRequest.totalAmount || 0}</strong>
                           </span>
                           <span>
                             Payment Status:{" "}

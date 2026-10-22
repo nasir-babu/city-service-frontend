@@ -193,7 +193,7 @@ export function Footer() {
             </span>
           </div>
 
-          <div className="flex items-center gap-6">
+          {/* <div className="flex items-center gap-6">
             <Link
               href="/privacy"
               className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
@@ -212,7 +212,7 @@ export function Footer() {
             >
               Citizen Charter
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>

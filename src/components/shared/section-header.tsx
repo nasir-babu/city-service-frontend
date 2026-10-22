@@ -8,7 +8,7 @@ interface SectionHeaderProps {
   description?: string;
   badgeText?: string;
   icon?: LucideIcon;
-  align?: "left" | "center"; // Alignment option যোগ করা হয়েছে
+  align?: "left" | "center"; // Alignment option
 }
 
 export default function SectionHeader({
@@ -75,13 +75,18 @@ export default function SectionHeader({
         {/* Content Container */}
         <div
           className={`relative z-10 flex flex-col ${
-            isCenter ? "items-center text-center mx-auto max-w-3xl" : "items-start text-left max-w-2xl"
+            isCenter
+              ? "items-center text-center mx-auto max-w-3xl"
+              : "items-start text-left max-w-2xl"
           }`}
         >
           {badgeText && (
             <div className="mb-3 inline-flex items-center gap-2 rounded-full dark:text-black bg-emerald-500/10 px-3 py-1 border border-emerald-500/20">
               {Icon && (
-                <Icon className="size-4 text-emerald-600 shrink-0" strokeWidth={1.7} />
+                <Icon
+                  className="size-4 text-emerald-600 shrink-0"
+                  strokeWidth={1.7}
+                />
               )}
               <span className="text-xs tracking-wide uppercase font-medium dark:text-white ">
                 {badgeText}

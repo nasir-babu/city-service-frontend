@@ -195,7 +195,7 @@ export default function AdminPaymentsPage() {
                       {payment.serviceRequest?.title || "N/A"}
                     </TableCell>
                     <TableCell className="font-semibold text-xs text-slate-900">
-                      ৳{payment.amount}
+                      {payment.amount}
                     </TableCell>
                     <TableCell>{getStatusBadge(payment.status)}</TableCell>
                     <TableCell className="text-[11px] text-slate-500">

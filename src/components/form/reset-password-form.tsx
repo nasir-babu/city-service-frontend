@@ -36,7 +36,7 @@ export default function ResetPasswordForm() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  // URL Query Params থেকে অটো ইমেইল ফিল
+  // URL Query Params
   const emailFromQuery = searchParams.get("email") || "";
 
   const [email, setEmail] = useState(emailFromQuery);
@@ -50,7 +50,7 @@ export default function ResetPasswordForm() {
   const { mutate: resetPassword, isPending } = useResetPassword();
   const { mutate: resendOtp, isPending: isResending } = useForgotPassword();
 
-  // ইমেইল না থাকলে Forgot Password পেজে পাঠানো
+  //    Forgot Password
   useEffect(() => {
     if (!emailFromQuery) {
       router.push("/forgot-password");
@@ -84,7 +84,7 @@ export default function ResetPasswordForm() {
             description: err?.data?.message || "Something went wrong.",
           });
         },
-      }
+      },
     );
   };
 
@@ -97,13 +97,15 @@ export default function ResetPasswordForm() {
     if (!newPassword || newPassword.length < 8) {
       newErrors.newPassword = "Password must be at least 8 characters.";
     } else if (!/[A-Z]/.test(newPassword)) {
-      newErrors.newPassword = "Password must contain at least one uppercase letter.";
+      newErrors.newPassword =
+        "Password must contain at least one uppercase letter.";
     } else if (!/[0-9]/.test(newPassword)) {
       newErrors.newPassword = "Password must contain at least one number.";
     } else if (!/[@$!%*?&]/.test(newPassword)) {
-      newErrors.newPassword = "Password must contain at least one special character.";
+      newErrors.newPassword =
+        "Password must contain at least one special character.";
     }
-    
+
     if (newPassword !== confirmPassword) {
       newErrors.confirmPassword = "Passwords do not match.";
     }
@@ -131,10 +133,11 @@ export default function ResetPasswordForm() {
         },
         onError: (err: any) => {
           toast.error("Reset Failure", {
-            description: err?.data?.message || err?.message || "Something went wrong.",
+            description:
+              err?.data?.message || err?.message || "Something went wrong.",
           });
         },
-      }
+      },
     );
   };
 
@@ -146,7 +149,8 @@ export default function ResetPasswordForm() {
         <CardTitle>Reset Password</CardTitle>
         <CardDescription>
           Enter the 8-digit OTP sent to{" "}
-          <span className="font-semibold text-foreground">{email}</span> and set your new password.
+          <span className="font-semibold text-foreground">{email}</span> and set
+          your new password.
         </CardDescription>
       </CardHeader>
 
@@ -228,7 +232,8 @@ export default function ResetPasswordForm() {
                 value={newPassword}
                 onChange={(e) => {
                   setNewPassword(e.target.value);
-                  if (errors.newPassword) setErrors((prev) => ({ ...prev, newPassword: "" }));
+                  if (errors.newPassword)
+                    setErrors((prev) => ({ ...prev, newPassword: "" }));
                 }}
                 className="pl-9 pr-9"
               />
@@ -238,15 +243,23 @@ export default function ResetPasswordForm() {
                 onClick={() => setShowPassword(!showPassword)}
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
               >
-                {showPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
+                {showPassword ? (
+                  <EyeOff className="size-4" />
+                ) : (
+                  <Eye className="size-4" />
+                )}
               </button>
             </div>
-            {errors.newPassword && <FieldError errors={[{ message: errors.newPassword }]} />}
+            {errors.newPassword && (
+              <FieldError errors={[{ message: errors.newPassword }]} />
+            )}
           </Field>
 
           {/* Confirm Password */}
           <Field data-invalid={!!errors.confirmPassword}>
-            <FieldLabel htmlFor="confirmPassword">Confirm New Password</FieldLabel>
+            <FieldLabel htmlFor="confirmPassword">
+              Confirm New Password
+            </FieldLabel>
             <div className="relative">
               <Input
                 id="confirmPassword"
@@ -256,13 +269,16 @@ export default function ResetPasswordForm() {
                 value={confirmPassword}
                 onChange={(e) => {
                   setConfirmPassword(e.target.value);
-                  if (errors.confirmPassword) setErrors((prev) => ({ ...prev, confirmPassword: "" }));
+                  if (errors.confirmPassword)
+                    setErrors((prev) => ({ ...prev, confirmPassword: "" }));
                 }}
                 className="pl-9"
               />
               <ShieldCheck className="size-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
             </div>
-            {errors.confirmPassword && <FieldError errors={[{ message: errors.confirmPassword }]} />}
+            {errors.confirmPassword && (
+              <FieldError errors={[{ message: errors.confirmPassword }]} />
+            )}
           </Field>
         </form>
       </CardContent>

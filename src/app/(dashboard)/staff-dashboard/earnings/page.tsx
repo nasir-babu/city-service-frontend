@@ -72,7 +72,7 @@ export default function StaffEarningsPage() {
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold text-slate-900 font-primaty dark:text-white/80">
-              ৳{totalEarnings.toLocaleString()}
+              {totalEarnings.toLocaleString()}
             </div>
             <p className="text-xs text-slate-500 mt-1 flex items-center gap-1">
               <TrendingUp className="size-3 text-emerald-500" /> From completed
@@ -187,9 +187,8 @@ export default function StaffEarningsPage() {
                       </Badge>
                     </TableCell>
 
-                    {/* Amount - ৩. এখানে totalAmount চেক করা হলো */}
+                    {/* Amount - .  totalAmount    */}
                     <TableCell className="text-right font-semibold text-emerald-600">
-                      ৳
                       {typeof task.totalAmount === "number"
                         ? task.totalAmount
                         : typeof task.amount === "number"

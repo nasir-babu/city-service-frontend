@@ -140,7 +140,7 @@ export function ComplaintCard({
                     : "bg-rose-100 text-rose-800"
                 }`}
               >
-                ৳{complaint.totalAmount}
+                {complaint.totalAmount}
               </span>
             )}
           </div>
@@ -181,9 +181,7 @@ export function ComplaintCard({
         {/* Posted By Box - Made Pure White with Clean Border */}
         {complaint.citizen?.name && (
           <div className="flex items-center justify-between bg-white p-2 rounded-xl border border-slate-200 shadow-2xs dark:bg-card dark:border-border">
-            <span className="text-[11px] font-semibold  pl-1">
-              Posted by
-            </span>
+            <span className="text-[11px] font-semibold  pl-1">Posted by</span>
             <div className="flex items-center gap-1.5">
               <div className="size-6 rounded-full flex items-center justify-center">
                 <User className="size-3.5 text-emerald-700" />

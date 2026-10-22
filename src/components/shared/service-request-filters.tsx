@@ -11,18 +11,27 @@ import {
 } from "../ui/select";
 import { Button } from "../ui/button";
 import { RotateCcw, Search, SlidersHorizontal } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export function ServiceRequestFilters() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  // Get current filter values
+  // Get current filter values with fallback empty string
   const currentSearch = searchParams.get("search") || "";
   const currentStatus = searchParams.get("status") || "ALL";
   const currentPriority = searchParams.get("priority") || "ALL";
   const currentType = searchParams.get("type") || "ALL";
   const currentSortBy = searchParams.get("sortBy") || "createdAt";
+
+  // Controlled search state to fix Base UI warning
+  const [searchValue, setSearchValue] = useState(currentSearch);
+
+  // Keep local search state in sync with URL params
+  useEffect(() => {
+    setSearchValue(searchParams.get("search") || "");
+  }, [searchParams]);
 
   // Helper to update query params
   const handleFilterChange = (key: string, value: string) => {
@@ -39,9 +48,10 @@ export function ServiceRequestFilters() {
     router.push(`${pathname}?${params.toString()}`);
   };
 
-  const handleSearch = (term: string) => {
+  const handleSearchChange = (term: string) => {
+    setSearchValue(term);
     const params = new URLSearchParams(searchParams.toString());
-    if (term) {
+    if (term.trim()) {
       params.set("search", term);
     } else {
       params.delete("search");
@@ -51,6 +61,7 @@ export function ServiceRequestFilters() {
   };
 
   const handleReset = () => {
+    setSearchValue("");
     router.push(pathname);
   };
 
@@ -71,8 +82,8 @@ export function ServiceRequestFilters() {
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
           <Input
             placeholder="Search by title..."
-            defaultValue={currentSearch}
-            onChange={(e) => handleSearch(e.target.value)}
+            value={searchValue}
+            onChange={(e) => handleSearchChange(e.target.value)}
             className="pl-9 h-9 text-xs rounded-lg"
           />
         </div>
@@ -83,7 +94,7 @@ export function ServiceRequestFilters() {
         <label className="text-xs font-semibold text-foreground">Status</label>
         <Select
           value={currentStatus}
-          onValueChange={(val) => handleFilterChange("status", val as string)}
+          onValueChange={(val) => handleFilterChange("status", val)}
         >
           <SelectTrigger className="h-9 text-xs rounded-lg w-full">
             <SelectValue placeholder="All Status" />
@@ -104,7 +115,7 @@ export function ServiceRequestFilters() {
         </label>
         <Select
           value={currentType}
-          onValueChange={(val) => handleFilterChange("type", val as string)}
+          onValueChange={(val) => handleFilterChange("type", val)}
         >
           <SelectTrigger className="h-9 text-xs rounded-lg w-full">
             <SelectValue placeholder="All Types" />
@@ -124,7 +135,7 @@ export function ServiceRequestFilters() {
         </label>
         <Select
           value={currentPriority}
-          onValueChange={(val) => handleFilterChange("priority", val as string)}
+          onValueChange={(val) => handleFilterChange("priority", val)}
         >
           <SelectTrigger className="h-9 text-xs rounded-lg w-full">
             <SelectValue placeholder="All Priority" />
@@ -144,7 +155,7 @@ export function ServiceRequestFilters() {
         <label className="text-xs font-semibold text-foreground">Sort By</label>
         <Select
           value={currentSortBy}
-          onValueChange={(val) => handleFilterChange("sortBy", val as string)}
+          onValueChange={(val) => handleFilterChange("sortBy", val)}
         >
           <SelectTrigger className="h-9 text-xs rounded-lg w-full">
             <SelectValue placeholder="Sort By" />

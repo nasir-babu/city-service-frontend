@@ -21,7 +21,7 @@ export function useGetCategories() {
   });
 }
 
-// নতুন হুকসমূহ
+//
 export const useGetAllCategories = (params?: ICategoryQueryParams) => {
   return useQuery({
     queryKey: ["categories", params],

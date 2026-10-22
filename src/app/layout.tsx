@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Providers from "@/providers";
 import "./globals.css";
-import { Playfair_Display, DM_Sans } from "next/font/google"; // ১. গুগল ফন্ট থেকে Playfair Display ও DM Sans ইম্পোর্ট করা হলো
+import { Playfair_Display, DM_Sans } from "next/font/google"; // .    Playfair Display  DM Sans
 import { cn } from "@/lib/utils";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "@/providers/theme-provider";
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   title: "City Service Portal",
   description: "City Service Management System",
   icons: {
-    icon: "/logo.jpg", 
+    icon: "/logo.jpg",
   },
 };
 

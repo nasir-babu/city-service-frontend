@@ -44,21 +44,21 @@ export default function ForgotPasswordForm() {
             description: "Please check your email for the 6-digit OTP code.",
           });
 
-          // ইমেইল সহ সরাসরি রিসেট পাসওয়ার্ড পেজে রিডাইরেক্ট
+          //
           router.push(`/reset-password?email=${encodeURIComponent(email)}`);
         },
         onError: (err: any) => {
           toast.error("Error", {
-            description: err?.data?.message || err?.message || "Something went wrong.",
+            description:
+              err?.data?.message || err?.message || "Something went wrong.",
           });
         },
-      }
+      },
     );
   };
 
   return (
     <div className="w-full max-w-md space-y-6 mx-auto">
-
       {/* Form Card UI */}
       <Card className="border shadow-sm bg-white dark:bg-slate-900 dark:border-slate-800">
         <CardHeader className="text-center space-y-2 pb-4 border-b bg-slate-50/40 dark:bg-slate-900/40 dark:border-slate-800">
@@ -69,7 +69,8 @@ export default function ForgotPasswordForm() {
             Forgot Your Password?
           </CardTitle>
           <p className="text-xs text-slate-500 dark:text-slate-400 max-w-xs mx-auto">
-            Enter your registered email address below to receive password reset instructions.
+            Enter your registered email address below to receive password reset
+            instructions.
           </p>
         </CardHeader>
 
@@ -93,7 +94,9 @@ export default function ForgotPasswordForm() {
                 />
                 <Mail className="size-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
               </div>
-              {error && <p className="text-[11px] text-rose-500 mt-1">{error}</p>}
+              {error && (
+                <p className="text-[11px] text-rose-500 mt-1">{error}</p>
+              )}
             </div>
 
             <Button
@@ -114,7 +117,9 @@ export default function ForgotPasswordForm() {
           {/* Helper Alert */}
           <div className="p-3 bg-slate-50 dark:bg-slate-800 border dark:border-slate-700 rounded-lg flex items-center gap-2 text-[11px] text-slate-500 dark:text-slate-400">
             <ShieldAlert className="size-4 text-indigo-500 flex-shrink-0" />
-            <span>Enter your email to receive a secure verification code instantly.</span>
+            <span>
+              Enter your email to receive a secure verification code instantly.
+            </span>
           </div>
 
           {/* Back to Login Link */}

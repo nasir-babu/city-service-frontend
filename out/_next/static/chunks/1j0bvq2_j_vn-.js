@@ -1,1 +1,1394 @@
-(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,81193,e=>{"use strict";var t=e.i(56420);let a={name:"briefcase",size:24,node:[["path",{d:"M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16",key:"jecpp"}],["rect",{width:"20",height:"14",x:"2",y:"6",rx:"2",key:"i6l2r4"}]]};a.node;let s=(0,t.default)(a);e.s(["Briefcase",0,s],81193)},51757,e=>{"use strict";var t=e.i(56420);let a={name:"circle-check",size:24,node:[["circle",{cx:"12",cy:"12",r:"10",key:"1mglay"}],["path",{d:"m16 9-5.5 5.5L8 12",key:"xofnsj"}]],aliases:["check-circle-2"]};a.node;let s=(0,t.default)(a);e.s(["CheckCircle2",0,s],51757)},26091,e=>{"use strict";var t=e.i(56420);let a={name:"file-text",size:24,node:[["path",{d:"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z",key:"1oefj6"}],["path",{d:"M14 2v5a1 1 0 0 0 1 1h5",key:"wfsgrz"}],["path",{d:"M10 9H8",key:"b1mrlr"}],["path",{d:"M16 13H8",key:"t4e002"}],["path",{d:"M16 17H8",key:"z1uh3a"}]]};a.node;let s=(0,t.default)(a);e.s(["FileText",0,s],26091)},82289,e=>{"use strict";var t=e.i(43476),a=e.i(932),s=e.i(15288),r=e.i(84774),l=e.i(87486),i=e.i(6715),d=e.i(56420);let n={name:"dollar-sign",size:24,node:[["line",{x1:"12",x2:"12",y1:"2",y2:"22",key:"7eqyqh"}],["path",{d:"M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6",key:"1b0p4s"}]]};n.node;let c=(0,d.default)(n);var o=e.i(51757),u=e.i(81193);let m={name:"trending-up",size:24,node:[["path",{d:"M16 7h6v6",key:"box55l"}],["path",{d:"m22 7-8.5 8.5-5-5L2 17",key:"1t1m79"}]]};m.node;let x=(0,d.default)(m);var b=e.i(38580),h=e.i(7132);function f(e){return(0,t.jsxs)(r.TableRow,{children:[(0,t.jsx)(r.TableCell,{className:"font-semibold text-slate-800 dark:text-white/50",children:e.title}),(0,t.jsx)(r.TableCell,{className:"text-xs text-slate-600",children:"object"==typeof e.category?e.category?.name||e.category?.title||"General Service":e.category||"General Service"}),(0,t.jsx)(r.TableCell,{children:(0,t.jsx)(l.Badge,{className:e.isPaid?"bg-emerald-100 text-emerald-700 border-emerald-200":"bg-amber-100 text-amber-700 border-amber-200",children:e.isPaid?"Paid":"Unpaid"})}),(0,t.jsx)(r.TableCell,{children:(0,t.jsx)(l.Badge,{variant:"outline",className:"text-slate-600",children:e.status})}),(0,t.jsxs)(r.TableCell,{className:"text-right font-semibold text-emerald-600",children:["৳","number"==typeof e.totalAmount?e.totalAmount:"number"==typeof e.amount?e.amount:"number"==typeof e.service?.price?e.service.price:0]})]},e.id)}function g(e,t){return e+("number"==typeof t.totalAmount?t.totalAmount:"number"==typeof t.amount?t.amount:"number"==typeof t.service?.price?t.service.price:0)}function y(e){return!0===e.isPaid&&("RESOLVED"===e.status||"COMPLETED"===e.status)}e.s(["default",0,function(){let e,l,d,n,m,v,p,j,N,w,k,S,T,q,C,_,H,R=(0,a.c)(57),{data:z,isLoading:A}=(0,b.useGetStaffAssignedRequests)();if(A){let e;return R[0]===Symbol.for("react.memo_cache_sentinel")?(e=(0,t.jsx)(i.TableSkeleton,{}),R[0]=e):e=R[0],e}if(R[1]!==z?.data){let a,i,b,T,q,C,_,H,A,Q,P,E,K=z?.data||[];console.log(K);let M=K.filter(y),F=M.reduce(g,0),G=M.length;w="space-y-8",R[14]===Symbol.for("react.memo_cache_sentinel")?(k=(0,t.jsx)(h.default,{title:(0,t.jsxs)(t.Fragment,{children:["Earnings & ",(0,t.jsx)("span",{className:"text-blue-400",children:"Analytics"})]}),description:"Track your total service earnings, completed paid tasks, and financial\r\n          history."}),R[14]=k):k=R[14],R[15]===Symbol.for("react.memo_cache_sentinel")?(a=(0,t.jsx)(s.CardTitle,{className:"text-sm font-medium text-slate-600 font-primaty dark:text-white/80",children:"Total Earnings"}),R[15]=a):a=R[15],R[16]===Symbol.for("react.memo_cache_sentinel")?(i=(0,t.jsxs)(s.CardHeader,{className:"flex flex-row items-center justify-between pb-2",children:[a,(0,t.jsx)("div",{className:"p-2 bg-emerald-50 text-emerald-600 rounded-xl ",children:(0,t.jsx)(c,{className:"size-5"})})]}),R[16]=i):i=R[16],R[17]===Symbol.for("react.memo_cache_sentinel")?(b=(0,t.jsxs)("p",{className:"text-xs text-slate-500 mt-1 flex items-center gap-1",children:[(0,t.jsx)(x,{className:"size-3 text-emerald-500"})," From completed paid services"]}),R[17]=b):b=R[17];let B=(0,t.jsxs)(s.CardContent,{children:[(0,t.jsxs)("div",{className:"text-3xl font-bold text-slate-900 font-primaty dark:text-white/80",children:["৳",F.toLocaleString()]}),b]});R[18]!==B?(T=(0,t.jsxs)(s.Card,{className:"border-slate-200/80 shadow-sm",children:[i,B]}),R[18]=B,R[19]=T):T=R[19],R[20]===Symbol.for("react.memo_cache_sentinel")?(q=(0,t.jsx)(s.CardTitle,{className:"text-sm font-medium text-slate-600",children:"Paid Tasks Completed"}),R[20]=q):q=R[20],R[21]===Symbol.for("react.memo_cache_sentinel")?(C=(0,t.jsxs)(s.CardHeader,{className:"flex flex-row items-center justify-between pb-2",children:[q,(0,t.jsx)("div",{className:"p-2 bg-indigo-50 text-indigo-600 rounded-xl",children:(0,t.jsx)(o.CheckCircle2,{className:"size-5"})})]}),R[21]=C):C=R[21],R[22]===Symbol.for("react.memo_cache_sentinel")?(_=(0,t.jsx)("p",{className:"text-xs text-slate-500 mt-1",children:"Successfully resolved & paid"}),R[22]=_):_=R[22];let L=(0,t.jsxs)(s.CardContent,{children:[(0,t.jsx)("div",{className:"text-3xl font-bold text-slate-900 font-primaty dark:text-white/80",children:G}),_]});R[23]!==L?(H=(0,t.jsxs)(s.Card,{className:"border-slate-200/80 shadow-sm",children:[C,L]}),R[23]=L,R[24]=H):H=R[24],R[25]===Symbol.for("react.memo_cache_sentinel")?(A=(0,t.jsx)(s.CardTitle,{className:"text-sm font-medium text-slate-600",children:"Total Assigned Tasks"}),R[25]=A):A=R[25],R[26]===Symbol.for("react.memo_cache_sentinel")?(Q=(0,t.jsxs)(s.CardHeader,{className:"flex flex-row items-center justify-between pb-2",children:[A,(0,t.jsx)("div",{className:"p-2 bg-amber-50 text-amber-600 rounded-xl",children:(0,t.jsx)(u.Briefcase,{className:"size-5"})})]}),R[26]=Q):Q=R[26],R[27]===Symbol.for("react.memo_cache_sentinel")?(P=(0,t.jsx)("p",{className:"text-xs text-slate-500 mt-1",children:"Overall assigned workload"}),R[27]=P):P=R[27];let O=(0,t.jsxs)(s.CardContent,{children:[(0,t.jsx)("div",{className:"text-3xl font-bold text-slate-900 font-primaty dark:text-white/80",children:K.length}),P]});R[28]!==O?(E=(0,t.jsxs)(s.Card,{className:"border-slate-200/80 shadow-sm",children:[Q,O]}),R[28]=O,R[29]=E):E=R[29],R[30]!==T||R[31]!==H||R[32]!==E?(S=(0,t.jsxs)("div",{className:"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12",children:[T,H,E]}),R[30]=T,R[31]=H,R[32]=E,R[33]=S):S=R[33],n=s.Card,j="border-slate-200/80 shadow-sm",R[34]===Symbol.for("react.memo_cache_sentinel")?(N=(0,t.jsx)(s.CardHeader,{className:"border-b bg-slate-50/50 pb-4 dark:bg-gray-800",children:(0,t.jsx)(s.CardTitle,{className:"text-lg font-primary font-semibold text-slate-800 dark:text-white pt-2",children:"Paid Service History"})}),R[34]=N):N=R[34],d=s.CardContent,p="p-0",l=r.Table,R[35]===Symbol.for("react.memo_cache_sentinel")?(v=(0,t.jsx)(r.TableHeader,{children:(0,t.jsxs)(r.TableRow,{children:[(0,t.jsx)(r.TableHead,{children:"Service Title"}),(0,t.jsx)(r.TableHead,{children:"Category"}),(0,t.jsx)(r.TableHead,{children:"Payment Status"}),(0,t.jsx)(r.TableHead,{children:"Task Status"}),(0,t.jsx)(r.TableHead,{className:"text-right",children:"Amount Earned"})]})}),R[35]=v):v=R[35],e=r.TableBody,m=0===M.length?(0,t.jsx)(r.TableRow,{children:(0,t.jsx)(r.TableCell,{colSpan:5,className:"text-center py-12 text-slate-500 ",children:"No paid earnings history found yet."})}):M.map(f),R[1]=z?.data,R[2]=e,R[3]=l,R[4]=d,R[5]=n,R[6]=m,R[7]=v,R[8]=p,R[9]=j,R[10]=N,R[11]=w,R[12]=k,R[13]=S}else e=R[2],l=R[3],d=R[4],n=R[5],m=R[6],v=R[7],p=R[8],j=R[9],N=R[10],w=R[11],k=R[12],S=R[13];return R[36]!==e||R[37]!==m?(T=(0,t.jsx)(e,{children:m}),R[36]=e,R[37]=m,R[38]=T):T=R[38],R[39]!==l||R[40]!==v||R[41]!==T?(q=(0,t.jsxs)(l,{children:[v,T]}),R[39]=l,R[40]=v,R[41]=T,R[42]=q):q=R[42],R[43]!==d||R[44]!==p||R[45]!==q?(C=(0,t.jsx)(d,{className:p,children:q}),R[43]=d,R[44]=p,R[45]=q,R[46]=C):C=R[46],R[47]!==n||R[48]!==C||R[49]!==j||R[50]!==N?(_=(0,t.jsxs)(n,{className:j,children:[N,C]}),R[47]=n,R[48]=C,R[49]=j,R[50]=N,R[51]=_):_=R[51],R[52]!==_||R[53]!==w||R[54]!==k||R[55]!==S?(H=(0,t.jsxs)("div",{className:w,children:[k,S,_]}),R[52]=_,R[53]=w,R[54]=k,R[55]=S,R[56]=H):H=R[56],H}],82289)},87486,e=>{"use strict";var t=e.i(932),a=e.i(76782),s=e.i(11825),r=e.i(25913),l=e.i(79862);let i=(0,r.cva)("group/badge inline-flex h-5 w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-4xl border border-transparent px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-all focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&>svg]:pointer-events-none [&>svg]:size-3!",{variants:{variant:{default:"bg-primary text-primary-foreground [a]:hover:bg-primary/80",secondary:"bg-secondary text-secondary-foreground [a]:hover:bg-secondary/80",destructive:"bg-destructive/10 text-destructive focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:focus-visible:ring-destructive/40 [a]:hover:bg-destructive/20",outline:"border-border text-foreground [a]:hover:bg-muted [a]:hover:text-muted-foreground",ghost:"hover:bg-muted hover:text-muted-foreground dark:hover:bg-muted/50",link:"text-primary underline-offset-4 hover:underline"}},defaultVariants:{variant:"default"}});e.s(["Badge",0,function(e){let r,d,n,c,o,u,m,x=(0,t.c)(13);if(x[0]!==e){let{className:t,variant:u,render:m,...b}=e;r=m,o=void 0===u?"default":u,c=s.useRender,d="span",n=(0,a.mergeProps)({className:(0,l.cn)(i({variant:o}),t)},b),x[0]=e,x[1]=r,x[2]=d,x[3]=n,x[4]=c,x[5]=o}else r=x[1],d=x[2],n=x[3],c=x[4],o=x[5];return x[6]!==o?(u={slot:"badge",variant:o},x[6]=o,x[7]=u):u=x[7],x[8]!==r||x[9]!==d||x[10]!==n||x[11]!==u?(m={defaultTagName:d,props:n,render:r,state:u},x[8]=r,x[9]=d,x[10]=n,x[11]=u,x[12]=m):m=x[12],c(m)}])},15288,e=>{"use strict";var t=e.i(43476),a=e.i(932),s=e.i(79862);e.s(["Card",0,function(e){let r,l,i,d,n,c=(0,a.c)(10);c[0]!==e?({className:r,size:i,...l}=e,c[0]=e,c[1]=r,c[2]=l,c[3]=i):(r=c[1],l=c[2],i=c[3]);let o=void 0===i?"default":i;return c[4]!==r?(d=(0,s.cn)("group/card flex flex-col gap-(--card-spacing) overflow-hidden rounded-xl bg-card py-(--card-spacing) text-sm text-card-foreground ring-1 ring-foreground/10 [--card-spacing:--spacing(4)] has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 data-[size=sm]:[--card-spacing:--spacing(3)] data-[size=sm]:has-data-[slot=card-footer]:pb-0 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl",r),c[4]=r,c[5]=d):d=c[5],c[6]!==l||c[7]!==o||c[8]!==d?(n=(0,t.jsx)("div",{"data-slot":"card","data-size":o,className:d,...l}),c[6]=l,c[7]=o,c[8]=d,c[9]=n):n=c[9],n},"CardContent",0,function(e){let r,l,i,d,n=(0,a.c)(8);return n[0]!==e?({className:r,...l}=e,n[0]=e,n[1]=r,n[2]=l):(r=n[1],l=n[2]),n[3]!==r?(i=(0,s.cn)("px-(--card-spacing)",r),n[3]=r,n[4]=i):i=n[4],n[5]!==l||n[6]!==i?(d=(0,t.jsx)("div",{"data-slot":"card-content",className:i,...l}),n[5]=l,n[6]=i,n[7]=d):d=n[7],d},"CardDescription",0,function(e){let r,l,i,d,n=(0,a.c)(8);return n[0]!==e?({className:r,...l}=e,n[0]=e,n[1]=r,n[2]=l):(r=n[1],l=n[2]),n[3]!==r?(i=(0,s.cn)("text-sm text-muted-foreground",r),n[3]=r,n[4]=i):i=n[4],n[5]!==l||n[6]!==i?(d=(0,t.jsx)("div",{"data-slot":"card-description",className:i,...l}),n[5]=l,n[6]=i,n[7]=d):d=n[7],d},"CardFooter",0,function(e){let r,l,i,d,n=(0,a.c)(8);return n[0]!==e?({className:r,...l}=e,n[0]=e,n[1]=r,n[2]=l):(r=n[1],l=n[2]),n[3]!==r?(i=(0,s.cn)("flex items-center rounded-b-xl border-t bg-muted/50 p-(--card-spacing)",r),n[3]=r,n[4]=i):i=n[4],n[5]!==l||n[6]!==i?(d=(0,t.jsx)("div",{"data-slot":"card-footer",className:i,...l}),n[5]=l,n[6]=i,n[7]=d):d=n[7],d},"CardHeader",0,function(e){let r,l,i,d,n=(0,a.c)(8);return n[0]!==e?({className:r,...l}=e,n[0]=e,n[1]=r,n[2]=l):(r=n[1],l=n[2]),n[3]!==r?(i=(0,s.cn)("group/card-header @container/card-header grid auto-rows-min items-start gap-1 rounded-t-xl px-(--card-spacing) has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto] [.border-b]:pb-(--card-spacing)",r),n[3]=r,n[4]=i):i=n[4],n[5]!==l||n[6]!==i?(d=(0,t.jsx)("div",{"data-slot":"card-header",className:i,...l}),n[5]=l,n[6]=i,n[7]=d):d=n[7],d},"CardTitle",0,function(e){let r,l,i,d,n=(0,a.c)(8);return n[0]!==e?({className:r,...l}=e,n[0]=e,n[1]=r,n[2]=l):(r=n[1],l=n[2]),n[3]!==r?(i=(0,s.cn)("font-heading text-base leading-snug font-medium group-data-[size=sm]/card:text-sm",r),n[3]=r,n[4]=i):i=n[4],n[5]!==l||n[6]!==i?(d=(0,t.jsx)("div",{"data-slot":"card-title",className:i,...l}),n[5]=l,n[6]=i,n[7]=d):d=n[7],d}])},6715,e=>{"use strict";var t=e.i(43476),a=e.i(932);function s(e,a){return(0,t.jsxs)("div",{className:"grid grid-cols-7 gap-4 p-5 border-b border-slate-100 dark:border-slate-800 last:border-b-0 items-center",children:[(0,t.jsxs)("div",{className:"space-y-2.5",children:[(0,t.jsx)("div",{className:"h-5 w-3/4 bg-slate-200 dark:bg-slate-800 rounded"}),(0,t.jsx)("div",{className:"h-4 w-1/2 bg-slate-100 dark:bg-slate-800/80 rounded"})]}),(0,t.jsxs)("div",{className:"space-y-2.5",children:[(0,t.jsx)("div",{className:"h-5 w-3/4 bg-slate-200 dark:bg-slate-800 rounded"}),(0,t.jsx)("div",{className:"h-4 w-1/2 bg-slate-100 dark:bg-slate-800/80 rounded"})]}),(0,t.jsx)("div",{className:"h-8 w-28 bg-slate-200 dark:bg-slate-800 rounded-full"}),(0,t.jsx)("div",{className:"h-8 w-20 bg-slate-100 dark:bg-slate-800 rounded-full"}),(0,t.jsx)("div",{className:"h-8 w-24 bg-slate-200 dark:bg-slate-800 rounded-full"}),(0,t.jsx)("div",{className:"h-10 w-full bg-slate-100 dark:bg-slate-800 rounded-xl"}),(0,t.jsx)("div",{className:"flex justify-end",children:(0,t.jsxs)("div",{className:"h-9 w-24 bg-slate-200 dark:bg-slate-800 rounded-lg flex gap-2 items-center px-3",children:[(0,t.jsx)("div",{className:"size-4 bg-slate-300 dark:bg-slate-700 rounded-full"}),(0,t.jsx)("div",{className:"h-4 flex-1 bg-slate-300 dark:bg-slate-700 rounded"})]})})]},a)}function r(e,a){return(0,t.jsx)("div",{className:"h-5 bg-slate-200 dark:bg-slate-700 rounded w-full"},a)}e.s(["TableSkeleton",0,function(){let e,l,i,d=(0,a.c)(3);return d[0]===Symbol.for("react.memo_cache_sentinel")?(e=(0,t.jsxs)("div",{className:"space-y-3",children:[(0,t.jsx)("div",{className:"h-9 w-72 bg-slate-200 dark:bg-slate-800 rounded-lg"}),(0,t.jsx)("div",{className:"h-5 w-full max-w-sm bg-slate-100 dark:bg-slate-800/80 rounded"})]}),d[0]=e):e=d[0],d[1]===Symbol.for("react.memo_cache_sentinel")?(l=(0,t.jsxs)("div",{className:"flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-2",children:[e,(0,t.jsxs)("div",{className:"flex items-center gap-3",children:[(0,t.jsx)("div",{className:"h-5 w-24 bg-slate-100 dark:bg-slate-800/80 rounded"}),(0,t.jsx)("div",{className:"h-10 w-40 bg-slate-200 dark:bg-slate-800 rounded-xl"})]})]}),d[1]=l):l=d[1],d[2]===Symbol.for("react.memo_cache_sentinel")?(i=(0,t.jsxs)("div",{className:"space-y-6 animate-pulse p-4 md:p-6 lg:p-8 bg-white dark:bg-slate-950 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm",children:[l,(0,t.jsxs)("div",{className:"border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden bg-white dark:bg-slate-900",children:[(0,t.jsx)("div",{className:"grid grid-cols-7 gap-4 p-5 bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800",children:["Title & Category","Requested By","Service Type","Payment Status","Status","Assigned Staff","Actions"].map(r)}),[...Array(6)].map(s)]})]}),d[2]=i):i=d[2],i}])},84774,e=>{"use strict";var t=e.i(43476),a=e.i(932),s=e.i(79862);e.s(["Table",0,function(e){let r,l,i,d,n=(0,a.c)(8);return n[0]!==e?({className:r,...l}=e,n[0]=e,n[1]=r,n[2]=l):(r=n[1],l=n[2]),n[3]!==r?(i=(0,s.cn)("w-full caption-bottom text-sm",r),n[3]=r,n[4]=i):i=n[4],n[5]!==l||n[6]!==i?(d=(0,t.jsx)("div",{"data-slot":"table-container",className:"relative w-full overflow-x-auto",children:(0,t.jsx)("table",{"data-slot":"table",className:i,...l})}),n[5]=l,n[6]=i,n[7]=d):d=n[7],d},"TableBody",0,function(e){let r,l,i,d,n=(0,a.c)(8);return n[0]!==e?({className:r,...l}=e,n[0]=e,n[1]=r,n[2]=l):(r=n[1],l=n[2]),n[3]!==r?(i=(0,s.cn)("[&_tr:last-child]:border-0",r),n[3]=r,n[4]=i):i=n[4],n[5]!==l||n[6]!==i?(d=(0,t.jsx)("tbody",{"data-slot":"table-body",className:i,...l}),n[5]=l,n[6]=i,n[7]=d):d=n[7],d},"TableCell",0,function(e){let r,l,i,d,n=(0,a.c)(8);return n[0]!==e?({className:r,...l}=e,n[0]=e,n[1]=r,n[2]=l):(r=n[1],l=n[2]),n[3]!==r?(i=(0,s.cn)("p-2 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0",r),n[3]=r,n[4]=i):i=n[4],n[5]!==l||n[6]!==i?(d=(0,t.jsx)("td",{"data-slot":"table-cell",className:i,...l}),n[5]=l,n[6]=i,n[7]=d):d=n[7],d},"TableHead",0,function(e){let r,l,i,d,n=(0,a.c)(8);return n[0]!==e?({className:r,...l}=e,n[0]=e,n[1]=r,n[2]=l):(r=n[1],l=n[2]),n[3]!==r?(i=(0,s.cn)("h-10 px-2 text-left align-middle font-medium whitespace-nowrap text-foreground [&:has([role=checkbox])]:pr-0",r),n[3]=r,n[4]=i):i=n[4],n[5]!==l||n[6]!==i?(d=(0,t.jsx)("th",{"data-slot":"table-head",className:i,...l}),n[5]=l,n[6]=i,n[7]=d):d=n[7],d},"TableHeader",0,function(e){let r,l,i,d,n=(0,a.c)(8);return n[0]!==e?({className:r,...l}=e,n[0]=e,n[1]=r,n[2]=l):(r=n[1],l=n[2]),n[3]!==r?(i=(0,s.cn)("[&_tr]:border-b",r),n[3]=r,n[4]=i):i=n[4],n[5]!==l||n[6]!==i?(d=(0,t.jsx)("thead",{"data-slot":"table-header",className:i,...l}),n[5]=l,n[6]=i,n[7]=d):d=n[7],d},"TableRow",0,function(e){let r,l,i,d,n=(0,a.c)(8);return n[0]!==e?({className:r,...l}=e,n[0]=e,n[1]=r,n[2]=l):(r=n[1],l=n[2]),n[3]!==r?(i=(0,s.cn)("border-b transition-colors hover:bg-muted/50 has-aria-expanded:bg-muted/50 data-[state=selected]:bg-muted",r),n[3]=r,n[4]=i):i=n[4],n[5]!==l||n[6]!==i?(d=(0,t.jsx)("tr",{"data-slot":"table-row",className:i,...l}),n[5]=l,n[6]=i,n[7]=d):d=n[7],d}])},38580,e=>{"use strict";var t=e.i(932),a=e.i(54616),s=e.i(66027),r=e.i(12598),l=e.i(15383);let i=async e=>{let t=new URLSearchParams;return e&&Object.entries(e).forEach(([e,a])=>{void 0!==a&&""!==a&&null!==a&&t.append(e,String(a))}),await (0,l.default)(`/service-request?${t.toString()}`,{method:"GET"})},d=async e=>await (0,l.default)("/service-request",{method:"POST",body:e}),n=async e=>{let t=new URLSearchParams;e&&Object.entries(e).forEach(([e,a])=>{void 0!==a&&""!==a&&null!==a&&t.append(e,String(a))});let a=t.toString();return await (0,l.default)(`/service-request/my-requests${a?`?${a}`:""}`,{method:"GET"})},c=async e=>await (0,l.default)(`/service-request/${e}`,{method:"GET"}),o=async e=>await (0,l.default)(`/service-request/${e}`,{method:"DELETE"}),u=async({id:e,status:t})=>await (0,l.default)(`/service-request/${e}/status`,{method:"PATCH",body:{status:t}}),m=async()=>await (0,l.default)("/service-request/my-assigned",{method:"GET"}),x=async({requestId:e,status:t,remarks:a})=>await (0,l.default)(`/service-request/${e}/status`,{method:"PATCH",body:{status:t,remarks:a}});function b(e){return d(e)}function h(e){return"my-requests"===e.queryKey[0]}function f(e){return"service-requests"===e.queryKey[0]}e.s(["useCreateServiceRequest",0,()=>{let e,s=(0,t.c)(2),l=(0,r.useQueryClient)();return s[0]!==l?(e={mutationFn:b,onSuccess:()=>{l.invalidateQueries({queryKey:["service-requests"]}),l.invalidateQueries({queryKey:["my-requests"]})}},s[0]=l,s[1]=e):e=s[1],(0,a.useMutation)(e)},"useDeleteServiceRequest",0,()=>{let e,s=(0,t.c)(2),l=(0,r.useQueryClient)();return s[0]!==l?(e={mutationFn:o,onSuccess:()=>{l.invalidateQueries({predicate:h}),l.invalidateQueries({predicate:f})}},s[0]=l,s[1]=e):e=s[1],(0,a.useMutation)(e)},"useGetAllServiceRequests",0,e=>{let a,r=(0,t.c)(2);return r[0]!==e?(a={queryKey:["service-requests",e],queryFn:()=>i(e),staleTime:3e5},r[0]=e,r[1]=a):a=r[1],(0,s.useQuery)(a)},"useGetMyRequests",0,e=>{let a,r=(0,t.c)(2);return r[0]!==e?(a={queryKey:["my-requests",e],queryFn:()=>n(e)},r[0]=e,r[1]=a):a=r[1],(0,s.useQuery)(a)},"useGetSingleServiceRequest",0,e=>{let a,r,l,i=(0,t.c)(7);i[0]!==e?(a=["service-request",e],r=()=>c(e),i[0]=e,i[1]=a,i[2]=r):(a=i[1],r=i[2]);let d=!!e;return i[3]!==a||i[4]!==r||i[5]!==d?(l={queryKey:a,queryFn:r,enabled:d},i[3]=a,i[4]=r,i[5]=d,i[6]=l):l=i[6],(0,s.useQuery)(l)},"useGetStaffAssignedRequests",0,()=>{let e,a=(0,t.c)(1);return a[0]===Symbol.for("react.memo_cache_sentinel")?(e={queryKey:["staff-assigned-requests"],queryFn:m,staleTime:18e4},a[0]=e):e=a[0],(0,s.useQuery)(e)},"useUpdateServiceRequestStatus",0,()=>{let e,s=(0,t.c)(2),l=(0,r.useQueryClient)();return s[0]!==l?(e={mutationFn:u,onSuccess:(e,t)=>{l.invalidateQueries({queryKey:["my-requests"]}),l.invalidateQueries({queryKey:["service-requests"]}),l.invalidateQueries({queryKey:["available-staff"]}),t?.id&&l.invalidateQueries({queryKey:["service-request",t.id]})}},s[0]=l,s[1]=e):e=s[1],(0,a.useMutation)(e)},"useUpdateStaffRequestStatus",0,()=>{let e,s=(0,t.c)(2),l=(0,r.useQueryClient)();return s[0]!==l?(e={mutationFn:x,onSuccess:()=>{l.invalidateQueries({queryKey:["staff-assigned-requests"]}),l.invalidateQueries({queryKey:["service-requests"]})}},s[0]=l,s[1]=e):e=s[1],(0,a.useMutation)(e)}],38580)}]);
+(globalThis.TURBOPACK || (globalThis.TURBOPACK = [])).push([
+  "object" == typeof document ? document.currentScript : void 0,
+  81193,
+  (e) => {
+    "use strict";
+    var t = e.i(56420);
+    let a = {
+      name: "briefcase",
+      size: 24,
+      node: [
+        [
+          "path",
+          { d: "M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16", key: "jecpp" },
+        ],
+        [
+          "rect",
+          { width: "20", height: "14", x: "2", y: "6", rx: "2", key: "i6l2r4" },
+        ],
+      ],
+    };
+    a.node;
+    let s = (0, t.default)(a);
+    e.s(["Briefcase", 0, s], 81193);
+  },
+  51757,
+  (e) => {
+    "use strict";
+    var t = e.i(56420);
+    let a = {
+      name: "circle-check",
+      size: 24,
+      node: [
+        ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
+        ["path", { d: "m16 9-5.5 5.5L8 12", key: "xofnsj" }],
+      ],
+      aliases: ["check-circle-2"],
+    };
+    a.node;
+    let s = (0, t.default)(a);
+    e.s(["CheckCircle2", 0, s], 51757);
+  },
+  26091,
+  (e) => {
+    "use strict";
+    var t = e.i(56420);
+    let a = {
+      name: "file-text",
+      size: 24,
+      node: [
+        [
+          "path",
+          {
+            d: "M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z",
+            key: "1oefj6",
+          },
+        ],
+        ["path", { d: "M14 2v5a1 1 0 0 0 1 1h5", key: "wfsgrz" }],
+        ["path", { d: "M10 9H8", key: "b1mrlr" }],
+        ["path", { d: "M16 13H8", key: "t4e002" }],
+        ["path", { d: "M16 17H8", key: "z1uh3a" }],
+      ],
+    };
+    a.node;
+    let s = (0, t.default)(a);
+    e.s(["FileText", 0, s], 26091);
+  },
+  82289,
+  (e) => {
+    "use strict";
+    var t = e.i(43476),
+      a = e.i(932),
+      s = e.i(15288),
+      r = e.i(84774),
+      l = e.i(87486),
+      i = e.i(6715),
+      d = e.i(56420);
+    let n = {
+      name: "dollar-sign",
+      size: 24,
+      node: [
+        ["line", { x1: "12", x2: "12", y1: "2", y2: "22", key: "7eqyqh" }],
+        [
+          "path",
+          {
+            d: "M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6",
+            key: "1b0p4s",
+          },
+        ],
+      ],
+    };
+    n.node;
+    let c = (0, d.default)(n);
+    var o = e.i(51757),
+      u = e.i(81193);
+    let m = {
+      name: "trending-up",
+      size: 24,
+      node: [
+        ["path", { d: "M16 7h6v6", key: "box55l" }],
+        ["path", { d: "m22 7-8.5 8.5-5-5L2 17", key: "1t1m79" }],
+      ],
+    };
+    m.node;
+    let x = (0, d.default)(m);
+    var b = e.i(38580),
+      h = e.i(7132);
+    function f(e) {
+      return (0, t.jsxs)(
+        r.TableRow,
+        {
+          children: [
+            (0, t.jsx)(r.TableCell, {
+              className: "font-semibold text-slate-800 dark:text-white/50",
+              children: e.title,
+            }),
+            (0, t.jsx)(r.TableCell, {
+              className: "text-xs text-slate-600",
+              children:
+                "object" == typeof e.category
+                  ? e.category?.name || e.category?.title || "General Service"
+                  : e.category || "General Service",
+            }),
+            (0, t.jsx)(r.TableCell, {
+              children: (0, t.jsx)(l.Badge, {
+                className: e.isPaid
+                  ? "bg-emerald-100 text-emerald-700 border-emerald-200"
+                  : "bg-amber-100 text-amber-700 border-amber-200",
+                children: e.isPaid ? "Paid" : "Unpaid",
+              }),
+            }),
+            (0, t.jsx)(r.TableCell, {
+              children: (0, t.jsx)(l.Badge, {
+                variant: "outline",
+                className: "text-slate-600",
+                children: e.status,
+              }),
+            }),
+            (0, t.jsxs)(r.TableCell, {
+              className: "text-right font-semibold text-emerald-600",
+              children: [
+                "",
+                "number" == typeof e.totalAmount
+                  ? e.totalAmount
+                  : "number" == typeof e.amount
+                    ? e.amount
+                    : "number" == typeof e.service?.price
+                      ? e.service.price
+                      : 0,
+              ],
+            }),
+          ],
+        },
+        e.id,
+      );
+    }
+    function g(e, t) {
+      return (
+        e +
+        ("number" == typeof t.totalAmount
+          ? t.totalAmount
+          : "number" == typeof t.amount
+            ? t.amount
+            : "number" == typeof t.service?.price
+              ? t.service.price
+              : 0)
+      );
+    }
+    function y(e) {
+      return (
+        !0 === e.isPaid && ("RESOLVED" === e.status || "COMPLETED" === e.status)
+      );
+    }
+    e.s(
+      [
+        "default",
+        0,
+        function () {
+          let e,
+            l,
+            d,
+            n,
+            m,
+            v,
+            p,
+            j,
+            N,
+            w,
+            k,
+            S,
+            T,
+            q,
+            C,
+            _,
+            H,
+            R = (0, a.c)(57),
+            { data: z, isLoading: A } = (0, b.useGetStaffAssignedRequests)();
+          if (A) {
+            let e;
+            return (
+              R[0] === Symbol.for("react.memo_cache_sentinel")
+                ? ((e = (0, t.jsx)(i.TableSkeleton, {})), (R[0] = e))
+                : (e = R[0]),
+              e
+            );
+          }
+          if (R[1] !== z?.data) {
+            let a,
+              i,
+              b,
+              T,
+              q,
+              C,
+              _,
+              H,
+              A,
+              Q,
+              P,
+              E,
+              K = z?.data || [];
+            console.log(K);
+            let M = K.filter(y),
+              F = M.reduce(g, 0),
+              G = M.length;
+            ((w = "space-y-8"),
+              R[14] === Symbol.for("react.memo_cache_sentinel")
+                ? ((k = (0, t.jsx)(h.default, {
+                    title: (0, t.jsxs)(t.Fragment, {
+                      children: [
+                        "Earnings & ",
+                        (0, t.jsx)("span", {
+                          className: "text-blue-400",
+                          children: "Analytics",
+                        }),
+                      ],
+                    }),
+                    description:
+                      "Track your total service earnings, completed paid tasks, and financial\r\n          history.",
+                  })),
+                  (R[14] = k))
+                : (k = R[14]),
+              R[15] === Symbol.for("react.memo_cache_sentinel")
+                ? ((a = (0, t.jsx)(s.CardTitle, {
+                    className:
+                      "text-sm font-medium text-slate-600 font-primaty dark:text-white/80",
+                    children: "Total Earnings",
+                  })),
+                  (R[15] = a))
+                : (a = R[15]),
+              R[16] === Symbol.for("react.memo_cache_sentinel")
+                ? ((i = (0, t.jsxs)(s.CardHeader, {
+                    className:
+                      "flex flex-row items-center justify-between pb-2",
+                    children: [
+                      a,
+                      (0, t.jsx)("div", {
+                        className:
+                          "p-2 bg-emerald-50 text-emerald-600 rounded-xl ",
+                        children: (0, t.jsx)(c, { className: "size-5" }),
+                      }),
+                    ],
+                  })),
+                  (R[16] = i))
+                : (i = R[16]),
+              R[17] === Symbol.for("react.memo_cache_sentinel")
+                ? ((b = (0, t.jsxs)("p", {
+                    className:
+                      "text-xs text-slate-500 mt-1 flex items-center gap-1",
+                    children: [
+                      (0, t.jsx)(x, { className: "size-3 text-emerald-500" }),
+                      " From completed paid services",
+                    ],
+                  })),
+                  (R[17] = b))
+                : (b = R[17]));
+            let B = (0, t.jsxs)(s.CardContent, {
+              children: [
+                (0, t.jsxs)("div", {
+                  className:
+                    "text-3xl font-bold text-slate-900 font-primaty dark:text-white/80",
+                  children: ["", F.toLocaleString()],
+                }),
+                b,
+              ],
+            });
+            (R[18] !== B
+              ? ((T = (0, t.jsxs)(s.Card, {
+                  className: "border-slate-200/80 shadow-sm",
+                  children: [i, B],
+                })),
+                (R[18] = B),
+                (R[19] = T))
+              : (T = R[19]),
+              R[20] === Symbol.for("react.memo_cache_sentinel")
+                ? ((q = (0, t.jsx)(s.CardTitle, {
+                    className: "text-sm font-medium text-slate-600",
+                    children: "Paid Tasks Completed",
+                  })),
+                  (R[20] = q))
+                : (q = R[20]),
+              R[21] === Symbol.for("react.memo_cache_sentinel")
+                ? ((C = (0, t.jsxs)(s.CardHeader, {
+                    className:
+                      "flex flex-row items-center justify-between pb-2",
+                    children: [
+                      q,
+                      (0, t.jsx)("div", {
+                        className:
+                          "p-2 bg-indigo-50 text-indigo-600 rounded-xl",
+                        children: (0, t.jsx)(o.CheckCircle2, {
+                          className: "size-5",
+                        }),
+                      }),
+                    ],
+                  })),
+                  (R[21] = C))
+                : (C = R[21]),
+              R[22] === Symbol.for("react.memo_cache_sentinel")
+                ? ((_ = (0, t.jsx)("p", {
+                    className: "text-xs text-slate-500 mt-1",
+                    children: "Successfully resolved & paid",
+                  })),
+                  (R[22] = _))
+                : (_ = R[22]));
+            let L = (0, t.jsxs)(s.CardContent, {
+              children: [
+                (0, t.jsx)("div", {
+                  className:
+                    "text-3xl font-bold text-slate-900 font-primaty dark:text-white/80",
+                  children: G,
+                }),
+                _,
+              ],
+            });
+            (R[23] !== L
+              ? ((H = (0, t.jsxs)(s.Card, {
+                  className: "border-slate-200/80 shadow-sm",
+                  children: [C, L],
+                })),
+                (R[23] = L),
+                (R[24] = H))
+              : (H = R[24]),
+              R[25] === Symbol.for("react.memo_cache_sentinel")
+                ? ((A = (0, t.jsx)(s.CardTitle, {
+                    className: "text-sm font-medium text-slate-600",
+                    children: "Total Assigned Tasks",
+                  })),
+                  (R[25] = A))
+                : (A = R[25]),
+              R[26] === Symbol.for("react.memo_cache_sentinel")
+                ? ((Q = (0, t.jsxs)(s.CardHeader, {
+                    className:
+                      "flex flex-row items-center justify-between pb-2",
+                    children: [
+                      A,
+                      (0, t.jsx)("div", {
+                        className: "p-2 bg-amber-50 text-amber-600 rounded-xl",
+                        children: (0, t.jsx)(u.Briefcase, {
+                          className: "size-5",
+                        }),
+                      }),
+                    ],
+                  })),
+                  (R[26] = Q))
+                : (Q = R[26]),
+              R[27] === Symbol.for("react.memo_cache_sentinel")
+                ? ((P = (0, t.jsx)("p", {
+                    className: "text-xs text-slate-500 mt-1",
+                    children: "Overall assigned workload",
+                  })),
+                  (R[27] = P))
+                : (P = R[27]));
+            let O = (0, t.jsxs)(s.CardContent, {
+              children: [
+                (0, t.jsx)("div", {
+                  className:
+                    "text-3xl font-bold text-slate-900 font-primaty dark:text-white/80",
+                  children: K.length,
+                }),
+                P,
+              ],
+            });
+            (R[28] !== O
+              ? ((E = (0, t.jsxs)(s.Card, {
+                  className: "border-slate-200/80 shadow-sm",
+                  children: [Q, O],
+                })),
+                (R[28] = O),
+                (R[29] = E))
+              : (E = R[29]),
+              R[30] !== T || R[31] !== H || R[32] !== E
+                ? ((S = (0, t.jsxs)("div", {
+                    className:
+                      "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12",
+                    children: [T, H, E],
+                  })),
+                  (R[30] = T),
+                  (R[31] = H),
+                  (R[32] = E),
+                  (R[33] = S))
+                : (S = R[33]),
+              (n = s.Card),
+              (j = "border-slate-200/80 shadow-sm"),
+              R[34] === Symbol.for("react.memo_cache_sentinel")
+                ? ((N = (0, t.jsx)(s.CardHeader, {
+                    className: "border-b bg-slate-50/50 pb-4 dark:bg-gray-800",
+                    children: (0, t.jsx)(s.CardTitle, {
+                      className:
+                        "text-lg font-primary font-semibold text-slate-800 dark:text-white pt-2",
+                      children: "Paid Service History",
+                    }),
+                  })),
+                  (R[34] = N))
+                : (N = R[34]),
+              (d = s.CardContent),
+              (p = "p-0"),
+              (l = r.Table),
+              R[35] === Symbol.for("react.memo_cache_sentinel")
+                ? ((v = (0, t.jsx)(r.TableHeader, {
+                    children: (0, t.jsxs)(r.TableRow, {
+                      children: [
+                        (0, t.jsx)(r.TableHead, { children: "Service Title" }),
+                        (0, t.jsx)(r.TableHead, { children: "Category" }),
+                        (0, t.jsx)(r.TableHead, { children: "Payment Status" }),
+                        (0, t.jsx)(r.TableHead, { children: "Task Status" }),
+                        (0, t.jsx)(r.TableHead, {
+                          className: "text-right",
+                          children: "Amount Earned",
+                        }),
+                      ],
+                    }),
+                  })),
+                  (R[35] = v))
+                : (v = R[35]),
+              (e = r.TableBody),
+              (m =
+                0 === M.length
+                  ? (0, t.jsx)(r.TableRow, {
+                      children: (0, t.jsx)(r.TableCell, {
+                        colSpan: 5,
+                        className: "text-center py-12 text-slate-500 ",
+                        children: "No paid earnings history found yet.",
+                      }),
+                    })
+                  : M.map(f)),
+              (R[1] = z?.data),
+              (R[2] = e),
+              (R[3] = l),
+              (R[4] = d),
+              (R[5] = n),
+              (R[6] = m),
+              (R[7] = v),
+              (R[8] = p),
+              (R[9] = j),
+              (R[10] = N),
+              (R[11] = w),
+              (R[12] = k),
+              (R[13] = S));
+          } else
+            ((e = R[2]),
+              (l = R[3]),
+              (d = R[4]),
+              (n = R[5]),
+              (m = R[6]),
+              (v = R[7]),
+              (p = R[8]),
+              (j = R[9]),
+              (N = R[10]),
+              (w = R[11]),
+              (k = R[12]),
+              (S = R[13]));
+          return (
+            R[36] !== e || R[37] !== m
+              ? ((T = (0, t.jsx)(e, { children: m })),
+                (R[36] = e),
+                (R[37] = m),
+                (R[38] = T))
+              : (T = R[38]),
+            R[39] !== l || R[40] !== v || R[41] !== T
+              ? ((q = (0, t.jsxs)(l, { children: [v, T] })),
+                (R[39] = l),
+                (R[40] = v),
+                (R[41] = T),
+                (R[42] = q))
+              : (q = R[42]),
+            R[43] !== d || R[44] !== p || R[45] !== q
+              ? ((C = (0, t.jsx)(d, { className: p, children: q })),
+                (R[43] = d),
+                (R[44] = p),
+                (R[45] = q),
+                (R[46] = C))
+              : (C = R[46]),
+            R[47] !== n || R[48] !== C || R[49] !== j || R[50] !== N
+              ? ((_ = (0, t.jsxs)(n, { className: j, children: [N, C] })),
+                (R[47] = n),
+                (R[48] = C),
+                (R[49] = j),
+                (R[50] = N),
+                (R[51] = _))
+              : (_ = R[51]),
+            R[52] !== _ || R[53] !== w || R[54] !== k || R[55] !== S
+              ? ((H = (0, t.jsxs)("div", {
+                  className: w,
+                  children: [k, S, _],
+                })),
+                (R[52] = _),
+                (R[53] = w),
+                (R[54] = k),
+                (R[55] = S),
+                (R[56] = H))
+              : (H = R[56]),
+            H
+          );
+        },
+      ],
+      82289,
+    );
+  },
+  87486,
+  (e) => {
+    "use strict";
+    var t = e.i(932),
+      a = e.i(76782),
+      s = e.i(11825),
+      r = e.i(25913),
+      l = e.i(79862);
+    let i = (0, r.cva)(
+      "group/badge inline-flex h-5 w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-4xl border border-transparent px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-all focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&>svg]:pointer-events-none [&>svg]:size-3!",
+      {
+        variants: {
+          variant: {
+            default:
+              "bg-primary text-primary-foreground [a]:hover:bg-primary/80",
+            secondary:
+              "bg-secondary text-secondary-foreground [a]:hover:bg-secondary/80",
+            destructive:
+              "bg-destructive/10 text-destructive focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:focus-visible:ring-destructive/40 [a]:hover:bg-destructive/20",
+            outline:
+              "border-border text-foreground [a]:hover:bg-muted [a]:hover:text-muted-foreground",
+            ghost:
+              "hover:bg-muted hover:text-muted-foreground dark:hover:bg-muted/50",
+            link: "text-primary underline-offset-4 hover:underline",
+          },
+        },
+        defaultVariants: { variant: "default" },
+      },
+    );
+    e.s([
+      "Badge",
+      0,
+      function (e) {
+        let r,
+          d,
+          n,
+          c,
+          o,
+          u,
+          m,
+          x = (0, t.c)(13);
+        if (x[0] !== e) {
+          let { className: t, variant: u, render: m, ...b } = e;
+          ((r = m),
+            (o = void 0 === u ? "default" : u),
+            (c = s.useRender),
+            (d = "span"),
+            (n = (0, a.mergeProps)(
+              { className: (0, l.cn)(i({ variant: o }), t) },
+              b,
+            )),
+            (x[0] = e),
+            (x[1] = r),
+            (x[2] = d),
+            (x[3] = n),
+            (x[4] = c),
+            (x[5] = o));
+        } else ((r = x[1]), (d = x[2]), (n = x[3]), (c = x[4]), (o = x[5]));
+        return (
+          x[6] !== o
+            ? ((u = { slot: "badge", variant: o }), (x[6] = o), (x[7] = u))
+            : (u = x[7]),
+          x[8] !== r || x[9] !== d || x[10] !== n || x[11] !== u
+            ? ((m = { defaultTagName: d, props: n, render: r, state: u }),
+              (x[8] = r),
+              (x[9] = d),
+              (x[10] = n),
+              (x[11] = u),
+              (x[12] = m))
+            : (m = x[12]),
+          c(m)
+        );
+      },
+    ]);
+  },
+  15288,
+  (e) => {
+    "use strict";
+    var t = e.i(43476),
+      a = e.i(932),
+      s = e.i(79862);
+    e.s([
+      "Card",
+      0,
+      function (e) {
+        let r,
+          l,
+          i,
+          d,
+          n,
+          c = (0, a.c)(10);
+        c[0] !== e
+          ? (({ className: r, size: i, ...l } = e),
+            (c[0] = e),
+            (c[1] = r),
+            (c[2] = l),
+            (c[3] = i))
+          : ((r = c[1]), (l = c[2]), (i = c[3]));
+        let o = void 0 === i ? "default" : i;
+        return (
+          c[4] !== r
+            ? ((d = (0, s.cn)(
+                "group/card flex flex-col gap-(--card-spacing) overflow-hidden rounded-xl bg-card py-(--card-spacing) text-sm text-card-foreground ring-1 ring-foreground/10 [--card-spacing:--spacing(4)] has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 data-[size=sm]:[--card-spacing:--spacing(3)] data-[size=sm]:has-data-[slot=card-footer]:pb-0 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl",
+                r,
+              )),
+              (c[4] = r),
+              (c[5] = d))
+            : (d = c[5]),
+          c[6] !== l || c[7] !== o || c[8] !== d
+            ? ((n = (0, t.jsx)("div", {
+                "data-slot": "card",
+                "data-size": o,
+                className: d,
+                ...l,
+              })),
+              (c[6] = l),
+              (c[7] = o),
+              (c[8] = d),
+              (c[9] = n))
+            : (n = c[9]),
+          n
+        );
+      },
+      "CardContent",
+      0,
+      function (e) {
+        let r,
+          l,
+          i,
+          d,
+          n = (0, a.c)(8);
+        return (
+          n[0] !== e
+            ? (({ className: r, ...l } = e), (n[0] = e), (n[1] = r), (n[2] = l))
+            : ((r = n[1]), (l = n[2])),
+          n[3] !== r
+            ? ((i = (0, s.cn)("px-(--card-spacing)", r)),
+              (n[3] = r),
+              (n[4] = i))
+            : (i = n[4]),
+          n[5] !== l || n[6] !== i
+            ? ((d = (0, t.jsx)("div", {
+                "data-slot": "card-content",
+                className: i,
+                ...l,
+              })),
+              (n[5] = l),
+              (n[6] = i),
+              (n[7] = d))
+            : (d = n[7]),
+          d
+        );
+      },
+      "CardDescription",
+      0,
+      function (e) {
+        let r,
+          l,
+          i,
+          d,
+          n = (0, a.c)(8);
+        return (
+          n[0] !== e
+            ? (({ className: r, ...l } = e), (n[0] = e), (n[1] = r), (n[2] = l))
+            : ((r = n[1]), (l = n[2])),
+          n[3] !== r
+            ? ((i = (0, s.cn)("text-sm text-muted-foreground", r)),
+              (n[3] = r),
+              (n[4] = i))
+            : (i = n[4]),
+          n[5] !== l || n[6] !== i
+            ? ((d = (0, t.jsx)("div", {
+                "data-slot": "card-description",
+                className: i,
+                ...l,
+              })),
+              (n[5] = l),
+              (n[6] = i),
+              (n[7] = d))
+            : (d = n[7]),
+          d
+        );
+      },
+      "CardFooter",
+      0,
+      function (e) {
+        let r,
+          l,
+          i,
+          d,
+          n = (0, a.c)(8);
+        return (
+          n[0] !== e
+            ? (({ className: r, ...l } = e), (n[0] = e), (n[1] = r), (n[2] = l))
+            : ((r = n[1]), (l = n[2])),
+          n[3] !== r
+            ? ((i = (0, s.cn)(
+                "flex items-center rounded-b-xl border-t bg-muted/50 p-(--card-spacing)",
+                r,
+              )),
+              (n[3] = r),
+              (n[4] = i))
+            : (i = n[4]),
+          n[5] !== l || n[6] !== i
+            ? ((d = (0, t.jsx)("div", {
+                "data-slot": "card-footer",
+                className: i,
+                ...l,
+              })),
+              (n[5] = l),
+              (n[6] = i),
+              (n[7] = d))
+            : (d = n[7]),
+          d
+        );
+      },
+      "CardHeader",
+      0,
+      function (e) {
+        let r,
+          l,
+          i,
+          d,
+          n = (0, a.c)(8);
+        return (
+          n[0] !== e
+            ? (({ className: r, ...l } = e), (n[0] = e), (n[1] = r), (n[2] = l))
+            : ((r = n[1]), (l = n[2])),
+          n[3] !== r
+            ? ((i = (0, s.cn)(
+                "group/card-header @container/card-header grid auto-rows-min items-start gap-1 rounded-t-xl px-(--card-spacing) has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto] [.border-b]:pb-(--card-spacing)",
+                r,
+              )),
+              (n[3] = r),
+              (n[4] = i))
+            : (i = n[4]),
+          n[5] !== l || n[6] !== i
+            ? ((d = (0, t.jsx)("div", {
+                "data-slot": "card-header",
+                className: i,
+                ...l,
+              })),
+              (n[5] = l),
+              (n[6] = i),
+              (n[7] = d))
+            : (d = n[7]),
+          d
+        );
+      },
+      "CardTitle",
+      0,
+      function (e) {
+        let r,
+          l,
+          i,
+          d,
+          n = (0, a.c)(8);
+        return (
+          n[0] !== e
+            ? (({ className: r, ...l } = e), (n[0] = e), (n[1] = r), (n[2] = l))
+            : ((r = n[1]), (l = n[2])),
+          n[3] !== r
+            ? ((i = (0, s.cn)(
+                "font-heading text-base leading-snug font-medium group-data-[size=sm]/card:text-sm",
+                r,
+              )),
+              (n[3] = r),
+              (n[4] = i))
+            : (i = n[4]),
+          n[5] !== l || n[6] !== i
+            ? ((d = (0, t.jsx)("div", {
+                "data-slot": "card-title",
+                className: i,
+                ...l,
+              })),
+              (n[5] = l),
+              (n[6] = i),
+              (n[7] = d))
+            : (d = n[7]),
+          d
+        );
+      },
+    ]);
+  },
+  6715,
+  (e) => {
+    "use strict";
+    var t = e.i(43476),
+      a = e.i(932);
+    function s(e, a) {
+      return (0, t.jsxs)(
+        "div",
+        {
+          className:
+            "grid grid-cols-7 gap-4 p-5 border-b border-slate-100 dark:border-slate-800 last:border-b-0 items-center",
+          children: [
+            (0, t.jsxs)("div", {
+              className: "space-y-2.5",
+              children: [
+                (0, t.jsx)("div", {
+                  className: "h-5 w-3/4 bg-slate-200 dark:bg-slate-800 rounded",
+                }),
+                (0, t.jsx)("div", {
+                  className:
+                    "h-4 w-1/2 bg-slate-100 dark:bg-slate-800/80 rounded",
+                }),
+              ],
+            }),
+            (0, t.jsxs)("div", {
+              className: "space-y-2.5",
+              children: [
+                (0, t.jsx)("div", {
+                  className: "h-5 w-3/4 bg-slate-200 dark:bg-slate-800 rounded",
+                }),
+                (0, t.jsx)("div", {
+                  className:
+                    "h-4 w-1/2 bg-slate-100 dark:bg-slate-800/80 rounded",
+                }),
+              ],
+            }),
+            (0, t.jsx)("div", {
+              className: "h-8 w-28 bg-slate-200 dark:bg-slate-800 rounded-full",
+            }),
+            (0, t.jsx)("div", {
+              className: "h-8 w-20 bg-slate-100 dark:bg-slate-800 rounded-full",
+            }),
+            (0, t.jsx)("div", {
+              className: "h-8 w-24 bg-slate-200 dark:bg-slate-800 rounded-full",
+            }),
+            (0, t.jsx)("div", {
+              className:
+                "h-10 w-full bg-slate-100 dark:bg-slate-800 rounded-xl",
+            }),
+            (0, t.jsx)("div", {
+              className: "flex justify-end",
+              children: (0, t.jsxs)("div", {
+                className:
+                  "h-9 w-24 bg-slate-200 dark:bg-slate-800 rounded-lg flex gap-2 items-center px-3",
+                children: [
+                  (0, t.jsx)("div", {
+                    className:
+                      "size-4 bg-slate-300 dark:bg-slate-700 rounded-full",
+                  }),
+                  (0, t.jsx)("div", {
+                    className:
+                      "h-4 flex-1 bg-slate-300 dark:bg-slate-700 rounded",
+                  }),
+                ],
+              }),
+            }),
+          ],
+        },
+        a,
+      );
+    }
+    function r(e, a) {
+      return (0, t.jsx)(
+        "div",
+        { className: "h-5 bg-slate-200 dark:bg-slate-700 rounded w-full" },
+        a,
+      );
+    }
+    e.s([
+      "TableSkeleton",
+      0,
+      function () {
+        let e,
+          l,
+          i,
+          d = (0, a.c)(3);
+        return (
+          d[0] === Symbol.for("react.memo_cache_sentinel")
+            ? ((e = (0, t.jsxs)("div", {
+                className: "space-y-3",
+                children: [
+                  (0, t.jsx)("div", {
+                    className:
+                      "h-9 w-72 bg-slate-200 dark:bg-slate-800 rounded-lg",
+                  }),
+                  (0, t.jsx)("div", {
+                    className:
+                      "h-5 w-full max-w-sm bg-slate-100 dark:bg-slate-800/80 rounded",
+                  }),
+                ],
+              })),
+              (d[0] = e))
+            : (e = d[0]),
+          d[1] === Symbol.for("react.memo_cache_sentinel")
+            ? ((l = (0, t.jsxs)("div", {
+                className:
+                  "flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-2",
+                children: [
+                  e,
+                  (0, t.jsxs)("div", {
+                    className: "flex items-center gap-3",
+                    children: [
+                      (0, t.jsx)("div", {
+                        className:
+                          "h-5 w-24 bg-slate-100 dark:bg-slate-800/80 rounded",
+                      }),
+                      (0, t.jsx)("div", {
+                        className:
+                          "h-10 w-40 bg-slate-200 dark:bg-slate-800 rounded-xl",
+                      }),
+                    ],
+                  }),
+                ],
+              })),
+              (d[1] = l))
+            : (l = d[1]),
+          d[2] === Symbol.for("react.memo_cache_sentinel")
+            ? ((i = (0, t.jsxs)("div", {
+                className:
+                  "space-y-6 animate-pulse p-4 md:p-6 lg:p-8 bg-white dark:bg-slate-950 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm",
+                children: [
+                  l,
+                  (0, t.jsxs)("div", {
+                    className:
+                      "border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden bg-white dark:bg-slate-900",
+                    children: [
+                      (0, t.jsx)("div", {
+                        className:
+                          "grid grid-cols-7 gap-4 p-5 bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800",
+                        children: [
+                          "Title & Category",
+                          "Requested By",
+                          "Service Type",
+                          "Payment Status",
+                          "Status",
+                          "Assigned Staff",
+                          "Actions",
+                        ].map(r),
+                      }),
+                      [...Array(6)].map(s),
+                    ],
+                  }),
+                ],
+              })),
+              (d[2] = i))
+            : (i = d[2]),
+          i
+        );
+      },
+    ]);
+  },
+  84774,
+  (e) => {
+    "use strict";
+    var t = e.i(43476),
+      a = e.i(932),
+      s = e.i(79862);
+    e.s([
+      "Table",
+      0,
+      function (e) {
+        let r,
+          l,
+          i,
+          d,
+          n = (0, a.c)(8);
+        return (
+          n[0] !== e
+            ? (({ className: r, ...l } = e), (n[0] = e), (n[1] = r), (n[2] = l))
+            : ((r = n[1]), (l = n[2])),
+          n[3] !== r
+            ? ((i = (0, s.cn)("w-full caption-bottom text-sm", r)),
+              (n[3] = r),
+              (n[4] = i))
+            : (i = n[4]),
+          n[5] !== l || n[6] !== i
+            ? ((d = (0, t.jsx)("div", {
+                "data-slot": "table-container",
+                className: "relative w-full overflow-x-auto",
+                children: (0, t.jsx)("table", {
+                  "data-slot": "table",
+                  className: i,
+                  ...l,
+                }),
+              })),
+              (n[5] = l),
+              (n[6] = i),
+              (n[7] = d))
+            : (d = n[7]),
+          d
+        );
+      },
+      "TableBody",
+      0,
+      function (e) {
+        let r,
+          l,
+          i,
+          d,
+          n = (0, a.c)(8);
+        return (
+          n[0] !== e
+            ? (({ className: r, ...l } = e), (n[0] = e), (n[1] = r), (n[2] = l))
+            : ((r = n[1]), (l = n[2])),
+          n[3] !== r
+            ? ((i = (0, s.cn)("[&_tr:last-child]:border-0", r)),
+              (n[3] = r),
+              (n[4] = i))
+            : (i = n[4]),
+          n[5] !== l || n[6] !== i
+            ? ((d = (0, t.jsx)("tbody", {
+                "data-slot": "table-body",
+                className: i,
+                ...l,
+              })),
+              (n[5] = l),
+              (n[6] = i),
+              (n[7] = d))
+            : (d = n[7]),
+          d
+        );
+      },
+      "TableCell",
+      0,
+      function (e) {
+        let r,
+          l,
+          i,
+          d,
+          n = (0, a.c)(8);
+        return (
+          n[0] !== e
+            ? (({ className: r, ...l } = e), (n[0] = e), (n[1] = r), (n[2] = l))
+            : ((r = n[1]), (l = n[2])),
+          n[3] !== r
+            ? ((i = (0, s.cn)(
+                "p-2 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0",
+                r,
+              )),
+              (n[3] = r),
+              (n[4] = i))
+            : (i = n[4]),
+          n[5] !== l || n[6] !== i
+            ? ((d = (0, t.jsx)("td", {
+                "data-slot": "table-cell",
+                className: i,
+                ...l,
+              })),
+              (n[5] = l),
+              (n[6] = i),
+              (n[7] = d))
+            : (d = n[7]),
+          d
+        );
+      },
+      "TableHead",
+      0,
+      function (e) {
+        let r,
+          l,
+          i,
+          d,
+          n = (0, a.c)(8);
+        return (
+          n[0] !== e
+            ? (({ className: r, ...l } = e), (n[0] = e), (n[1] = r), (n[2] = l))
+            : ((r = n[1]), (l = n[2])),
+          n[3] !== r
+            ? ((i = (0, s.cn)(
+                "h-10 px-2 text-left align-middle font-medium whitespace-nowrap text-foreground [&:has([role=checkbox])]:pr-0",
+                r,
+              )),
+              (n[3] = r),
+              (n[4] = i))
+            : (i = n[4]),
+          n[5] !== l || n[6] !== i
+            ? ((d = (0, t.jsx)("th", {
+                "data-slot": "table-head",
+                className: i,
+                ...l,
+              })),
+              (n[5] = l),
+              (n[6] = i),
+              (n[7] = d))
+            : (d = n[7]),
+          d
+        );
+      },
+      "TableHeader",
+      0,
+      function (e) {
+        let r,
+          l,
+          i,
+          d,
+          n = (0, a.c)(8);
+        return (
+          n[0] !== e
+            ? (({ className: r, ...l } = e), (n[0] = e), (n[1] = r), (n[2] = l))
+            : ((r = n[1]), (l = n[2])),
+          n[3] !== r
+            ? ((i = (0, s.cn)("[&_tr]:border-b", r)), (n[3] = r), (n[4] = i))
+            : (i = n[4]),
+          n[5] !== l || n[6] !== i
+            ? ((d = (0, t.jsx)("thead", {
+                "data-slot": "table-header",
+                className: i,
+                ...l,
+              })),
+              (n[5] = l),
+              (n[6] = i),
+              (n[7] = d))
+            : (d = n[7]),
+          d
+        );
+      },
+      "TableRow",
+      0,
+      function (e) {
+        let r,
+          l,
+          i,
+          d,
+          n = (0, a.c)(8);
+        return (
+          n[0] !== e
+            ? (({ className: r, ...l } = e), (n[0] = e), (n[1] = r), (n[2] = l))
+            : ((r = n[1]), (l = n[2])),
+          n[3] !== r
+            ? ((i = (0, s.cn)(
+                "border-b transition-colors hover:bg-muted/50 has-aria-expanded:bg-muted/50 data-[state=selected]:bg-muted",
+                r,
+              )),
+              (n[3] = r),
+              (n[4] = i))
+            : (i = n[4]),
+          n[5] !== l || n[6] !== i
+            ? ((d = (0, t.jsx)("tr", {
+                "data-slot": "table-row",
+                className: i,
+                ...l,
+              })),
+              (n[5] = l),
+              (n[6] = i),
+              (n[7] = d))
+            : (d = n[7]),
+          d
+        );
+      },
+    ]);
+  },
+  38580,
+  (e) => {
+    "use strict";
+    var t = e.i(932),
+      a = e.i(54616),
+      s = e.i(66027),
+      r = e.i(12598),
+      l = e.i(15383);
+    let i = async (e) => {
+        let t = new URLSearchParams();
+        return (
+          e &&
+            Object.entries(e).forEach(([e, a]) => {
+              void 0 !== a && "" !== a && null !== a && t.append(e, String(a));
+            }),
+          await (0, l.default)(`/service-request?${t.toString()}`, {
+            method: "GET",
+          })
+        );
+      },
+      d = async (e) =>
+        await (0, l.default)("/service-request", { method: "POST", body: e }),
+      n = async (e) => {
+        let t = new URLSearchParams();
+        e &&
+          Object.entries(e).forEach(([e, a]) => {
+            void 0 !== a && "" !== a && null !== a && t.append(e, String(a));
+          });
+        let a = t.toString();
+        return await (0, l.default)(
+          `/service-request/my-requests${a ? `?${a}` : ""}`,
+          { method: "GET" },
+        );
+      },
+      c = async (e) =>
+        await (0, l.default)(`/service-request/${e}`, { method: "GET" }),
+      o = async (e) =>
+        await (0, l.default)(`/service-request/${e}`, { method: "DELETE" }),
+      u = async ({ id: e, status: t }) =>
+        await (0, l.default)(`/service-request/${e}/status`, {
+          method: "PATCH",
+          body: { status: t },
+        }),
+      m = async () =>
+        await (0, l.default)("/service-request/my-assigned", { method: "GET" }),
+      x = async ({ requestId: e, status: t, remarks: a }) =>
+        await (0, l.default)(`/service-request/${e}/status`, {
+          method: "PATCH",
+          body: { status: t, remarks: a },
+        });
+    function b(e) {
+      return d(e);
+    }
+    function h(e) {
+      return "my-requests" === e.queryKey[0];
+    }
+    function f(e) {
+      return "service-requests" === e.queryKey[0];
+    }
+    e.s(
+      [
+        "useCreateServiceRequest",
+        0,
+        () => {
+          let e,
+            s = (0, t.c)(2),
+            l = (0, r.useQueryClient)();
+          return (
+            s[0] !== l
+              ? ((e = {
+                  mutationFn: b,
+                  onSuccess: () => {
+                    (l.invalidateQueries({ queryKey: ["service-requests"] }),
+                      l.invalidateQueries({ queryKey: ["my-requests"] }));
+                  },
+                }),
+                (s[0] = l),
+                (s[1] = e))
+              : (e = s[1]),
+            (0, a.useMutation)(e)
+          );
+        },
+        "useDeleteServiceRequest",
+        0,
+        () => {
+          let e,
+            s = (0, t.c)(2),
+            l = (0, r.useQueryClient)();
+          return (
+            s[0] !== l
+              ? ((e = {
+                  mutationFn: o,
+                  onSuccess: () => {
+                    (l.invalidateQueries({ predicate: h }),
+                      l.invalidateQueries({ predicate: f }));
+                  },
+                }),
+                (s[0] = l),
+                (s[1] = e))
+              : (e = s[1]),
+            (0, a.useMutation)(e)
+          );
+        },
+        "useGetAllServiceRequests",
+        0,
+        (e) => {
+          let a,
+            r = (0, t.c)(2);
+          return (
+            r[0] !== e
+              ? ((a = {
+                  queryKey: ["service-requests", e],
+                  queryFn: () => i(e),
+                  staleTime: 3e5,
+                }),
+                (r[0] = e),
+                (r[1] = a))
+              : (a = r[1]),
+            (0, s.useQuery)(a)
+          );
+        },
+        "useGetMyRequests",
+        0,
+        (e) => {
+          let a,
+            r = (0, t.c)(2);
+          return (
+            r[0] !== e
+              ? ((a = { queryKey: ["my-requests", e], queryFn: () => n(e) }),
+                (r[0] = e),
+                (r[1] = a))
+              : (a = r[1]),
+            (0, s.useQuery)(a)
+          );
+        },
+        "useGetSingleServiceRequest",
+        0,
+        (e) => {
+          let a,
+            r,
+            l,
+            i = (0, t.c)(7);
+          i[0] !== e
+            ? ((a = ["service-request", e]),
+              (r = () => c(e)),
+              (i[0] = e),
+              (i[1] = a),
+              (i[2] = r))
+            : ((a = i[1]), (r = i[2]));
+          let d = !!e;
+          return (
+            i[3] !== a || i[4] !== r || i[5] !== d
+              ? ((l = { queryKey: a, queryFn: r, enabled: d }),
+                (i[3] = a),
+                (i[4] = r),
+                (i[5] = d),
+                (i[6] = l))
+              : (l = i[6]),
+            (0, s.useQuery)(l)
+          );
+        },
+        "useGetStaffAssignedRequests",
+        0,
+        () => {
+          let e,
+            a = (0, t.c)(1);
+          return (
+            a[0] === Symbol.for("react.memo_cache_sentinel")
+              ? ((e = {
+                  queryKey: ["staff-assigned-requests"],
+                  queryFn: m,
+                  staleTime: 18e4,
+                }),
+                (a[0] = e))
+              : (e = a[0]),
+            (0, s.useQuery)(e)
+          );
+        },
+        "useUpdateServiceRequestStatus",
+        0,
+        () => {
+          let e,
+            s = (0, t.c)(2),
+            l = (0, r.useQueryClient)();
+          return (
+            s[0] !== l
+              ? ((e = {
+                  mutationFn: u,
+                  onSuccess: (e, t) => {
+                    (l.invalidateQueries({ queryKey: ["my-requests"] }),
+                      l.invalidateQueries({ queryKey: ["service-requests"] }),
+                      l.invalidateQueries({ queryKey: ["available-staff"] }),
+                      t?.id &&
+                        l.invalidateQueries({
+                          queryKey: ["service-request", t.id],
+                        }));
+                  },
+                }),
+                (s[0] = l),
+                (s[1] = e))
+              : (e = s[1]),
+            (0, a.useMutation)(e)
+          );
+        },
+        "useUpdateStaffRequestStatus",
+        0,
+        () => {
+          let e,
+            s = (0, t.c)(2),
+            l = (0, r.useQueryClient)();
+          return (
+            s[0] !== l
+              ? ((e = {
+                  mutationFn: x,
+                  onSuccess: () => {
+                    (l.invalidateQueries({
+                      queryKey: ["staff-assigned-requests"],
+                    }),
+                      l.invalidateQueries({ queryKey: ["service-requests"] }));
+                  },
+                }),
+                (s[0] = l),
+                (s[1] = e))
+              : (e = s[1]),
+            (0, a.useMutation)(e)
+          );
+        },
+      ],
+      38580,
+    );
+  },
+]);

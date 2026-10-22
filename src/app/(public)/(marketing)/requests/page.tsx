@@ -152,7 +152,7 @@ export default function ServiceRequestDetailsPage() {
           {getStatusBadge(req.status)}
           <Badge variant={isCategoryPaid ? "default" : "secondary"}>
             {isCategoryPaid
-              ? `Paid Service (৳${req.totalAmount || 0})`
+              ? `Paid Service (${req.totalAmount || 0})`
               : "Free Service"}
           </Badge>
         </div>
@@ -323,7 +323,7 @@ export default function ServiceRequestDetailsPage() {
                   <div className="flex justify-between items-center">
                     <span>Total Service Fee:</span>
                     <span className="text-base font-bold text-slate-800">
-                      ৳{req.totalAmount || 0}
+                      {req.totalAmount || 0}
                     </span>
                   </div>
                   <div className="flex justify-between items-center pt-1 border-t">
