@@ -3,6 +3,7 @@
 import { HomeSectionHeader } from "@/components/shared/home-section-header";
 import { ShieldCheck, Clock, MapPin, BarChart3, Sparkles, CheckCircle2 } from "lucide-react";
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const workflowSteps = [
   {
@@ -54,11 +55,20 @@ export function FeaturesSection() {
       <div className="absolute bottom-10 right-10 w-[400px] h-[400px] bg-emerald-50/50 dark:bg-emerald-950/15 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
-        <HomeSectionHeader
-          title="Designed for Smart & Efficient City Management"
-          badge="Interactive Workflow"
-          subtitle="Empowering citizens and municipal authorities with modern tools to resolve community problems faster than ever."
-        />
+        
+        {/* Section Header with Fade-Down Animation */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <HomeSectionHeader
+            title="Designed for Smart & Efficient City Management"
+            badge="Interactive Workflow"
+            subtitle="Empowering citizens and municipal authorities with modern tools to resolve community problems faster than ever."
+          />
+        </motion.div>
 
         {/* Interactive Showcase Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-16">
@@ -69,10 +79,14 @@ export function FeaturesSection() {
               const Icon = item.icon;
               const isActive = activeStep === index;
               return (
-                <button
+                <motion.button
                   key={index}
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
                   onClick={() => setActiveStep(index)}
-                  className={`group text-left p-5 rounded-2xl transition-all duration-300 flex items-center gap-4 border ${
+                  className={`group text-left p-5 rounded-2xl transition-all duration-300 flex items-center gap-4 border cursor-pointer ${
                     isActive
                       ? "bg-slate-50 dark:bg-slate-900 border-indigo-500/40 shadow-lg shadow-indigo-500/5 translate-x-2"
                       : "bg-white/60 dark:bg-slate-950 border-slate-200/80 dark:border-slate-800/80 hover:bg-slate-50/80 hover:border-slate-300 dark:hover:bg-slate-900/50 text-slate-600 dark:text-slate-400"
@@ -98,13 +112,19 @@ export function FeaturesSection() {
                       {item.title}
                     </h4>
                   </div>
-                </button>
+                </motion.button>
               );
             })}
           </div>
 
           {/* Right Side: Spotlight Dynamic Showcase */}
-          <div className="lg:col-span-7">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="lg:col-span-7"
+          >
             <div className="relative p-8 sm:p-12 rounded-3xl bg-slate-50/80 dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-800 backdrop-blur-xl shadow-xl overflow-hidden">
               
               {/* Top Accent Badge */}
@@ -112,39 +132,48 @@ export function FeaturesSection() {
                 <Sparkles className="w-3.5 h-3.5 text-indigo-500 animate-spin" /> Feature Spotlight
               </div>
 
-              {/* Dynamic Content */}
-              <div className="space-y-6 pt-2">
-                <div className={`w-20 h-20 rounded-2xl bg-gradient-to-tr ${workflowSteps[activeStep].gradient} flex items-center justify-center text-white shadow-lg shadow-indigo-500/15`}>
-                  {(() => {
-                    const ActiveIcon = workflowSteps[activeStep].icon;
-                    return <ActiveIcon className="w-10 h-10" />;
-                  })()}
-                </div>
-
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-slate-50 tracking-tight">
-                  {workflowSteps[activeStep].title}
-                </h3>
-
-                <p className="text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed font-sans">
-                  {workflowSteps[activeStep].description}
-                </p>
-
-                {/* Key Benefits List */}
-                <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-700 dark:text-slate-300 border-t border-slate-200/80 dark:border-slate-800">
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                    <span>Instant City Verification</span>
+              {/* Dynamic Content with AnimatePresence */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeStep}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.35, ease: "easeInOut" }}
+                  className="space-y-6 pt-2"
+                >
+                  <div className={`w-20 h-20 rounded-2xl bg-gradient-to-tr ${workflowSteps[activeStep].gradient} flex items-center justify-center text-white shadow-lg shadow-indigo-500/15`}>
+                    {(() => {
+                      const ActiveIcon = workflowSteps[activeStep].icon;
+                      return <ActiveIcon className="w-10 h-10" />;
+                    })()}
                   </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                    <span>Transparent Audit Trail</span>
-                  </div>
-                </div>
 
-              </div>
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-slate-50 tracking-tight">
+                    {workflowSteps[activeStep].title}
+                  </h3>
+
+                  <p className="text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed font-sans">
+                    {workflowSteps[activeStep].description}
+                  </p>
+
+                  {/* Key Benefits List */}
+                  <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-700 dark:text-slate-300 border-t border-slate-200/80 dark:border-slate-800">
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                      <span>Instant City Verification</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                      <span>Transparent Audit Trail</span>
+                    </div>
+                  </div>
+
+                </motion.div>
+              </AnimatePresence>
 
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </div>

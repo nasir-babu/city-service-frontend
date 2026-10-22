@@ -14,6 +14,7 @@ import {
   Pause,
 } from "lucide-react";
 import { HomeSectionHeader } from "@/components/shared/home-section-header";
+import { motion, AnimatePresence } from "framer-motion";
 
 const steps = [
   {
@@ -114,7 +115,13 @@ export function HowItWorksSection() {
       <div className="absolute top-1/3 -left-32 size-96 rounded-full bg-emerald-500/5 blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 -right-32 size-96 rounded-full bg-teal-500/5 blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
+      >
         {/* Section Header with Auto-play Indicator Control */}
         <div className="text-center max-w-3xl mx-auto mb-16 relative">
           <HomeSectionHeader
@@ -151,7 +158,13 @@ export function HowItWorksSection() {
         {/* Main Interactive Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           {/* Left Column: Timeline Steps (5 Columns) */}
-          <div className="lg:col-span-5 space-y-4">
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="lg:col-span-5 space-y-4"
+          >
             {steps.map((step, idx) => {
               const StepIcon = step.icon;
               const isActive = activeStep === idx;
@@ -212,10 +225,16 @@ export function HowItWorksSection() {
                 </div>
               );
             })}
-          </div>
+          </motion.div>
 
           {/* Right Column: Live Interactive Mockup Simulator (7 Columns) */}
-          <div className="lg:col-span-7">
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="lg:col-span-7"
+          >
             <div className="relative rounded-3xl bg-slate-900 text-white border border-slate-800 p-6 sm:p-8 shadow-2xl overflow-hidden">
               {/* Window Controls Decorator */}
               <div className="flex items-center justify-between pb-6 mb-6 border-b border-slate-800">
@@ -234,77 +253,86 @@ export function HowItWorksSection() {
               </div>
 
               {/* Dynamic Live Widget Display */}
-              <div className="space-y-6">
-                {/* Header Info */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-950/80 p-5 rounded-2xl border border-slate-800">
-                  <div className="space-y-1">
-                    <span className="text-xs text-slate-400 uppercase tracking-wider font-semibold">
-                      Active Category Issue
-                    </span>
-                    <h4 className=" text-xl font-bold text-slate-100 flex items-center gap-2">
-                      <IconComp className="size-5 text-emerald-400" />
-                      {current.mockup.category}
-                    </h4>
-                  </div>
-                  <div
-                    className={`self-start sm:self-auto text-xs font-semibold px-3.5 py-1.5 rounded-xl border ${current.mockup.statusBg}`}
-                  >
-                    {current.mockup.status}
-                  </div>
-                </div>
-
-                {/* Progress Visualizer Bar */}
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between text-xs font-mono text-slate-400">
-                    <span>Process Lifecycle Completion</span>
-                    <span className="text-emerald-400 font-bold">
-                      {current.mockup.progress}%
-                    </span>
-                  </div>
-                  <div className="h-3 w-full bg-slate-950 rounded-full overflow-hidden p-0.5 border border-slate-800">
+              <AnimatePresence mode="wait">
+                <motion.div 
+                  key={current.id}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.3 }}
+                  className="space-y-6"
+                >
+                  {/* Header Info */}
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-950/80 p-5 rounded-2xl border border-slate-800">
+                    <div className="space-y-1">
+                      <span className="text-xs text-slate-400 uppercase tracking-wider font-semibold">
+                        Active Category Issue
+                      </span>
+                      <h4 className=" text-xl font-bold text-slate-100 flex items-center gap-2">
+                        <IconComp className="size-5 text-emerald-400" />
+                        {current.mockup.category}
+                      </h4>
+                    </div>
                     <div
-                      className="h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full transition-all duration-700 ease-out shadow-lg shadow-emerald-500/30"
-                      style={{ width: `${current.mockup.progress}%` }}
-                    />
-                  </div>
-                </div>
-
-                {/* Location & Log Stream */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="bg-slate-950/60 p-4 rounded-xl border border-slate-800 space-y-1">
-                    <div className="flex items-center gap-1.5 text-slate-400 text-xs">
-                      <MapPin className="size-3.5 text-rose-400" /> Location
-                      Coordinates
+                      className={`self-start sm:self-auto text-xs font-semibold px-3.5 py-1.5 rounded-xl border ${current.mockup.statusBg}`}
+                    >
+                      {current.mockup.status}
                     </div>
-                    <p className="text-sm font-semibold text-slate-200">
-                      {current.mockup.location}
-                    </p>
                   </div>
 
-                  <div className="bg-slate-950/60 p-4 rounded-xl border border-slate-800 space-y-1">
-                    <div className="flex items-center gap-1.5 text-slate-400 text-xs">
-                      <ShieldCheck className="size-3.5 text-emerald-400" />{" "}
-                      Security Clearance
+                  {/* Progress Visualizer Bar */}
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between text-xs font-mono text-slate-400">
+                      <span>Process Lifecycle Completion</span>
+                      <span className="text-emerald-400 font-bold">
+                        {current.mockup.progress}%
+                      </span>
                     </div>
-                    <p className="text-sm font-semibold text-slate-200">
-                      256-Bit Encrypted Log
-                    </p>
+                    <div className="h-3 w-full bg-slate-950 rounded-full overflow-hidden p-0.5 border border-slate-800">
+                      <div
+                        className="h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full transition-all duration-700 ease-out shadow-lg shadow-emerald-500/30"
+                        style={{ width: `${current.mockup.progress}%` }}
+                      />
+                    </div>
                   </div>
-                </div>
 
-                {/* Simulated Live System Message */}
-                <div className="p-4 rounded-xl bg-emerald-950/30 border border-emerald-900/50 flex items-start gap-3">
-                  <AlertCircle className="size-5 text-emerald-400 shrink-0 mt-0.5" />
-                  <div className="space-y-0.5">
-                    <p className="text-xs font-semibold text-emerald-300">
-                      System Notification
-                    </p>
-                    <p className="text-xs text-emerald-400/90 leading-relaxed">
-                      {current.mockup.detailText}
-                    </p>
+                  {/* Location & Log Stream */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="bg-slate-950/60 p-4 rounded-xl border border-slate-800 space-y-1">
+                      <div className="flex items-center gap-1.5 text-slate-400 text-xs">
+                        <MapPin className="size-3.5 text-rose-400" /> Location
+                        Coordinates
+                      </div>
+                      <p className="text-sm font-semibold text-slate-200">
+                        {current.mockup.location}
+                      </p>
+                    </div>
+
+                    <div className="bg-slate-950/60 p-4 rounded-xl border border-slate-800 space-y-1">
+                      <div className="flex items-center gap-1.5 text-slate-400 text-xs">
+                        <ShieldCheck className="size-3.5 text-emerald-400" />{" "}
+                        Security Clearance
+                      </div>
+                      <p className="text-sm font-semibold text-slate-200">
+                        256-Bit Encrypted Log
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </div>
+
+                  {/* Simulated Live System Message */}
+                  <div className="p-4 rounded-xl bg-emerald-950/30 border border-emerald-900/50 flex items-start gap-3">
+                    <AlertCircle className="size-5 text-emerald-400 shrink-0 mt-0.5" />
+                    <div className="space-y-0.5">
+                      <p className="text-xs font-semibold text-emerald-300">
+                        System Notification
+                      </p>
+                      <p className="text-xs text-emerald-400/90 leading-relaxed">
+                        {current.mockup.detailText}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
 
               {/* Interactive Step Switch Buttons at Bottom */}
               <div className="mt-8 pt-6 border-t border-slate-800 flex items-center justify-between">
@@ -350,9 +378,9 @@ export function HowItWorksSection() {
                 </button>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

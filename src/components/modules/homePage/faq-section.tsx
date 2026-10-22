@@ -6,6 +6,7 @@ import {
   HelpCircle, 
   Sparkles 
 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { HomeSectionHeader } from "@/components/shared/home-section-header";
 
 const faqs = [
@@ -68,27 +69,37 @@ export function FaqSection() {
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* HomeSectionHeader Component */}
-        <div className="mb-14 text-center">
+        {/* HomeSectionHeader Component with Fade-In Animation */}
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-14 text-center"
+        >
           <HomeSectionHeader
             badge="Frequently Asked Questions"
             title="Everything You Need to Know"
             subtitle="Got questions about reporting issues, tracking progress, or municipal services? We've got answers."
             align="center"
           />
-        </div>
+        </motion.div>
 
         {/* Accordion Container */}
         <div className="space-y-4">
-          {faqs.map((faq) => {
+          {faqs.map((faq, index) => {
             const isOpen = openId === faq.id;
 
             return (
-              <div
+              <motion.div
                 key={faq.id}
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
                 className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
                   isOpen
-                    ? "bg-slate-50/80 dark:bg-slate-900/80 border-emerald-500/80 shadow-md shadow-emerald-500/5"
+                    ? "bg-slate-50/80 dark:bg-slate-900/80 border-emerald-500/85 shadow-md shadow-emerald-500/5"
                     : "bg-white dark:bg-slate-900/40 border-slate-200/80 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700"
                 }`}
               >
@@ -96,7 +107,7 @@ export function FaqSection() {
                 <button
                   type="button"
                   onClick={() => toggleFaq(faq.id)}
-                  className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 focus:outline-none"
+                  className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 focus:outline-none cursor-pointer"
                 >
                   <div className="flex items-center gap-3.5 min-w-0">
                     <div
@@ -109,7 +120,7 @@ export function FaqSection() {
                       <HelpCircle className="size-5" />
                     </div>
 
-                    <span className=" text-base sm:text-lg font-bold text-slate-800 dark:text-slate-100">
+                    <span className="text-base sm:text-lg font-bold text-slate-800 dark:text-slate-100">
                       {faq.question}
                     </span>
                   </div>
@@ -123,21 +134,36 @@ export function FaqSection() {
                   </div>
                 </button>
 
-                {/* Accordion Body Content */}
-                {isOpen && (
-                  <div className="px-6 pb-6 pt-1 border-t border-slate-200/50 dark:border-slate-800/80 animate-fadeIn">
-                    <p className="font-sans text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed pl-12">
-                      {faq.answer}
-                    </p>
-                  </div>
-                )}
-              </div>
+                {/* Accordion Body Content with Smooth AnimatePresence */}
+                <AnimatePresence>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                    >
+                      <div className="px-6 pb-6 pt-1 border-t border-slate-200/50 dark:border-slate-800/80">
+                        <p className="font-sans text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed pl-12">
+                          {faq.answer}
+                        </p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
             );
           })}
         </div>
 
-        {/* Bottom Support Banner */}
-        <div className="mt-14 p-6 sm:p-8 rounded-3xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+        {/* Bottom Support Banner with Scroll Animation */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-14 p-6 sm:p-8 rounded-3xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left shadow-lg shadow-black/5"
+        >
           <div className="space-y-1">
             <h4 className="font-heading text-base font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2 justify-center sm:justify-start">
               <Sparkles className="size-4 text-emerald-500" />
@@ -154,7 +180,7 @@ export function FaqSection() {
           >
             Contact Support
           </a>
-        </div>
+        </motion.div>
 
       </div>
     </section>

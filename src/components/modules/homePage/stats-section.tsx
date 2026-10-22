@@ -8,8 +8,30 @@ import {
   ShieldCheck,
   AlertCircle,
 } from "lucide-react";
+import { motion, useMotionValue, useTransform, animate, useInView } from "framer-motion";
+import { useEffect, useRef } from "react";
 import { HomeSectionHeader } from "@/components/shared/home-section-header";
 import { useGetPublicStats } from "@/hooks/public.hooks";
+
+// 🔢 কাস্টম কাউন্টার কম্পোনেন্ট (০ থেকে টার্গেট ভ্যালুতে কাউন্ট হবে)
+function Counter({ value }: { value: number }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true });
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, (latest) => Math.floor(latest).toLocaleString());
+
+  useEffect(() => {
+    if (isInView) {
+      const controls = animate(count, value, {
+        duration: 2, // ২ সেকেন্ড ধরে কাউন্ট হবে
+        ease: "easeOut",
+      });
+      return controls.stop;
+    }
+  }, [isInView, value, count]);
+
+  return <motion.span ref={ref}>{rounded}</motion.span>;
+}
 
 export function StatsSection() {
   const { data: statsResponse, isLoading, isError } = useGetPublicStats();
@@ -48,7 +70,7 @@ export function StatsSection() {
     {
       id: "01",
       label: "Issues Resolved",
-      value: rawStats.serviceRequests.resolvedRequests?.toLocaleString() || "0",
+      numericValue: rawStats.serviceRequests.resolvedRequests || 0,
       description: "Civic complaints successfully fixed by field teams.",
       icon: CheckCircle2,
       color:
@@ -57,7 +79,7 @@ export function StatsSection() {
     {
       id: "02",
       label: "Active Citizens",
-      value: rawStats.users.totalCitizens?.toLocaleString() || "0",
+      numericValue: rawStats.users.totalCitizens || 0,
       description: "Registered community members submitting reports.",
       icon: Users,
       color:
@@ -66,7 +88,7 @@ export function StatsSection() {
     {
       id: "03",
       label: "Total Submissions",
-      value: rawStats.serviceRequests.totalRequests?.toLocaleString() || "0",
+      numericValue: rawStats.serviceRequests.totalRequests || 0,
       description: "Total municipal requests logged in system.",
       icon: FileText,
       color:
@@ -75,7 +97,7 @@ export function StatsSection() {
     {
       id: "04",
       label: "Service Categories",
-      value: rawStats.categories.totalCategories?.toLocaleString() || "0",
+      numericValue: rawStats.categories.totalCategories || 0,
       description: "Active civic maintenance departments.",
       icon: FolderTree,
       color:
@@ -86,7 +108,15 @@ export function StatsSection() {
   return (
     <section className="py-20 bg-slate-50/70 dark:bg-slate-900/40 border-y border-slate-200/80 dark:border-slate-800/80 transition-colors duration-300 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+        
+        {/* Header Section */}
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6"
+        >
           <div className="max-w-2xl">
             <HomeSectionHeader
               badge="Platform Impact Metrics"
@@ -100,14 +130,19 @@ export function StatsSection() {
             <ShieldCheck className="size-4 text-emerald-500" />
             <span>Public API Stream</span>
           </div>
-        </div>
+        </motion.div>
 
+        {/* Stats Grid with Animated Counter */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {publicStats.map((item) => {
+          {publicStats.map((item, idx) => {
             const IconComponent = item.icon;
             return (
-              <div
+              <motion.div
                 key={item.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1, ease: "easeOut" }}
                 className="group relative bg-white dark:bg-slate-900/90 rounded-3xl p-7 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-xl hover:border-emerald-500/50 dark:hover:border-emerald-500/50 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
@@ -122,11 +157,12 @@ export function StatsSection() {
                     </span>
                   </div>
 
-                  <div className=" text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight mb-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
-                    {item.value}+
+                  {/* ⚡ Animated Counter Number */}
+                  <div className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight mb-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                    <Counter value={item.numericValue} />+
                   </div>
 
-                  <h3 className=" text-base font-bold text-slate-800 dark:text-slate-200 mb-2">
+                  <h3 className="text-base font-bold text-slate-800 dark:text-slate-200 mb-2">
                     {item.label}
                   </h3>
 
@@ -139,7 +175,7 @@ export function StatsSection() {
                   <span>Live Database Sync</span>
                   <span className="size-1.5 rounded-full bg-emerald-500 animate-pulse" />
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>

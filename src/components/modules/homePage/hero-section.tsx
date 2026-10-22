@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useGetMe } from "@/hooks/auth.hook";
 import { toast } from "sonner";
-import { CreateServiceRequestForm } from "@/components/form/create-service-request-form";
+import { motion } from "framer-motion";
 
 export function HeroSection() {
   const router = useRouter();
@@ -62,22 +62,40 @@ export function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/50 pointer-events-none" />
 
       {/* Content Container */}
-      <div className="container relative z-10 py-8 px-4 md:px-8 mx-auto flex flex-col items-center text-center space-y-6 max-w-4xl">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="container relative z-10 py-8 px-4 md:px-8 mx-auto flex flex-col items-center text-center space-y-6 max-w-4xl"
+      >
         {/* Title */}
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white leading-tight">
+        <motion.h1 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white leading-tight"
+        >
           Report City Issues, <br className="hidden sm:inline" />
           <span className="text-emerald-400">Track Progress Together</span>
-        </h1>
+        </motion.h1>
 
         {/* Subtitle */}
-        <p className="text-slate-200 text-sm sm:text-base max-w-2xl leading-relaxed">
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          className="text-slate-200 text-sm sm:text-base max-w-2xl leading-relaxed"
+        >
           Submit public complaints or request premium municipal services in a
           few clicks. Help us build a cleaner, safer, and smarter city
           environment for everyone.
-        </p>
+        </motion.p>
 
         {/* Quick Search Bar */}
-        <form
+        <motion.form
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
           onSubmit={handleSearch}
           className="w-full max-w-xl flex items-center gap-2 pt-2"
         >
@@ -98,10 +116,15 @@ export function HeroSection() {
           >
             Search
           </Button>
-        </form>
+        </motion.form>
 
         {/* Call to Actions */}
-        <div className="flex flex-wrap items-center justify-center gap-3 pt-4">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.5 }}
+          className="flex flex-wrap items-center justify-center gap-3 pt-4"
+        >
           {role ? (
             <Button
               size="lg"
@@ -130,8 +153,8 @@ export function HeroSection() {
           >
             View Public Complaints
           </Button>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* Modern Wave SVG at the Bottom (Dark/Light mode adaptive using CSS variable) */}
       <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none pointer-events-none">

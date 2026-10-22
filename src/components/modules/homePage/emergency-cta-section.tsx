@@ -5,6 +5,7 @@ import {
   Siren, 
   ShieldAlert 
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 const helplines = [
   {
@@ -46,8 +47,14 @@ export function EmergencyCtaSection() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Header Section */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
+        {/* Header Section with Fade-Down Animation */}
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-center max-w-3xl mx-auto mb-14"
+        >
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-rose-100 dark:bg-rose-950/80 border border-rose-200 dark:border-rose-800/80 text-rose-700 dark:text-rose-400 text-xs font-semibold uppercase tracking-wider mb-4 shadow-2xs">
             <Siren className="size-4 animate-pulse" /> Urgent Public Support
           </div>
@@ -57,13 +64,17 @@ export function EmergencyCtaSection() {
           <p className="font-sans text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
             Immediate 24/7 hotline numbers for life-threatening emergencies, urgent infrastructure hazard reporting, and municipal assistance.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Emergency Helpline Cards Grid */}
+        {/* Emergency Helpline Cards Grid with Staggered Fade-Up Animation */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {helplines.map((item) => (
-            <div
+          {helplines.map((item, idx) => (
+            <motion.div
               key={item.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.12, ease: "easeOut" }}
               className={`rounded-3xl p-6 sm:p-7 border backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-xl flex flex-col justify-between ${item.color}`}
             >
               <div>
@@ -94,7 +105,7 @@ export function EmergencyCtaSection() {
               >
                 <PhoneCall className="size-4" /> Call Hotline Now
               </a>
-            </div>
+            </motion.div>
           ))}
         </div>
 
